@@ -1,0 +1,15 @@
+/* inter-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/inter-v13-latin-700.woff2') format('woff2');
+}
+
+h3 {
+    font-family: Inter;
+    font-size: 12vw;
+    font-weight: 700;
+    margin: 0;
+}
