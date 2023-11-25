@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/fonts.css">
+    <link rel="stylesheet" href="src/css/style.css">
     <title>Join</title>
 </head>
 
@@ -23,10 +23,35 @@
                 <div class="blueUnderline"></div>
             </div>
             <div class="input-section">
-                <input type="email" placeholder="Email">
+                <div class="input-container">
+                    <input type="email" placeholder="Email">
+                    <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
+                </div>
+                <div class="input-container">
+                    <input type="password" placeholder="Password">
+                    <img class="input-icon" src="src/img/password-icon.svg" alt="password-icon">
+                </div>
+                <div class="remember-container">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                </div>
+                <div class="button-section">
+                    <div class="login-button">Log in</div>
+                    <div class="guest-login-button">Guest Log in</div>
+                </div>
             </div>
         </div>
 
+        <div class="sign-up-section">
+            <span class="sign-up-span">Not a Join user?</span>
+            <div class="sign-up-button">
+                Sign up
+            </div>
+        </div>
+        <div class="index-footer">
+            <span class="index-footer-span">Privacy Policy</span>
+            <span class="index-footer-span">Legal notice</span>
+        </div>
 
     </div>
 </body>
