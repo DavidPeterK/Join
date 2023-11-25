@@ -105,8 +105,7 @@ input {
     justify-content: flex-start;
     align-items: center;
     gap: 8px;
-    width: 100%;
-    padding-left: 16px;
+    width: 90%;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -122,8 +121,8 @@ input {
 
 .button-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 21px;
 }
 
@@ -136,6 +135,7 @@ input {
     align-items: center;
     gap: 10px;
     border-radius: 8px;
+    margin-right: 14px;
     background: #2A3647;
     color: #FFF;
     font-family: Inter;
@@ -151,6 +151,7 @@ input {
     padding: 4px 0px;
     justify-content: center;
     align-items: center;
+    margin-right: 14px;
     color: #2A3647;
     border-radius: 8px;
     border: 1px solid #2A3647;
