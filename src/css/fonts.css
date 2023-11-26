@@ -22,7 +22,7 @@ h3 {
     margin: 0;
 }
 
-@media (min-width:1000px) {
+@media (min-width:700px) {
     h3 {
         font-size: 61px !important;
     }

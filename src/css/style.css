@@ -63,7 +63,7 @@ input {
 
 }
 
-@media (min-width:1000px) {
+@media (min-width:700px) {
     .button {
         padding: 15px 24px;
         font-size: 21px;

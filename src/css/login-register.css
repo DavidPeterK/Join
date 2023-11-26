@@ -159,13 +159,6 @@ span {
     #signSectionBottom {
         display: none;
     }
-}
-
-@media (min-width:1000px) {
-    .join-logo-head {
-        min-width: 48px;
-        max-width: 111px;
-    }
 
     #sign-up-button {
         padding: 15px 16px;
@@ -177,6 +170,14 @@ span {
 
     .blueUnderline {
         width: 90px;
+    }
+
+}
+
+@media (min-width:1000px) {
+    .join-logo-head {
+        min-width: 48px;
+        max-width: 111px;
     }
 }
 
