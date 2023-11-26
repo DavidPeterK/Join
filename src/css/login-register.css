@@ -115,7 +115,7 @@ span {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 100vw;
+    width: 100%;
     padding: 42px 0px;
     gap: 35px;
 }
@@ -165,11 +165,11 @@ span {
     }
 
     span {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .blueUnderline {
-        width: 90px;
+        width: 95px;
     }
 
 }
@@ -177,17 +177,15 @@ span {
 @media (min-width:1000px) {
     .join-logo-head {
         min-width: 48px;
-        max-width: 111px;
+        max-width: 100px;
     }
 }
 
 @media (min-width:1600px) {
     .join-logo-head {
-        top: 36px;
-        left: 112px;
         margin-bottom: 90px;
         margin-top: 36px;
-        margin-left: 1;
+        margin-left: 112px;
     }
 
 }
