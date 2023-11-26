@@ -8,6 +8,9 @@
 body {
     background: #F6F7F8;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .column100center {
@@ -16,6 +19,7 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    max-width: 1600px;
 }
 
 .column-center {
@@ -27,6 +31,7 @@ body {
 .flex100space {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
@@ -39,4 +44,31 @@ input {
     outline: none;
     border: none;
     width: calc(100% - 36px);
+}
+
+.button {
+    display: flex;
+    width: 180px;
+    height: 51px;
+    padding: 4px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #2A3647;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+
+}
+
+@media (min-width:1000px) {
+    .button {
+        padding: 15px 24px;
+        font-size: 21px;
+        width: auto;
+        height: unset;
+
+    }
 }

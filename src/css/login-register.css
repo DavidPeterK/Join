@@ -1,10 +1,22 @@
+span {
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
 .join-logo-head {
     margin-top: 4vh;
     margin-left: 7vw;
     margin-bottom: 10vh;
     width: 15%;
     min-width: 48px;
-    max-width: 64px;
+    max-width: 84px;
 }
 
 .log-in-window {
@@ -15,6 +27,7 @@
     align-items: center;
     background-color: #fff;
     width: 95%;
+    max-width: 800px;
     height: auto;
     border-radius: 30px;
     padding: 32px 0px;
@@ -34,6 +47,7 @@
     flex-direction: column;
     align-items: center;
     width: 90%;
+    max-width: 550px;
     padding-top: 32px;
     padding-left: 10px;
     padding-right: 10px;
@@ -64,6 +78,7 @@
     align-items: center;
     gap: 8px;
     width: 90%;
+    max-width: 550px;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -84,40 +99,18 @@
     gap: 25px;
 }
 
-.login-button {
-    display: flex;
-    width: 180px;
-    height: 51px;
-    padding: 4px 0px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 8px;
-    background: #2A3647;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-}
 
-.guest-login-button {
-    display: flex;
-    width: 180px;
-    height: 51px;
-    padding: 4px 0px;
-    justify-content: center;
-    align-items: center;
+#guest-login-button {
     color: #2A3647;
-    border-radius: 8px;
     border: 1px solid #2A3647;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
+    background: transparent;
 }
 
-.sign-up-section {
+#signSectionTop {
+    display: none;
+}
+
+#signSectionBottom {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -127,26 +120,8 @@
     gap: 35px;
 }
 
-.sign-up-span {
-    font-family: Inter;
+#sign-up-span {
     font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-}
-
-.sign-up-button {
-    display: flex;
-    width: 104px;
-    padding: 15px 16px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background: #2A3647;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
 }
 
 .index-footer {
@@ -154,19 +129,64 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    padding-bottom: 22px;
+    padding-bottom: 16px;
 }
 
 .index-footer-span {
-    display: flex;
     padding: 8px;
-    align-items: center;
     gap: 8px;
-    color: #A8A8A8;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
+    color: #A8A8A8 !important;
 }
 
-@media (max-width:768px) {}
+@media (min-width:700px) {
+
+    .index-footer {
+        margin-top: 32px;
+    }
+
+    #signSectionTop {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100vw;
+        padding: 42px 0px;
+        margin-bottom: 10vh;
+        gap: 35px;
+        margin-right: 7vw;
+    }
+
+    #signSectionBottom {
+        display: none;
+    }
+}
+
+@media (min-width:1000px) {
+    .join-logo-head {
+        min-width: 48px;
+        max-width: 111px;
+    }
+
+    #sign-up-button {
+        padding: 15px 16px;
+    }
+
+    span {
+        font-size: 18px;
+    }
+
+    .blueUnderline {
+        width: 90px;
+    }
+}
+
+@media (min-width:1600px) {
+    .join-logo-head {
+        top: 36px;
+        left: 112px;
+        margin-bottom: 90px;
+        margin-top: 36px;
+        margin-left: 1;
+    }
+
+}
