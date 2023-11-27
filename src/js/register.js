@@ -1,3 +1,6 @@
+let registerBtn = document.getElementById('signUpButton');
+let checkbox = document.getElementById("checkPrivacyPolicy");
+
 function renderSignUp() {
     let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');
@@ -7,46 +10,85 @@ function renderSignUp() {
     signUpBottom.innerHTML = '';
 }
 
-function signUpHtml() {
-    return /*html*/`
-<div class="sign-up-headline">
-    <img class="arrow-left-img" onclick="switchContent('signIn')" src="src/img/arror-left.svg" alt="arrow left">
-    <div class="column-center">
-        <h3>Sign up</h3>
-        <div class="blueUnderline"></div>
-    </div>
-    <div></div>
-</div>
+/**
+ * Validates user inputs, checks for email duplicates, and proceeds with the registration process.
+ */
+async function registUser() {
+    let emailControl = document.getElementById('email');
+    if (!arePasswordsMatching()) return handlePasswordMismatch();
+    if (user.some(u => u.email === emailControl.value)) return handleEmailExists();
+    if (checkbox.checked) await handleRegistration();
+}
 
-<div class="input-section">
-    <div class="input-container">
-        <input type="text" placeholder="Name">
-        <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
-    </div>
+/**
+ * Handles a scenario when the entered email already exists in the system.
+ */
+function handleEmailExists() {
+    document.getElementById('inputEmail').classList.add("red-border");
+    document.getElementById('warning-email').classList.remove("d-none");
+    resetForm();
+}
 
-    <div class="input-container">
-        <input type="email" placeholder="Email">
-        <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
-    </div>
+/**
+ * Registers a new user, saves the user's data, and redirects to the homepage after successful registration.
+ */
+async function handleRegistration() {
+    registerBtn.disabled = true;
+    user.push({
+        name: userName.value,
+        email: email.value,
+        password: password.value,
+    });
+    await setItem('userGroup698', JSON.stringify(user));
+    changesSaved('You Signed Up successfully');
+    setTimeout(() => {
+        resetForm();
+    }, 3000);
+}
 
-    <div class="input-container">
-        <input type="password" placeholder="Password">
-        <img class="input-icon" src="src/img/password-icon.svg" alt="password-icon">
-    </div>
+/**
+ * Checks if the entered password and confirmation password are matching.
+ */
+function arePasswordsMatching() {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    return password === confirmPassword;
+}
 
-    <div class="input-container">
-        <input type="password" placeholder="Confirm Password">
-        <img class="input-icon" src="src/img/password-icon.svg" alt="password-icon">
-    </div>
+/**
+ * Handles a scenario when entered passwords don't match.
+ */
+function handlePasswordMismatch() {
+    loadRedBorderPassword();
+    loadWarningTextTamplate();
+}
 
-    <div class="remember-container">
-        <input type="checkbox" id="checkPrivacyPolicy" name="acceptPrivacyPolicy">
-        <span id="label-span">I accept the <a href="#">Privacy policy</a></span>
-    </div>
+/**
+ * Highlights password fields in red.
+ */
+function loadRedBorderPassword() {
+    let inputIds = ["inputPassword", "inputConfirmPassword"];
+    for (let id of inputIds) {
+        document.getElementById(id).classList.add("red-border");
+    }
+}
 
-    <div class="button-section">
-        <div id="signUpButton" class="button">Sign up</div>
-    </div>
-</div>
-`;
+/**
+ * Displays warning messages for password fields.
+ */
+function loadWarningTextTamplate() {
+    let warningIds = ["warning-password", "warning-confirmPassword"];
+    for (let id of warningIds) {
+        document.getElementById(id).classList.remove("d-none");
+    }
+}
+
+/**
+ * Resets the registration form by clearing inputs and enabling the register button.
+ */
+function resetForm() {
+    email.value = '';
+    password.value = '';
+    confirmPassword.value = '';
+    registerBtn.disabled = false;
 }

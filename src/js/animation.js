@@ -30,3 +30,17 @@ function addClasses(container, signUpButtonTop, signUpButtonBottom) {
         elem.classList.add('fade-out');
     });
 }
+
+/** * This function is used to the edit and delete menu on the mobile view */
+function changesSaved(inputText) {
+    let smallContainer = document.getElementById('successfullyCreated')
+    smallContainer.innerHTML = /* html */ `
+    ${inputText}`;
+    setTimeout(function () {
+        slideOutOneObject('successfullyCreatedId');
+    }, 2500);
+    setTimeout(function () {
+        toggleVisibility('successfullyCreatedId', false);
+    }, 2900);
+}
+

@@ -1,4 +1,9 @@
-function initIndex() {
+
+async function initIndex() {
+    activUser = {
+        'name': '',
+    };
+    saveActivUser();
     if (!document.referrer) {
         startAnimation();
 
@@ -6,12 +11,19 @@ function initIndex() {
         correctClasslist();
         renderSignIn();
     }
+    await loadUserGroup698();
 }
 
 function renderSignIn() {
     let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');
     let signUpBottom = document.getElementById('signSectionBottom');
+    let rememberedEmail = localStorage.getItem('rememberMe');
+    if (rememberedEmail) {
+        document.getElementById('email').value = rememberedEmail;
+        document.getElementById('myCheckbox').checked = true;
+    }
+
     container.classList.remove('d-none')
     container.innerHTML = signInHtml();
     signUpTop.innerHTML = signUpSection();
@@ -37,6 +49,39 @@ function startAnimation() {
     }, 3825);
 }
 
+/**
+ * Validates user credentials and logs them in if valid.
+ */
+function login() {
+    let email = document.getElementById('email');
+    let passwort = document.getElementById('passwort');
+    let users = user.find(u => u.email === email.value && u.password === passwort.value);
+    let currentUser = user.findIndex(u => u.email === email.value);
+    if (users) {
+        if (document.getElementById('rememberMe').checked) {
+            localStorage.setItem('rememberMe', email.value);
+        } else {
+            localStorage.removeItem('rememberMe');
+        }
+        activUser['name'] = user[currentUser].name;
+        saveActivUser();
+        window.location.href = "./summary.html";
+    } else {
+        loadRedBorderInput();
+        loadWarningTextTemplate();
+    }
+}
+
+/**
+ * Logs in a user as a guest and fills default data arrays.
+ */
+function guestLogin() {
+    activUser.name = 'Guest698';
+    saveActivUser();
+    fillTestArray();
+    window.location.href = "./summary.html";
+}
+
 function correctClasslist() {
     let logo = document.getElementById('logo');
     logo.classList.remove('d-none');
@@ -44,43 +89,22 @@ function correctClasslist() {
     logo.classList.add('join-logo-head-endposition');
 }
 
-function signUpSection() {
-    return /*html*/`
-        <span id="sign-up-span">Not a Join user?</span>
-    <div onclick="switchContent('signUp')" id="sign-up-button" class="button">
-        Sign up
-    </div>
-
-    `;
+/**
+ * Adds a red border to specified input elements indicating an error.
+ */
+function loadRedBorderInput() {
+    let inputIds = ["input-email", "input-passwort"];
+    for (let id of inputIds) {
+        document.getElementById(id).classList.add("red-border");
+    }
 }
 
-function signInHtml() {
-    return /*html*/`
-<div class="column-center">
-    <h3>Log in</h3>
-    <div class="blueUnderline"></div>
-</div>
-
-<div class="input-section">
-    <div class="input-container">
-        <input type="email" placeholder="Email">
-        <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
-    </div>
-
-    <div class="input-container">
-        <input type="password" placeholder="Password">
-        <img class="input-icon" src="src/img/password-icon.svg" alt="password-icon">
-    </div>
-
-    <div class="remember-container">
-        <input type="checkbox" id="rememberMe" name="rememberMe">
-        <span id="label-span">Remember me</span>
-    </div>
-
-    <div class="button-section">
-        <div id="login-button" class="button">Log in</div>
-        <div id="guest-login-button" class="button">Guest Log in</div>
-    </div>
-</div>
-`;
+/**
+ * Displays warning text templates for specified elements.
+ */
+function loadWarningTextTemplate() {
+    let warningIds = ["warning-text-passwort", "warning-text-email"];
+    for (let id of warningIds) {
+        document.getElementById(id).classList.remove("d-none");
+    }
 }

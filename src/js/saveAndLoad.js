@@ -276,6 +276,17 @@ function loadActivUser() {
     }
 }
 
+/**
+ * Loads existing users from the storage.
+ */
+async function loadUserGroup698() {
+    try {
+        user = JSON.parse(await getItem('userGroup698'));
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
+}
+
 //save and load remote
 /**
  * Sets a key-value pair in the remote storage.

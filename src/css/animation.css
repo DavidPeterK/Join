@@ -50,3 +50,34 @@
         background: #f6f7f800;
     }
 }
+
+@keyframes slide {
+    0% {
+        transform: translateX(700%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+#successfullyCreated {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - width);
+    background: #2A3647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
+    padding: 0px 25px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 74px !important;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    animation: slide 0.5s ease-in-out;
+}
