@@ -63,6 +63,10 @@ input {
 
 }
 
+.d-none {
+    display: none !important;
+}
+
 @media (min-width:700px) {
     .button {
         padding: 15px 24px;

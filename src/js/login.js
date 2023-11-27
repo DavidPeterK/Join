@@ -1,17 +1,47 @@
 function initIndex() {
-    renderSignIn();
+    if (!document.referrer) {
+        startAnimation();
+
+    } else {
+        correctClasslist();
+        renderSignIn();
+    }
 }
 
 function renderSignIn() {
     let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');
     let signUpBottom = document.getElementById('signSectionBottom');
+    container.classList.remove('d-none')
     container.innerHTML = signInHtml();
     signUpTop.innerHTML = signUpSection();
     signUpBottom.innerHTML = signUpSection();
+}
 
+/**
+ * Starts the join-logo animation if the document referrer is empty.
+ */
+function startAnimation() {
+    let logo = document.getElementById('logo');
+    logo.classList.add('fade-in');
+    logo.classList.remove('d-none');
+    setTimeout(() => {
+        logo.classList.add('animated');
+    }, 2000);
+    setTimeout(() => {
+        logo.classList.remove('join-logo-head-startposition');
+        logo.classList.remove('fade-in');
+        logo.classList.remove('animated');
+        logo.classList.add('join-logo-head-endposition');
+        renderSignIn();
+    }, 3825);
+}
 
-
+function correctClasslist() {
+    let logo = document.getElementById('logo');
+    logo.classList.remove('d-none');
+    logo.classList.remove('join-logo-head-startposition');
+    logo.classList.add('join-logo-head-endposition');
 }
 
 function signUpSection() {

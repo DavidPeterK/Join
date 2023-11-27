@@ -18,34 +18,21 @@ span {
     font-weight: 400;
 }
 
-.join-logo-head {
+.join-logo-head-endposition {
     margin-top: 4vh;
     margin-left: 7vw;
     margin-bottom: 10vh;
     width: 15%;
     min-width: 48px;
     max-width: 84px;
-    animation: logoEntrance 3s ease-out normal;
 }
 
-@keyframes logoEntrance {
-    from {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(3);
-        /* Logo groß und zentriert */
-    }
-
-    to {
-        position: unset;
-        transform: translate(0, 0) scale(1);
-        /* Rückkehr zur normalen Größe und Position */
-    }
-}
-
-#indexContainer {
-    opacity: 1;
+.join-logo-head-startposition {
+    position: absolute;
+    width: 273px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .log-in-window {
@@ -226,14 +213,14 @@ span {
 }
 
 @media (min-width:1000px) {
-    .join-logo-head {
+    .join-logo-head-endposition {
         min-width: 48px;
         max-width: 100px;
     }
 }
 
 @media (min-width:1600px) {
-    .join-logo-head {
+    .join-logo-head-endposition {
         margin-bottom: 90px;
         margin-top: 36px;
         margin-left: 112px;
