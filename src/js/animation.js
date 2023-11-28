@@ -36,11 +36,9 @@ function changesSaved(inputText) {
     let smallContainer = document.getElementById('successfullyCreated')
     smallContainer.innerHTML = /* html */ `
     ${inputText}`;
+    smallContainer.classList.remove('d-none');
     setTimeout(function () {
-        slideOutOneObject('successfullyCreatedId');
-    }, 2500);
-    setTimeout(function () {
-        toggleVisibility('successfullyCreatedId', false);
+        smallContainer.classList.add('d-none');
     }, 2900);
 }
 

@@ -42,7 +42,7 @@ async function handleRegistration() {
     await setItem('userGroup698', JSON.stringify(user));
     changesSaved('You Signed Up successfully');
     setTimeout(() => {
-        resetForm();
+        switchContent('signIn');
     }, 3000);
 }
 
