@@ -22,8 +22,48 @@ h3 {
     margin: 0;
 }
 
+h2 {
+    color: #000;
+    font-family: Inter;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.greeting-span {
+    color: #2A3647;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+#greetingUser {
+    color: #29ABE2;
+    font-family: Inter;
+    font-size: 57px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
 @media (min-width:700px) {
     h3 {
         font-size: 61px !important;
+    }
+}
+
+@media (max-width:1020px) {
+    h2 {
+        font-size: 55px !important;
+    }
+}
+
+@media (max-width:700px) {
+    h2 {
+        font-size: 47px !important;
+        margin-bottom: 0;
     }
 }
