@@ -24,7 +24,7 @@
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
         <div class="header-elements">
             <img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker">
-            <div id="headerUserCircle" class="header-userCircle">AB</div>
+            <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle">AB</div>
         </div>
     </div>
 
@@ -46,6 +46,13 @@
         </div>
     </div>
 
+    <div id="userOptions" class="user-options d-none">
+        <a href="./legalNotice.html" class="userOptionsSpan">Legal Notice</a>
+        <a href="./privacy-police.html" class="userOptionsSpan">Privacy Policy</a>
+        <a href="./help.html" class="userOptionsSpan">Help</a>
+        <a href="./index.html" class="userOptionsSpan">Log out</a>
+    </div>
+
     <div id="contentId" class="content">
 
         <div class="head-section">
@@ -58,17 +65,60 @@
 
         <div class="summary-section">
             <div class="summary-content">
+
                 <div class="content-row1">
-                    <div class="row1-container"></div>
-                    <div class="row1-container"></div>
+                    <div class="row1-container">
+                        <img class="row-icons" src="src/img/pen-icon.png" alt="pen-icon">
+                        <div class="column-center">
+                            <span class="row-number" id="todoNumber">1</span>
+                            <span class="row-span">To-do</span>
+                        </div>
+                    </div>
+                    <div class="row1-container">
+                        <img class="row-icons" src="src/img/check-icon.png" alt="check-icon">
+                        <div class="column-center">
+                            <span class="row-number" id="DoneNumber">1</span>
+                            <span class="row-span">Done</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="content-row2">
-                    <div class="row2-container"></div>
+                    <div class="row2-container">
+                        <div class="row2-part1">
+                            <img class="row-icons" src="src/img/prioUrgentSummary.png" alt="check-icon">
+                            <div class="column-center">
+                                <span class="row-number" id="DoneNumber">1</span>
+                                <span class="row-span">Done</span>
+                            </div>
+                        </div>
+                        <div class="vector-summary"></div>
+                        <div class="column-center">
+                            <span class="row-span-medium" id="urgentDate">October 16, 2022</span>
+                            <span class="row-span-small">Upcoming Deadline</span>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="content-row3">
-                    <div class="row3-container"></div>
-                    <div class="row3-container"></div>
-                    <div class="row3-container"></div>
+                    <div class="row3-container">
+                        <div class="column-center">
+                            <span class="row-number" id="tasksInBoard">1</span>
+                            <span class="row-span">Tasks in Board</span>
+                        </div>
+                    </div>
+                    <div class="row3-container">
+                        <div class="column-center">
+                            <span class="row-number" id="tasksInProgress">1</span>
+                            <span class="row-span">Tasks In Progress</span>
+                        </div>
+                    </div>
+                    <div class="row3-container">
+                        <div class="column-center">
+                            <span class="row-number" id="awaitingFeedback">1</span>
+                            <span class="row-span">Awaiting Feedback</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -76,10 +126,10 @@
                 <span class="greeting-span">Good morning,</span>
                 <span id="greetingUser">Sofia Müller</span>
             </div>
-
         </div>
 
     </div>
+
 </body>
 
 </html>

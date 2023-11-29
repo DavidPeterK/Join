@@ -7,11 +7,14 @@
     align-items: center;
     justify-content: space-between;
     width: 232px;
-    height: 100%;
+    height: calc(100% - 64px);
+    gap: 32px;
     padding: 32px 0px;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
     z-index: 3;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #navBarLogo {
@@ -134,7 +137,6 @@
 @media (max-width:1020px) {
     .navBar {
         width: 180px;
-        height: 100%;
         padding: 32px 0px;
     }
 

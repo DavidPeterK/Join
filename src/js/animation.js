@@ -1,3 +1,5 @@
+let openMenu = false;
+
 function switchContent(newContent) {
     let container = document.getElementById("indexContainer");
     let signUpButtonBottom = document.getElementById('signSectionBottom');
@@ -40,5 +42,20 @@ function changesSaved(inputText) {
     setTimeout(function () {
         smallContainer.classList.add('d-none');
     }, 2900);
+}
+
+/**
+ * Toggles the visibility of the header menu.
+ */
+function openHeaderMenu(event) {
+    event.stopPropagation();
+    let headerMenu = document.getElementById('userOptions');
+    if (openMenu) {
+        openMenu = false;
+        headerMenu.classList.add('d-none');
+    } else {
+        openMenu = true;
+        headerMenu.classList.remove('d-none');
+    }
 }
 

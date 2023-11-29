@@ -6,7 +6,7 @@
 /*loginRegisterWindow: #FFF;*/
 
 body {
-    background: darkgreen;
+    background: #F6F7F8;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -29,6 +29,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .flex100space {
@@ -87,6 +88,36 @@ input {
     z-index: 1;
 }
 
+.user-options {
+    position: fixed;
+    top: 98px;
+    left: calc(100% - 175px);
+    width: 150px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px 0px 20px 20px;
+    background: var(--version-2-main-color, #2A3647);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    z-index: 3;
+}
+
+@media (max-width: 1300px) {
+
+    .content {
+        position: fixed;
+        top: 96px;
+        left: 232px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px 20px 32px 40px;
+        height: calc(100% - 96px - 64px);
+        width: calc(100% - 232px - 60px);
+
+    }
+}
 
 @media (max-width: 1020px) {
 
@@ -115,11 +146,18 @@ input {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 32px 16px 32px 16px;
-        height: calc(100% - 160px - 64px);
+        padding: 0px 16px 32px 16px;
+        height: calc(100% - 160px - 32px);
         width: calc(100% - 32px);
         z-index: 1;
         overflow-y: auto;
+    }
+
+    .user-options {
+        position: fixed;
+        top: 82px;
+        left: calc(100% - 145px);
+        width: 120px;
     }
 }
 
