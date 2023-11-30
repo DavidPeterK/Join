@@ -8,7 +8,7 @@ async function initIndex() {
         startAnimation();
 
     } else {
-        correctClasslist();
+        logoAnimation();
         renderSignIn();
     }
     await loadUserGroup698();
@@ -82,7 +82,7 @@ function guestLogin() {
     window.location.href = "./summary.html";
 }
 
-function correctClasslist() {
+function logoAnimation() {
     let logo = document.getElementById('logo');
     logo.classList.remove('d-none');
     logo.classList.remove('join-logo-head-startposition');

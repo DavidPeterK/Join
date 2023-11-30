@@ -246,3 +246,4 @@ function fillTestArray() {
     currentUserCategorysSave();
     currentUserContactsSave();
 }
+
