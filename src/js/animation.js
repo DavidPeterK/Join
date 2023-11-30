@@ -44,18 +44,31 @@ function changesSaved(inputText) {
     }, 2900);
 }
 
+function doNotClose(event) {
+    event.stopPropagation();
+}
+
+function closeHeadMenu() {
+    let headerMenu = document.getElementById('userOptions');
+    headerMenu.classList.add('d-none');
+    openMenu = false;
+}
+
+function showHeadMenu() {
+    let headerMenu = document.getElementById('userOptions');
+    openMenu = true;
+    headerMenu.classList.remove('d-none');
+}
+
 /**
  * Toggles the visibility of the header menu.
  */
 function openHeaderMenu(event) {
     event.stopPropagation();
-    let headerMenu = document.getElementById('userOptions');
     if (openMenu) {
-        openMenu = false;
-        headerMenu.classList.add('d-none');
+        closeHeadMenu();
     } else {
-        openMenu = true;
-        headerMenu.classList.remove('d-none');
+        showHeadMenu();
     }
 }
 
