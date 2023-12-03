@@ -58,7 +58,7 @@
         <a href="./index.html" class="userOptionsSpan">Log out</a>
     </div>
 
-    <div id="contentId" class="content">
+    <div id="contentId" class="content-addTask">
 
         <div class="head-section">
             <h2>Add Task</h2>
@@ -67,7 +67,7 @@
         <div class="addTaskContent">
             <div class="boxLeft">
 
-                <span class="addTaskSpan">Titel</span>
+                <span class="addTaskSpan">Titel<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input type="text" placeholder="Enter a title">
                 </div>
@@ -90,7 +90,7 @@
             <div class="gapContainer1200"></div>
             <div class="boxRight">
 
-                <span class="addTaskSpan">Due date</span>
+                <span class="addTaskSpan">Due date<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input type="date">
                 </div>
@@ -106,7 +106,7 @@
 
                 <div class="gapContainer"></div>
 
-                <span class="addTaskSpan">Category</span>
+                <span class="addTaskSpan">Category<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input readonly type="text" value="Select task category">
                     <img class="addTask-input-icon" src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
@@ -120,6 +120,15 @@
                     <img src="src/img/plusAddTask.svg" alt="plus-icon">
                 </div>
 
+            </div>
+
+        </div>
+
+        <div class="addTask-buttonArea">
+            <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
+            <div class="addTask-button-container">
+                <div class="clear-button">Clear <img src="src/img/crossAddTask.svg" alt="cross-icon"></div>
+                <div class="createTask-button">Create Task <img src="src/img/check.svg" alt="check-icon"></div>
             </div>
         </div>
     </div>
