@@ -149,6 +149,19 @@ textarea {
         height: calc(100% - 96px - 64px);
         width: calc(100% - 180px - 80px);
     }
+
+    input {
+        font-size: 18px;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+        font-size: 18px;
+    }
+
+    textarea {
+        font-size: 18px;
+    }
 }
 
 
@@ -175,6 +188,19 @@ textarea {
         left: calc(100% - 145px);
         width: 120px;
     }
+
+    input {
+        font-size: 16px;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+        font-size: 16px;
+    }
+
+    textarea {
+        font-size: 16px;
+    }
 }
 
 @media (min-width:700px) {
@@ -184,6 +210,5 @@ textarea {
         font-size: 21px;
         width: auto;
         height: unset;
-
     }
 }
