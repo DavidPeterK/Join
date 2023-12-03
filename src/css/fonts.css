@@ -124,6 +124,84 @@ h2 {
     line-height: 120%;
 }
 
+.empty-label {
+    color: var(--icon, #A8A8A8);
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.taskCategorySpan {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.titelSpan {
+    color: var(--version-2-main-color, #2A3647);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    align-self: stretch;
+}
+
+.descriptionSpan {
+    color: var(--icon, #A8A8A8);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    align-self: stretch;
+}
+
+.progressSpan {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.addTaskSpan {
+    color: var(--version-2-main-color, #2A3647);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 8px;
+}
+
+.prioButton {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+@media (max-width: 1550px) {
+    .task-group-span {
+        color: var(--version-2-main-color, #2A3647);
+        font-family: Inter;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+    }
+
+}
+
 @media (max-width: 1300px) {
     h2 {
         font-size: 55px;

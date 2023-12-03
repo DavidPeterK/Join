@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/animation.css">
+    <link rel="stylesheet" href="src/css/fonts.css">
+    <link rel="stylesheet" href="src/css/navbar-header.css">
+    <link rel="stylesheet" href="src/css/addTask.css">
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <script src="src/js/saveAndLoad.js"></script>
+    <script src="src/js/templates.js"></script>
+    <script src="src/js/animation.js"></script>
+    <script src="src/js/addTask.js"></script>
+    <title>Join</title>
+</head>
+
+<body>
+    <div id="header" class="header">
+        <span class="header-span">Kanban Project Management Tool</span>
+        <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
+        <div class="header-elements">
+            <img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker">
+            <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle">AB</div>
+        </div>
+    </div>
+
+    <div id="navBar" class="navBar">
+        <img id="navBarLogo" src="src/img/join.logo-white.svg" alt="join-logo">
+        <div class="nav-elements">
+            <a id="summaryNavButton" href="./summary.html" class="nav-button"><img id="summaryIcon" class="nav-icons"
+                    src="src/img/SummaryIcon.svg" alt="nav-icon">Summary
+            </a>
+            <a id="addTaskNavButton" href="./addTask.html" class="nav-button"><img id="addTaskNavIcon" class="nav-icons"
+                    src="src/img/add.task.icons.svg" alt="nav-icon">Add Task
+            </a>
+            <a id="boardNavButton" href="./board.html" class="nav-button"><img id="boardNavIcon" class="nav-icons"
+                    src="src/img/board-icon.svg" alt="nav-icon">Board
+            </a>
+            <a id="contactsNavButton" href="./contacts.html" class="nav-button"><img id="contactsNavIcon"
+                    class="nav-icons" src="src/img/contacts-icon.svg" alt="nav-icon">Contacts
+            </a>
+        </div>
+
+        <div class="nav-footer">
+            <a href="./privacy-police.html" class="navbar-footer-span">Privacy Policy</a>
+            <a href="./legalNotice.html" class="navbar-footer-span">Legal notice</a>
+        </div>
+
+    </div>
+
+    <div id="userOptions" onclick="doNotClose(event)" class="user-options d-none">
+        <a href="./legalNotice.html" class="userOptionsSpan">Legal Notice</a>
+        <a href="./privacy-police.html" class="userOptionsSpan">Privacy Policy</a>
+        <a href="./help.html" class="userOptionsSpan">Help</a>
+        <a href="./index.html" class="userOptionsSpan">Log out</a>
+    </div>
+
+    <div id="contentId" class="content">
+
+        <div class="head-section">
+            <h2>Add Task</h2>
+        </div>
+
+        <div class="addTaskContent">
+            <div class="boxLeft">
+
+                <span class="addTaskSpan">Titel</span>
+                <div class="addTask-input-container">
+                    <input type="text" placeholder="Enter a title">
+                </div>
+
+                <div class="gapContainer"></div>
+
+                <span class="addTaskSpan">Description</span>
+                <textarea placeholder="Enter a Description" name="description" id="description" cols="30"
+                    rows="10"></textarea>
+
+                <div class="gapContainer"></div>
+
+                <span class="addTaskSpan">Assigned to</span>
+                <div class="addTask-input-container">
+                    <input readonly type="text" value="Select contacts to assign">
+                    <img class="addTask-input-icon" src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                </div>
+
+            </div>
+            <div class="gapContainer1200"></div>
+            <div class="boxRight">
+
+                <span class="addTaskSpan">Due date</span>
+                <div class="addTask-input-container">
+                    <input type="date">
+                </div>
+
+                <div class="gapContainer"></div>
+
+                <span class="addTaskSpan">Prio</span>
+                <div class="prioContainer">
+                    <div class="prioButton">Urgent <img src="src/img/prioUrgent.svg" alt="urgent-icon"></div>
+                    <div class="prioButton">Medium <img src="src/img/prioMedium.svg" alt="medium-icon"></div>
+                    <div class="prioButton">Low <img src="src/img/prioLow.svg" alt="low-icon"></div>
+                </div>
+
+                <div class="gapContainer"></div>
+
+                <span class="addTaskSpan">Category</span>
+                <div class="addTask-input-container">
+                    <input readonly type="text" value="Select task category">
+                    <img class="addTask-input-icon" src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                </div>
+
+                <div class="gapContainer"></div>
+
+                <span class="addTaskSpan">Subtasks</span>
+                <div class="addTask-input-container">
+                    <input type="text" placeholder="Add new subtask">
+                    <img src="src/img/plusAddTask.svg" alt="plus-icon">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
