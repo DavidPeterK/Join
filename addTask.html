@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="src/css/navbar-header.css">
     <link rel="stylesheet" href="src/css/addTask.css">
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
     <script src="src/js/saveAndLoad.js"></script>
     <script src="src/js/templates.js"></script>
     <script src="src/js/animation.js"></script>
     <script src="src/js/addTask.js"></script>
+    <script src="src/js/board-addTask.js"></script>
     <title>Join</title>
 </head>
 
@@ -69,13 +71,13 @@
 
                 <span class="addTaskSpan">Titel<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
-                    <input type="text" placeholder="Enter a title">
+                    <input id="addTitel" required type="text" placeholder="Enter a title" maxlength="80" minlength="4">
                 </div>
 
                 <div class="gapContainer"></div>
 
                 <span class="addTaskSpan">Description</span>
-                <textarea placeholder="Enter a Description" name="description" id="description" cols="30"
+                <textarea id="addDescription" placeholder="Enter a Description" name="description" cols="30"
                     rows="10"></textarea>
 
                 <div class="gapContainer"></div>
@@ -92,7 +94,8 @@
 
                 <span class="addTaskSpan">Due date<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
-                    <input type="date">
+                    <input required placeholder="dd/mm/yyyy" type="text" id="datepicker">
+                    <img src="src/img/kalenderJoin.svg" alt="date-icon">
                 </div>
 
                 <div class="gapContainer"></div>
@@ -132,6 +135,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 </body>
 
 </html>
