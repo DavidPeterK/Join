@@ -74,15 +74,17 @@
             <div class="summary-content">
 
                 <div class="content-row1">
-                    <div class="row1-container">
-                        <img class="row-icons" src="src/img/pen-icon.png" alt="pen-icon">
+                    <div onmouseover="changeImage('penIcon', 'src/img/stiftweiss.png')"
+                        onmouseout="restoreImage('penIcon', 'src/img/pen-icon.png')" class="row1-container">
+                        <img id="penIcon" class="row-icons" src="src/img/pen-icon.png" alt="pen-icon">
                         <div class="column-center">
                             <span class="row-number" id="todoNumber">1</span>
                             <span class="row-span">To-do</span>
                         </div>
                     </div>
-                    <div class="row1-container">
-                        <img class="row-icons" src="src/img/check-icon.png" alt="check-icon">
+                    <div onmouseover="changeImage('checkIcon', 'src/img/hackenweiss.png')"
+                        onmouseout="restoreImage('checkIcon', 'src/img/check-icon.png')" class="row1-container">
+                        <img id="checkIcon" class="row-icons" src="src/img/check-icon.png" alt="check-icon">
                         <div class="column-center">
                             <span class="row-number" id="DoneNumber">1</span>
                             <span class="row-span">Done</span>
@@ -96,7 +98,7 @@
                             <img class="row-icons" src="src/img/prioUrgentSummary.png" alt="check-icon">
                             <div class="column-center">
                                 <span class="row-number" id="DoneNumber">1</span>
-                                <span class="row-span">Done</span>
+                                <span class="row-span">Urgent</span>
                             </div>
                         </div>
                         <div class="vector-summary"></div>

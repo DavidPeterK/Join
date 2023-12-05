@@ -102,8 +102,12 @@ span {
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     background: #FFF;
-
 }
+
+.input-container:focus-within {
+    border: 1px solid #29ABE2;
+}
+
 
 #warning-email,
 #warning-password,

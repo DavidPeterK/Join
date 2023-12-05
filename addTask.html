@@ -130,8 +130,12 @@
         <div class="addTask-buttonArea">
             <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
             <div class="addTask-button-container">
-                <div class="clear-button">Clear <img src="src/img/crossAddTask.svg" alt="cross-icon"></div>
-                <div class="createTask-button">Create Task <img src="src/img/check.svg" alt="check-icon"></div>
+                <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
+                    onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear <img
+                        id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
+                        alt="cross-icon"></div>
+                <div class="createTask-button button-hover">Create Task <img src="src/img/check.svg" alt="check-icon">
+                </div>
             </div>
         </div>
     </div>

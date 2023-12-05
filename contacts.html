@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body onclick="closeHeadMenu()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -63,7 +63,8 @@
     <div class="content-contacts">
         <div class="contacts-list-container">
 
-            <div class="list-container-button">Add new contact <img src="src/img/person_add.svg" alt="person-icon">
+            <div class="list-container-button button-hover">Add new contact <img src="src/img/person_add.svg"
+                    alt="person-icon">
             </div>
 
             <div id="alphaBox" class="alphabet-box">
@@ -91,10 +92,31 @@
             </div>
             <div class="contacts-info-name-box">
                 <div style="background: red;" class="big-contact-circle">TW</div>
-                <div class="split-container-column-start"></div>
+                <div class="split-container-name-functions">
+                    <span class="contacts-info-name-span">Anton Mayer</span>
+                    <div class="functions-buttons-box">
+                        <span class="edit-button"><img src="src/img/PenAddTask 1=edit.svg" alt=""> Edit</span>
+                        <span class="delete-button"><img src="src/img/subTaskDelete.svg" alt=""> Delete</span>
+                    </div>
+                </div>
             </div>
 
+            <span class="headline-info-center">Contact Information</span>
+
+            <div class="split-container">
+                <div class="split-span-box">
+                    <span class="email-headline">Email</span>
+                    <span class="email-adress">antom@gmail.com</span>
+                </div>
+                <div class="split-span-box">
+                    <span class="phone-headline">Phone</span>
+                    <span class="phone-number">+49 1111 111 11 1</span>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="add-contact-smallButton"><img style="width: 32px; height: 32px;" src="src/img/person_add.svg" alt="">
     </div>
 </body>
 

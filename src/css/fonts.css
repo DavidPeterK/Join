@@ -63,7 +63,6 @@ h2 {
 }
 
 .row-number {
-    color: #000;
     text-align: center;
     font-family: Inter;
     font-size: 60px;
@@ -73,7 +72,6 @@ h2 {
 }
 
 .row-span {
-    color: #2A3647;
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
@@ -82,7 +80,6 @@ h2 {
 }
 
 .row-span-medium {
-    color: #2A3647;
     font-family: Inter;
     font-size: 21px;
     font-style: normal;
@@ -91,7 +88,6 @@ h2 {
 }
 
 .row-span-small {
-    color: #2A3647;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -283,6 +279,79 @@ h2 {
     line-height: 120%;
 }
 
+.contacts-info-name-span {
+    color: #000;
+    font-family: Inter;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+}
+
+
+.delete-button,
+.edit-button {
+    color: var(--version-2-main-color, #2A3647);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.headline-info-center {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.email-headline {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 19.2px */
+}
+
+.email-adress {
+    color: #007CEE;
+
+    /* Version 2/body */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 19.2px */
+}
+
+.phone-headline {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 19.2px */
+}
+
+.phone-number {
+    color: #000;
+
+    /* Version 2/body */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 19.2px */
+}
+
 @media (max-width: 1550px) {
     .task-group-span {
         font-size: 27px;
@@ -339,6 +408,14 @@ h2 {
         font-size: 15px;
     }
 
+    .contacts-info-name-span {
+        font-size: 35px;
+    }
+
+    .big-contact-circle {
+        font-size: 35px;
+    }
+
 }
 
 @media (min-width:700px) {
@@ -381,6 +458,14 @@ h2 {
 
     .createTask-button {
         font-size: 18px;
+    }
+
+    .contacts-info-name-span {
+        font-size: 30px;
+    }
+
+    .big-contact-circle {
+        font-size: 23px;
     }
 }
 

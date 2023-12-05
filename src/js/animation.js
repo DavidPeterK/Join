@@ -72,3 +72,10 @@ function openHeaderMenu(event) {
     }
 }
 
+function changeImage(id, path) {
+    document.getElementById(id).src = path;
+}
+
+function restoreImage(id, path) {
+    document.getElementById(id).src = path;
+}

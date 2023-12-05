@@ -60,6 +60,10 @@ textarea {
     background: #FFF;
 }
 
+.addTask-input-container:focus-within {
+    border: 1px solid #29ABE2;
+}
+
 .addTask-input-icon {
     width: 24px;
     height: 24px;
@@ -103,6 +107,12 @@ textarea {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.prioButton:hover {
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
 .addTask-buttonArea {
     display: flex;
     justify-content: space-between;
@@ -126,7 +136,15 @@ textarea {
     align-items: center;
     gap: 4px;
     border-radius: 10px;
-    border: 1px solid var(--version-2-main-color, #2A3647);
+    border: 2px solid var(--version-2-main-color, #2A3647);
+}
+
+.clear-button:hover {
+    cursor: pointer;
+    color: #29ABE2;
+    border-radius: 10px;
+    border: 2px solid var(--Ligth-blue, #29ABE2);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .createTask-button {

@@ -1,0 +1,134 @@
+.pop-background {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.pop-position {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.pop-head-box {
+    display: inline-flex;
+    height: auto;
+    padding: 66px 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+    background: var(--version-2-main-color, #2A3647);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.pop-headline {
+    color: var(--white, #FFF);
+    font-family: Inter;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.pop-slogen {
+    color: var(--white, #FFF);
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.pop-vector {
+    background: #29ABE2;
+    width: 90px;
+    height: 3px;
+}
+
+.pop-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 48px;
+    background: #FFF;
+}
+
+.pop-person-png {
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.pop-input-box {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 48px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    gap: 32px;
+}
+
+.input-pop-container {
+    display: flex;
+    padding: 13px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Style, #D1D1D1);
+    background: #FFF;
+}
+
+.pop-button-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-self: stretch;
+    gap: 24px;
+}
+
+.pop-button-cancel {
+    border-radius: 10px;
+    border: 1px solid var(--version-2-main-color, #2A3647);
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: var(--version-2-main-color, #2A3647);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.pop-button-create {
+    border-radius: 10px;
+    background: #2A3647;
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 25.2px */
+}
