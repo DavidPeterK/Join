@@ -288,6 +288,10 @@ h2 {
         font-size: 27px;
     }
 
+    .big-contact-circle {
+        font-size: 40px;
+    }
+
 }
 
 @media (max-width: 1300px) {

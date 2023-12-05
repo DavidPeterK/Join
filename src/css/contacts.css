@@ -134,7 +134,20 @@
     flex-shrink: 0;
 }
 
-@media (max-width: 1500px) {}
+@media (max-width: 1500px) {
+    .big-contact-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 50%;
+        border: 3px solid var(--white, #FFF);
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+}
 
 @media (max-width: 1300px) {}
 
