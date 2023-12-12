@@ -6,7 +6,6 @@ async function initIndex() {
     saveActivUser();
     if (!document.referrer) {
         startAnimation();
-
     } else {
         logoAnimation();
         renderSignIn();
@@ -54,8 +53,8 @@ function startAnimation() {
  */
 function login() {
     let email = document.getElementById('email');
-    let passwort = document.getElementById('passwort');
-    let users = user.find(u => u.email === email.value && u.password === passwort.value);
+    let password = document.getElementById('password');
+    let users = user.find(u => u.email === email.value && u.password === password.value);
     let currentUser = user.findIndex(u => u.email === email.value);
     if (users) {
         if (document.getElementById('rememberMe').checked) {
@@ -93,7 +92,7 @@ function logoAnimation() {
  * Adds a red border to specified input elements indicating an error.
  */
 function loadRedBorderInput() {
-    let inputIds = ["input-email", "input-passwort"];
+    let inputIds = ["input-email", "input-password"];
     for (let id of inputIds) {
         document.getElementById(id).classList.add("red-border");
     }
@@ -103,7 +102,7 @@ function loadRedBorderInput() {
  * Displays warning text templates for specified elements.
  */
 function loadWarningTextTemplate() {
-    let warningIds = ["warning-text-passwort", "warning-text-email"];
+    let warningIds = ["warning-text-password", "warning-text-email"];
     for (let id of warningIds) {
         document.getElementById(id).classList.remove("d-none");
     }

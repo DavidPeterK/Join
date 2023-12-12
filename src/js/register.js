@@ -1,6 +1,7 @@
 let registerBtn = document.getElementById('signUpButton');
 let checkbox = document.getElementById("checkPrivacyPolicy");
 
+
 function renderSignUp() {
     let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');

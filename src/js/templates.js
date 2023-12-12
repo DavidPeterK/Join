@@ -20,12 +20,12 @@ function signInHtml() {
                 </span>
             </div>
 
-            <div class="input-container" id="input-passwort">
-                <input required id="passwort" type="password" placeholder="Password">
+            <div class="input-container" id="input-password">
+                <input required id="password" type="password" placeholder="Password">
                 <img class="input-icon" src="src/img/password-icon.svg" alt="password-icon">
             </div>
             <div class="warning-field">
-                <span id="warning-text-passwort" class="d-none">
+                <span id="warning-text-password" class="d-none">
                 Please enter the appropriate password.
                 </span>
             </div>
@@ -102,7 +102,6 @@ function signUpHtml() {
                     Password do not Match.
                 </span>
             </div>
-
 
             <div class="remember-container">
                 <input type="checkbox" value="yes" required id="checkPrivacyPolicy" name="acceptPrivacyPolicy">

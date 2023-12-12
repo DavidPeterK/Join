@@ -1,3 +1,12 @@
+/* open-sans-regular - latin */
+@font-face {
+    font-display: swap;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/open-sans-v36-latin-regular.woff2') format('woff2');
+}
+
 /* inter-regular - latin */
 @font-face {
     font-display: swap;
@@ -5,6 +14,22 @@
     font-style: normal;
     font-weight: 700;
     src: url('../fonts/inter-v13-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/inter-v13-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/inter-v13-latin-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -50,7 +75,6 @@ h2 {
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
-
 }
 
 #greetingUser {

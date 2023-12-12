@@ -23,11 +23,11 @@
 }
 
 .fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .animated {
-    animation: logoAnimation 625ms forwards;
+    animation: logoAnimation 825ms forwards;
     animation-delay: 1300ms;
     animation-fill-mode: forwards;
 }
