@@ -1,52 +1,66 @@
-let openMenu = false;
 
-function switchContent(newContent) {
-    let container = document.getElementById("indexContainer");
-    let signUpButtonBottom = document.getElementById('signSectionBottom');
-    let signUpButtonTop = document.getElementById('signSectionTop');
-    addClasses(container, signUpButtonTop, signUpButtonBottom);
+//------------------------LogIn Ainimation--------------------//
+/**
+ * Starts the join-logo animation if the document referrer is empty.
+*/
+function startAnimation() {
+    showLogoAnimate();
     setTimeout(() => {
-        updateContent(newContent);
-        updateClasses(container, signUpButtonTop, signUpButtonBottom);
-    }, 330);
-}
-
-function updateContent(newContent) {
-    if (newContent === 'signIn') {
+        logo.classList.add('animated');
+    }, 2000);
+    setTimeout(() => {
+        walkingLogoAnimate();
         renderSignIn();
-    } else if (newContent === 'signUp') {
-        renderSignUp();
-    }
+    }, 3825);
 }
 
-function updateClasses(container, signUpButtonTop, signUpButtonBottom) {
-    [container, signUpButtonTop, signUpButtonBottom].forEach(elem => {
+function showLogoAnimate() {
+    logo.classList.add('join-logo-head-startposition');
+    logo.classList.add('fade-in');
+    logo.classList.remove('d-none');
+}
+
+function walkingLogoAnimate() {
+    logo.classList.remove('join-logo-head-startposition');
+    logo.classList.remove('fade-in');
+    logo.classList.remove('animated');
+    logo.classList.add('join-logo-head-endposition');
+}
+
+function updateClasses() {
+    [contentBox, signUpButtonTop, signUpButtonBottom].forEach(elem => {
         elem.classList.toggle('fade-in');
         elem.classList.toggle('fade-out');
     });
 }
 
-function addClasses(container, signUpButtonTop, signUpButtonBottom) {
-    [container, signUpButtonTop, signUpButtonBottom].forEach(elem => {
+function addClasses() {
+    [contentBox, signUpButtonTop, signUpButtonBottom].forEach(elem => {
         elem.classList.remove('fade-in');
         elem.classList.add('fade-out');
     });
 }
+//----------------------------------------------------------------------//
 
+//-------------------------successFully popUp---------------------------//
 /** * This function is used to the edit and delete menu on the mobile view */
 function changesSaved(inputText) {
     let smallContainer = document.getElementById('successfullyCreated')
-    smallContainer.innerHTML = /* html */ `
-    ${inputText}`;
+    smallContainer.innerHTML = /* html */ `${inputText}`;
     smallContainer.classList.remove('d-none');
     setTimeout(function () {
         smallContainer.classList.add('d-none');
     }, 2900);
 }
+//----------------------------------------------------------------------//
+
 
 function doNotClose(event) {
     event.stopPropagation();
 }
+
+//------------------------Header-Menu----------------------------//
+let openMenu = false;
 
 function closeHeadMenu() {
     let headerMenu = document.getElementById('userOptions');
@@ -56,8 +70,8 @@ function closeHeadMenu() {
 
 function showHeadMenu() {
     let headerMenu = document.getElementById('userOptions');
-    openMenu = true;
     headerMenu.classList.remove('d-none');
+    openMenu = true;
 }
 
 /**
@@ -71,7 +85,9 @@ function openHeaderMenu(event) {
         showHeadMenu();
     }
 }
+//----------------------------------------------------------------------//
 
+//----------------------------------------------------------------------//
 function changeImage(id, path) {
     document.getElementById(id).src = path;
 }
@@ -79,3 +95,4 @@ function changeImage(id, path) {
 function restoreImage(id, path) {
     document.getElementById(id).src = path;
 }
+//----------------------------------------------------------------------//

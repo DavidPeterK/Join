@@ -1,53 +1,69 @@
-const contentBox = document.getElementById('indexContainer');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const checkbox = document.getElementById('rememberMe');
+let contentBox; let email;
+let password; let checkbox;
+let signUpButtonTop;
+let signUpButtonBottom;
+
+let logo;
 
 async function initIndex() {
-    activUser = {
-        'name': '',
-    };
+    initContainer();
+    activUser = { 'name': '', };
     saveActivUser();
-    if (!document.referrer) {
-        startAnimation();
-    } else {
-        logoAnimation();
-        renderSignIn();
-    }
+    logoStatus();
     await loadUserGroup698();
 }
 
-function renderSignIn() {
-    let signUpTop = document.getElementById('signSectionTop');
-    let signUpBottom = document.getElementById('signSectionBottom');
-    let rememberedEmail = localStorage.getItem('rememberMe');
-    if (rememberedEmail) {
-        email.value = rememberedEmail;
-        document.getElementById('myCheckbox').checked = true;
-    }
-    contentBox.classList.remove('d-none');
-    contentBox.innerHTML = signInHtml();
-    signUpTop.innerHTML = signUpSection();
-    signUpBottom.innerHTML = signUpSection();
+function initContainer() {
+    contentBox = document.getElementById('indexContainer');
+    email = document.getElementById('email');
+    password = document.getElementById('password');
+    checkbox = document.getElementById('rememberMe');
+    logo = document.getElementById('logo');
+    signUpButtonTop = document.getElementById('signSectionTop');
+    signUpButtonBottom = document.getElementById('signSectionBottom');
 }
 
-/**
- * Starts the join-logo animation if the document referrer is empty.
- */
-function startAnimation() {
-    let logo = document.getElementById('logo');
-    logo.classList.add('fade-in');
-    logo.classList.remove('d-none');
-    setTimeout(() => {
-        logo.classList.add('animated');
-    }, 2000);
-    setTimeout(() => {
-        logo.classList.remove('join-logo-head-startposition');
-        logo.classList.remove('fade-in');
-        logo.classList.remove('animated');
-        logo.classList.add('join-logo-head-endposition');
+function logoStatus() {
+    if (!document.referrer) {
+        startAnimation();
+    } else {
+        hideLogoAnimation();
         renderSignIn();
-    }, 3825);
+    }
+}
+
+function renderSignIn() {
+    let rememberedEmail = localStorage.getItem('rememberMe');
+    checkbox = document.getElementById('rememberMe');
+    isRememberedEmail(rememberedEmail);
+    contentBox.classList.remove('d-none');
+    contentBox.innerHTML = signInHtml();
+    signUpButtonTop.innerHTML = signUpSection();
+    signUpButtonBottom.innerHTML = signUpSection();
+    document.getElementById('footer').classList.remove('d-none');
+}
+
+function isRememberedEmail(rememberedEmail) {
+    if (rememberedEmail) {
+        email.value = rememberedEmail;
+        checkbox.checked = true;
+    }
+}
+
+function switchContent(newContent) {
+    addClasses();
+    setTimeout(() => {
+        updateContent(newContent);
+        updateClasses();
+    }, 330);
+}
+
+function updateContent(newContent) {
+    if (newContent === 'signIn') {
+        renderSignIn();
+    } else if (newContent === 'signUp') {
+        renderSignUp();
+    }
 }
 
 /**
@@ -56,15 +72,11 @@ function startAnimation() {
 function login() {
     let users = user.find(u => u.email === email.value && u.password === password.value);
     let thisUser = user.findIndex(u => u.email === email.value);
-
     if (users) {
         isCheckBoxChecked();
-
         activUser['name'] = user[thisUser].name;
         saveActivUser();
-
         window.location.href = "./summary.html";
-
     } else {
         loadRedBorderInput();
         loadWarningTextTemplate();
@@ -72,7 +84,7 @@ function login() {
 }
 
 function isCheckBoxChecked() {
-    if (document.getElementById('rememberMe').checked) {
+    if (checkbox.checked) {
         localStorage.setItem('rememberMe', email.value);
     } else {
         localStorage.removeItem('rememberMe');
@@ -83,16 +95,14 @@ function isCheckBoxChecked() {
  * Logs in a user as a guest and fills default data arrays.
  */
 function guestLogin() {
-    activUser.name = 'Guest698';
+    activUser.name = 'Guest';
     saveActivUser();
     fillTestArray();
     window.location.href = "./summary.html";
 }
 
-function logoAnimation() {
-    let logo = document.getElementById('logo');
+function hideLogoAnimation() {
     logo.classList.remove('d-none');
-    logo.classList.remove('join-logo-head-startposition');
     logo.classList.add('join-logo-head-endposition');
 }
 

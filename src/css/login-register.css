@@ -50,7 +50,7 @@ span {
     flex-direction: column;
     align-items: center;
     background-color: #fff;
-    width: 95%;
+    width: 100%;
     max-width: 800px;
     height: auto;
     border-radius: 30px;
@@ -131,10 +131,24 @@ span {
     height: 24px;
 }
 
-
 .remember-container {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    width: 90%;
+    max-width: 550px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 32px;
+}
+
+.privacy-check-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 8px;
     width: 90%;
@@ -164,6 +178,12 @@ span {
     color: #2A3647;
     border: 1px solid #2A3647;
     background: transparent;
+}
+
+#guest-login-button:hover {
+    color: #29ABE2;
+    border: 2px solid var(--Ligth-blue, #29ABE2);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 #signSectionTop {
@@ -197,6 +217,18 @@ span {
     padding: 8px;
     gap: 8px;
     color: #A8A8A8 !important;
+}
+
+#rememberMe:hover,
+.arrow-left-img:hover,
+#checkPrivacyPolicy:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    #label-span {
+        font-size: 14px !important;
+    }
 }
 
 @media (min-width:700px) {

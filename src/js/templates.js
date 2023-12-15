@@ -36,7 +36,7 @@ function signInHtml() {
             </div>
 
             <div class="button-section">
-                <button type="submit" id="login-button" class="button">Log in</button>
+                <button type="submit" id="login-button" class="button button-hover">Log in</button>
                 <button onclick='guestLogin()' type="button" id="guest-login-button" class="button">Guest Log in</button>
             </div>
         </div>
@@ -47,7 +47,7 @@ function signInHtml() {
 function signUpSection() {
     return /*html*/`
     <span id="sign-up-span">Not a Join user?</span>
-    <button onclick="switchContent('signUp')" id="sign-up-button" class="button">
+    <button onclick="switchContent('signUp')" id="sign-up-button" class="button button-hover">
         Sign up
     </button>
     `;
@@ -71,7 +71,7 @@ function signUpHtml() {
                 <input required type="text" minlength="4" placeholder="Name" id="userName">
                 <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
             </div>
-            
+
 
             <div class="input-container" id="inputEmail">
                 <input required type="email" minlength="4" placeholder="Email" id="email">
@@ -103,13 +103,13 @@ function signUpHtml() {
                 </span>
             </div>
 
-            <div class="remember-container">
+            <div class="privacy-check-container">
                 <input type="checkbox" value="yes" required id="checkPrivacyPolicy" name="acceptPrivacyPolicy">
-                <span id="label-span">I accept the <a href="./privacy-police.html">Privacy policy</a></span>
+                <span id="label-span">I accept the <a style="text-decoration: none" href="./privacy-police.html">Privacy policy</a></span>
             </div>
 
             <div class="button-section">
-                <button type="submit" id="signUpButton" class="button">Sign up</button>
+                <button type="submit" id="signUpButton" class="button button-hover">Sign up</button>
             </div>
         </div>
     </form>
