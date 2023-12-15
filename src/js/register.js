@@ -3,10 +3,9 @@ let checkbox = document.getElementById("checkPrivacyPolicy");
 
 
 function renderSignUp() {
-    let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');
     let signUpBottom = document.getElementById('signSectionBottom');
-    container.innerHTML = signUpHtml();
+    contentBox.innerHTML = signUpHtml();
     signUpTop.innerHTML = '';
     signUpBottom.innerHTML = '';
 }
@@ -15,7 +14,6 @@ function renderSignUp() {
  * Validates user inputs, checks for email duplicates, and proceeds with the registration process.
  */
 async function registUser() {
-    let emailControl = document.getElementById('email');
     if (!arePasswordsMatching()) return handlePasswordMismatch();
     if (user.some(u => u.email === emailControl.value)) return handleEmailExists();
     if (checkbox.checked) await handleRegistration();

@@ -1,3 +1,7 @@
+const contentBox = document.getElementById('indexContainer');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const checkbox = document.getElementById('rememberMe');
 
 async function initIndex() {
     activUser = {
@@ -14,17 +18,15 @@ async function initIndex() {
 }
 
 function renderSignIn() {
-    let container = document.getElementById('indexContainer');
     let signUpTop = document.getElementById('signSectionTop');
     let signUpBottom = document.getElementById('signSectionBottom');
     let rememberedEmail = localStorage.getItem('rememberMe');
     if (rememberedEmail) {
-        document.getElementById('email').value = rememberedEmail;
+        email.value = rememberedEmail;
         document.getElementById('myCheckbox').checked = true;
     }
-
-    container.classList.remove('d-none')
-    container.innerHTML = signInHtml();
+    contentBox.classList.remove('d-none');
+    contentBox.innerHTML = signInHtml();
     signUpTop.innerHTML = signUpSection();
     signUpBottom.innerHTML = signUpSection();
 }
@@ -52,22 +54,28 @@ function startAnimation() {
  * Validates user credentials and logs them in if valid.
  */
 function login() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
     let users = user.find(u => u.email === email.value && u.password === password.value);
-    let currentUser = user.findIndex(u => u.email === email.value);
+    let thisUser = user.findIndex(u => u.email === email.value);
+
     if (users) {
-        if (document.getElementById('rememberMe').checked) {
-            localStorage.setItem('rememberMe', email.value);
-        } else {
-            localStorage.removeItem('rememberMe');
-        }
-        activUser['name'] = user[currentUser].name;
+        isCheckBoxChecked();
+
+        activUser['name'] = user[thisUser].name;
         saveActivUser();
+
         window.location.href = "./summary.html";
+
     } else {
         loadRedBorderInput();
         loadWarningTextTemplate();
+    }
+}
+
+function isCheckBoxChecked() {
+    if (document.getElementById('rememberMe').checked) {
+        localStorage.setItem('rememberMe', email.value);
+    } else {
+        localStorage.removeItem('rememberMe');
     }
 }
 
