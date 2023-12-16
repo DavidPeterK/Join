@@ -78,7 +78,7 @@
                         onmouseout="restoreImage('penIcon', 'src/img/pen-icon.png')" class="row1-container">
                         <img id="penIcon" class="row-icons" src="src/img/pen-icon.png" alt="pen-icon">
                         <div class="column-center">
-                            <span class="row-number" id="todoNumber">1</span>
+                            <span class="row-number" id="todoNumber"></span>
                             <span class="row-span">To-do</span>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         onmouseout="restoreImage('checkIcon', 'src/img/check-icon.png')" class="row1-container">
                         <img id="checkIcon" class="row-icons" src="src/img/check-icon.png" alt="check-icon">
                         <div class="column-center">
-                            <span class="row-number" id="DoneNumber">1</span>
+                            <span class="row-number" id="doneNumber"></span>
                             <span class="row-span">Done</span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         <div class="row2-part1">
                             <img class="row-icons" src="src/img/prioUrgentSummary.png" alt="check-icon">
                             <div class="column-center">
-                                <span class="row-number" id="DoneNumber">1</span>
+                                <span class="row-number" id="urgentNumber"></span>
                                 <span class="row-span">Urgent</span>
                             </div>
                         </div>
@@ -113,13 +113,13 @@
                 <div class="content-row3">
                     <div class="row3-container">
                         <div class="column-center">
-                            <span class="row-number" id="tasksInBoard">1</span>
+                            <span class="row-number" id="tasksInBoard"></span>
                             <span class="row-span">Tasks in Board</span>
                         </div>
                     </div>
                     <div class="row3-container">
                         <div class="column-center">
-                            <span class="row-number" id="tasksInProgress">1</span>
+                            <span class="row-number" id="tasksInProgress"></span>
                             <span class="row-span">Tasks In Progress</span>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
             </div>
 
             <div class="greeting-container">
-                <span class="greeting-span">Good morning,</span>
+                <span id="daytimeGreeting" class="greeting-span">Good morning,</span>
                 <span id="greetingUser">Sofia Müller</span>
             </div>
 

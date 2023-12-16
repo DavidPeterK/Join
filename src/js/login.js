@@ -10,7 +10,7 @@ async function initIndex() {
     activUser = { 'name': '', };
     saveActivUser();
     logoStatus();
-    await loadUserGroup698();
+    await loadUserGroup();
 }
 
 function initContainer() {

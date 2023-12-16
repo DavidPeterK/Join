@@ -88,7 +88,7 @@ async function handleRegistration() {
         email: email.value,
         password: password.value,
     });
-    await setItem('userGroup698', JSON.stringify(user));
+    await setItem('userGroup', JSON.stringify(user));
     changesSaved('You Signed Up successfully');
     setTimeout(() => {
         switchContent('signIn');
