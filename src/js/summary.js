@@ -9,7 +9,7 @@ async function initSummary() {
     loadActivUser();
     userCircle();
     await loadAllTasks();
-    loadText();
+    loadDetails();
     markCategory();
     addAnimationOnResize();
     animationAdded = false;
@@ -19,7 +19,7 @@ async function initSummary() {
  * Loads and sets specific texts for the summary section.
  * and loads the date for urgent priorities.
 */
-function loadText() {
+function loadDetails() {
     daylyGreeting();
     loadUserName();
     loadNumbers();
@@ -27,7 +27,7 @@ function loadText() {
 }
 
 //----------------------search function------------------------------
-//---Search User name----------------------------
+//---------------------Search User name----------------------------//
 /**
  * Loads the active user's name and sets it to the corresponding HTML element.
  * It fetches the DOM element with the ID 'name' and updates its inner text with the name of the active user.
@@ -114,7 +114,7 @@ function getTimeOfDay() {
 function dayTimeGreeting(dayTime) {
     return /*html*/ `
     <span class="time-of-day">Good&nbsp</span>
-    <span class="time-of-day">${dayTime}</span>`;;
+    <span class="time-of-day">${dayTime}</span>`;
 }
 
 /**

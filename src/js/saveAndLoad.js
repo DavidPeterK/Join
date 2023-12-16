@@ -7,7 +7,6 @@ let activUser = {
     'name': '',
 }
 
-
 /** Represents the currently selected index in the task list. */
 let selectedIndex = null;
 let selectedColorIndex = null;
@@ -107,6 +106,10 @@ function returnLoad(currentCategoryLoad, currentPrioLoad, subTaskCollectionLoad,
 }
 
 //------------tasks----------------------//
+function isGuestLogIn() {
+    return activUser.name === 'Guest';
+}
+
 /**
  * Checks if a certain key exists in storage, if not, sets a default value.
  * @param {string} key - Key to check in storage.
@@ -128,7 +131,7 @@ async function initializeStorage(key, initialValue) {
  * Otherwise, they are saved to remote storage.
  */
 async function currentUserTaskSave() {
-    if (activUser.name === 'Guest') {
+    if (isGuestLogIn()) {
         localStorage.setItem('tasksAsText', JSON.stringify(tasks));
     } else {
         await setItem('tasks', JSON.stringify(tasks));
@@ -155,9 +158,6 @@ async function loadAllTasks() {
     }
 }
 
-function isGuestLogIn() {
-    return activUser.name === 'Guest';
-}
 //current id
 /**
  * Asynchronously saves the current user's ID. 
@@ -199,7 +199,7 @@ async function currentUserIdLoad() {
  * Otherwise, they are saved to remote storage.
  */
 async function currentUserCategorysSave() {
-    if (activUser.name === 'Guest') {
+    if (isGuestLogIn()) {
         localStorage.setItem('categorysAsText', JSON.stringify(allCategorys));
     } else {
         await setItem('allCategorys', JSON.stringify(allCategorys));
@@ -212,7 +212,7 @@ async function currentUserCategorysSave() {
  * Otherwise, they are fetched from remote storage.
  */
 async function currentUserCategorysLoad() {
-    if (activUser.name === 'Guest') {
+    if (isGuestLogIn()) {
         let categorysLoad = localStorage.getItem('categorysAsText');
         if (categorysLoad) {
             allCategorys = JSON.parse(categorysLoad);
@@ -233,7 +233,7 @@ async function currentUserCategorysLoad() {
  * Otherwise, they are saved to remote storage.
  */
 async function currentUserContactsSave() {
-    if (activUser.name === 'Guest') {
+    if (isGuestLogIn()) {
         localStorage.setItem('contactsAsText', JSON.stringify(contactsArray));
         localStorage.setItem('nextColorAsText', JSON.stringify(nextColorIndex));
     } else {
@@ -244,7 +244,7 @@ async function currentUserContactsSave() {
 
 /** * This function is to load contacts or display a error message */
 async function currentUserContactsLoad() {
-    if (activUser.name === 'Guest') {
+    if (isGuestLogIn()) {
         let contactsLoad = localStorage.getItem('contactsAsText');
         let nextColorLoad = localStorage.getItem('nextColorAsText');
         if (contactsLoad && nextColorLoad) {
