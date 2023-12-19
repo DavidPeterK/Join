@@ -173,6 +173,7 @@ textarea {
 }
 
 ul {
+    padding: 4px 16px;
     padding-inline-start: 20px;
 }
 
