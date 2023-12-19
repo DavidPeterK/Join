@@ -104,11 +104,12 @@
 
                 <span class="addTaskSpan">Prio</span>
                 <div class="prioContainer">
-                    <div id="urgentButton" class="prioButton">Urgent<img id="urgentImg" src="src/img/prioUrgent.svg"
-                            alt="urgent-icon"></div>
-                    <div id="mediumButton" class="prioButton">Medium<img id="mediumImg" src="src/img/prioMedium.svg"
-                            alt="medium-icon"></div>
-                    <div id="lowButton" class="prioButton">Low<img id="lowImg" src="src/img/prioLow.svg" alt="low-icon">
+                    <div onclick="urgentButtonClick()" id="urgentButton" class="prioButton">Urgent<img id="urgentImg"
+                            src="src/img/prioUrgent.svg" alt="urgent-icon"></div>
+                    <div onclick="mediumButtonClick()" id="mediumButton" class="prioButton">Medium<img id="mediumImg"
+                            src="src/img/prioMedium.svg" alt="medium-icon"></div>
+                    <div onclick="lowButtonClick()" id="lowButton" class="prioButton">Low<img id="lowImg"
+                            src="src/img/prioLow.svg" alt="low-icon">
                     </div>
                 </div>
 
@@ -124,10 +125,27 @@
 
                 <span class="addTaskSpan">Subtasks</span>
                 <div class="addTask-input-container">
-                    <input type="text" placeholder="Add new subtask">
+                    <input id="subtaskInput" type="text" placeholder="Add new subtask">
                     <img src="src/img/plusAddTask.svg" alt="plus-icon">
                 </div>
 
+                <div id="subtasksContainer">
+                    <ul ondblclick="editSubtask(${i})" class="subtaskListItem">
+                        <li>moin</li>
+                        <div>
+                            <img class="close-hover" onclick="editSubtask(${i})" src="src/img/PenAddTask 1=edit.svg">
+                            <img class="close-hover" onclick="deleteSubtaskCollection(${i})"
+                                src="src/img/subTaskDelete.svg">
+                        </div>
+                    </ul>
+                </div>
+
+                <div id="subtaskEditContainer">
+                    <input id="editSubtaskInput" type="text">
+                    <img onclick="stopSubEdit()" class="editAbsolutCross" src="src/img/close.svg">
+                    <div class="seperator"></div>
+                    <img onclick="confirmSubEdit(${i})" class="editAbsolutCheck" src="src/img/SubtasksCheck.svg">
+                </div>
             </div>
 
         </div>

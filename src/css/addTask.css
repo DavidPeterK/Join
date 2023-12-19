@@ -112,6 +112,16 @@ textarea {
     background: #FF3D00;
 }
 
+.mediumActiv {
+    color: #FFFF;
+    background: #FFA800;
+}
+
+.lowActiv {
+    color: #FFFF;
+    background: #7AE229;
+}
+
 .prioButton:hover {
     cursor: pointer;
     border-radius: 10px;
@@ -160,6 +170,39 @@ textarea {
     gap: 4px;
     border-radius: 10px;
     background: #2A3647;
+}
+
+ul {
+    padding-inline-start: 20px;
+}
+
+#subtasksContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.subtaskListItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#subtaskEditContainer {
+    display: flex;
+    width: calc(100% - 32px);
+    padding: 4px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--Ligth-blue, #005DFF);
+    background: var(--white, #FFF);
+}
+
+.seperator {
+    background: #D1D1D1;
+    width: 1px;
+    height: auto;
 }
 
 @media (max-width: 1300px) {

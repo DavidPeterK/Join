@@ -32,7 +32,7 @@ let allCategorys = [{
 }];
 
 /** * Collection of subtasks associated with tasks. */
-let subTaskCollection = [];
+let subTasks = [];
 /** Collection of finished subtasks. */
 let subtasksFinish = [];
 /** Collection of contacts associated with tasks. */
