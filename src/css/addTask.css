@@ -175,6 +175,19 @@ textarea {
 ul {
     padding: 4px 16px;
     padding-inline-start: 20px;
+    border-radius: 10px;
+    min-height: 24px;
+}
+
+ul:hover {
+    background-color: #D1D1D1;
+    border-radius: 10px;
+}
+
+.greyHoverIcon:hover {
+    cursor: pointer;
+    background-color: #D1D1D1;
+    border-radius: 50%;
 }
 
 #subtasksContainer {

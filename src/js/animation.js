@@ -96,3 +96,12 @@ function restoreImage(id, path) {
     document.getElementById(id).src = path;
 }
 //----------------------------------------------------------------------//
+
+function subtaskListHover(i) {
+    let box = document.getElementById(`subtaskListFunctions${i}`);
+    box.classList.remove('d-none');
+}
+function subtaskListHoverReset(i) {
+    let box = document.getElementById(`subtaskListFunctions${i}`);
+    box.classList.add('d-none');
+}

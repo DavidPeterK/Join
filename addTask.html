@@ -19,7 +19,7 @@
     <title>Join</title>
 </head>
 
-<body onclick="closeHeadMenu()">
+<body onclick="closeHeadMenu(), hideEditContainer()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -85,7 +85,8 @@
                 <span class="addTaskSpan">Assigned to</span>
                 <div class="addTask-input-container">
                     <input readonly type="text" value="Select contacts to assign">
-                    <img class="addTask-input-icon" src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                    <img class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
+                        alt="arrow-down-icon">
                 </div>
 
             </div>
@@ -118,7 +119,8 @@
                 <span class="addTaskSpan">Category<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input readonly type="text" value="Select task category">
-                    <img class="addTask-input-icon" src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                    <img class="addTask-input-icon greyHoverIcon" src="src/img/arrow_drop_downaa.svg"
+                        alt="arrow-down-icon">
                 </div>
 
                 <div class="gapContainer"></div>
@@ -126,27 +128,19 @@
                 <span class="addTaskSpan">Subtasks</span>
                 <div class="addTask-input-container">
                     <input id="subtaskInput" type="text" placeholder="Add new subtask">
-                    <img src="src/img/plusAddTask.svg" alt="plus-icon">
+                    <img class="greyHoverIcon" onclick="addSubTask()" src="src/img/plusAddTask.svg" alt="plus-icon">
                 </div>
 
-                <div id="subtasksContainer">
-                    <ul ondblclick="editSubtask(${i})" class="subtaskListItem">
-                        <li>moin</li>
-                        <div style="display: flex; gap: 5px;">
-                            <img class="close-hover" onclick="editSubtask(${i})" src="src/img/PenAddTask 1=edit.svg">
-                            <div class="seperator"></div>
-                            <img class="close-hover" onclick="deleteSubtaskCollection(${i})"
-                                src="src/img/subTaskDelete.svg">
-                        </div>
-                    </ul>
+                <div onclick="doNotClose(event)" id="subtasksContainer">
                 </div>
 
-                <div id="subtaskEditContainer">
-                    <input id="editSubtaskInput" type="text" placeholder="">
+                <div id="subtaskEditContainer" onclick="doNotClose(event)" class="d-none">
+                    <input id="editSubtaskInput" max="20" type="text" placeholder="">
                     <div style="display: flex; gap: 5px;">
-                        <img onclick="stopSubEdit()" src="src/img/close.svg">
+                        <img class="greyHoverIcon" onclick="hideEditContainer()" src="src/img/close.svg">
                         <div class="seperator"></div>
-                        <img onclick="confirmSubEdit(${i})" src="src/img/SubtasksCheck.svg">
+                        <img class="greyHoverIcon" style="padding-left: 3px; padding-right: 3px;"
+                            onclick="editSubtask()" src="src/img/SubtasksCheck.svg">
                     </div>
                 </div>
             </div>

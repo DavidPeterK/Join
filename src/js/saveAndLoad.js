@@ -32,7 +32,7 @@ let allCategorys = [{
 }];
 
 /** * Collection of subtasks associated with tasks. */
-let subTasks = [];
+let subtasks = [];
 /** Collection of finished subtasks. */
 let subtasksFinish = [];
 /** Collection of contacts associated with tasks. */
@@ -60,10 +60,10 @@ let statusGroup = '';
 /**
  * Saves various task-related elements to local storage.
  */
-function saveTaskElements() {
+function saveTaskDetails() {
     localStorage.setItem('categoryCollectionAsText', JSON.stringify(currentCategorySelected));
     localStorage.setItem('currentPrioAsText', JSON.stringify(currentPrioSelected));
-    localStorage.setItem('subTaskCollectionAsText', JSON.stringify(subTaskCollection));
+    localStorage.setItem('subTaskCollectionAsText', JSON.stringify(subtasks));
     localStorage.setItem('contactCollectionAsText', JSON.stringify(contactCollection));
     localStorage.setItem('selectedIndexAsText', JSON.stringify(selectedIndex));
     localStorage.setItem('selectedColorIndexAsText', JSON.stringify(selectedColorIndex));
@@ -95,7 +95,7 @@ function returnLoad(currentCategoryLoad, currentPrioLoad, subTaskCollectionLoad,
     if (currentCategoryLoad && currentPrioLoad && subTaskCollectionLoad && contactCollectionLoad && selectedIndexLoad && selectedColorLoad && subTaskFinishLoad && taskIdLoad && statusLoad) {
         currentCategorySelected = JSON.parse(currentCategoryLoad);
         currentPrioSelected = JSON.parse(currentPrioLoad);
-        subTaskCollection = JSON.parse(subTaskCollectionLoad);
+        subtasks = JSON.parse(subTaskCollectionLoad);
         contactCollection = JSON.parse(contactCollectionLoad);
         selectedIndex = JSON.parse(selectedIndexLoad);
         selectedColorIndex = JSON.parse(selectedColorLoad);
