@@ -20,16 +20,16 @@ let colorCollection = [
 ];
 
 /** Main categories for tasks, each with a name and associated colors. */
-let mainCategorys = [{
+let mainCategorys = {
     'name': ['Technical Task', 'User Story',],
     'color': ['background: #1FD7C1', 'background: #0038FF',],
-}];
+};
 
 /** All task categories, initially empty. */
-let allCategorys = [{
+let ownCategorys = {
     'name': [],
     'color': [],
-}];
+};
 
 /** * Collection of subtasks associated with tasks. */
 let subtasks = [];
@@ -38,10 +38,11 @@ let subtasksFinish = [];
 /** Collection of contacts associated with tasks. */
 let contactCollection = [];
 /** Represents the currently selected category with its name and color. */
-let currentCategorySelected = [{
+let currentCategorySelected = {
     'name': '',
     'color': '',
-}];
+    'type': '',
+};
 /** Represents the currently selected priority. */
 let currentPrioSelected = "";
 /** Represents the current ID for tasks. */
@@ -200,9 +201,9 @@ async function currentUserIdLoad() {
  */
 async function currentUserCategorysSave() {
     if (isGuestLogIn()) {
-        localStorage.setItem('categorysAsText', JSON.stringify(allCategorys));
+        localStorage.setItem('categorysAsText', JSON.stringify(ownCategorys));
     } else {
-        await setItem('allCategorys', JSON.stringify(allCategorys));
+        await setItem('ownCategorys', JSON.stringify(ownCategorys));
     }
 }
 
@@ -215,11 +216,11 @@ async function currentUserCategorysLoad() {
     if (isGuestLogIn()) {
         let categorysLoad = localStorage.getItem('categorysAsText');
         if (categorysLoad) {
-            allCategorys = JSON.parse(categorysLoad);
+            ownCategorys = JSON.parse(categorysLoad);
         }
     } else {
         try {
-            allCategorys = JSON.parse(await getItem('allCategorys'));
+            ownCategorys = JSON.parse(await getItem('ownCategorys'));
         } catch (e) {
             console.info('Could not load created categorys. created categorys are empty');
         }

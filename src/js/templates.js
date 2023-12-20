@@ -233,7 +233,7 @@ function fillTestArray() {
     }
     ];
 
-    allCategorys[0] = {
+    allCategorys = {
         "name": [
             "New Category"
         ],

@@ -14,12 +14,16 @@
     <script src="src/js/saveAndLoad.js"></script>
     <script src="src/js/templates.js"></script>
     <script src="src/js/animation.js"></script>
+    <script src="src/js/addTask-prio.js"></script>
+    <script src="src/js/addTask-categorys.js"></script>
+    <script src="src/js/addTask-subtask.js"></script>
+    <script src="src/js/contacts.js"></script>
     <script src="src/js/addTask.js"></script>
     <script src="src/js/board-addTask.js"></script>
     <title>Join</title>
 </head>
 
-<body onclick="closeHeadMenu(), hideEditContainer()">
+<body onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -77,8 +81,8 @@
                 <div class="gapContainer"></div>
 
                 <span class="addTaskSpan">Description</span>
-                <textarea id="addDescription" placeholder="Enter a Description" name="description" cols="30"
-                    rows="10"></textarea>
+                <textarea id="addDescription" placeholder="Enter a Description" name="description" cols="30" rows="10">
+                </textarea>
 
                 <div class="gapContainer"></div>
 
@@ -87,6 +91,15 @@
                     <input readonly type="text" value="Select contacts to assign">
                     <img class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
                         alt="arrow-down-icon">
+                </div>
+                <div class="selected-contacts-container">
+                    <div style="background: red;" class="userCircle">ab</div>
+                </div>
+                <div onclick="doNotClose(event)" id="contactsContainer" style="z-index: 0;"
+                    class="contacts-container d-none">
+                    <div id="contactsContent">
+                    </div>
+                    <button class="addContacts-button">Add new contact</button>
                 </div>
 
             </div>
@@ -117,10 +130,16 @@
                 <div class="gapContainer"></div>
 
                 <span class="addTaskSpan">Category<span class="star-red">*</span></span>
-                <div class="addTask-input-container">
-                    <input readonly type="text" value="Select task category">
-                    <img class="addTask-input-icon greyHoverIcon" src="src/img/arrow_drop_downaa.svg"
-                        alt="arrow-down-icon">
+                <div onclick="renderCategorys(), doNotClose(event)" style="z-index: 1;" class="addTask-input-container">
+                    <input id="categoryInput" readonly type="text" value="Select task category">
+                    <img onclick="hideCategoryContainer()" class="addTask-input-icon greyHoverIcon"
+                        src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                </div>
+                <div onclick="doNotClose(event)" id="categoryContainer" style="z-index: 0;"
+                    class="category-container d-none">
+                    <div id="categoryContent">
+                    </div>
+                    <button onclick="showCategoryPopUp()" class="addCategory-button">Add new category</button>
                 </div>
 
                 <div class="gapContainer"></div>
@@ -130,10 +149,8 @@
                     <input id="subtaskInput" type="text" placeholder="Add new subtask">
                     <img class="greyHoverIcon" onclick="addSubTask()" src="src/img/plusAddTask.svg" alt="plus-icon">
                 </div>
-
                 <div onclick="doNotClose(event)" id="subtasksContainer">
                 </div>
-
                 <div id="subtaskEditContainer" onclick="doNotClose(event)" class="d-none">
                     <input id="editSubtaskInput" max="20" type="text" placeholder="">
                     <div style="display: flex; gap: 5px;">
@@ -143,6 +160,7 @@
                             onclick="editSubtask()" src="src/img/SubtasksCheck.svg">
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -158,7 +176,56 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+    <div id="categoryPopUp" class="pop-background d-none">
+        <div class="pop-position">
+            <img onclick="closeCategoryPopUP()" class="blue-cross" src="src/img/iconoir_cancel.svg" alt="">
+            <img onclick="closeCategoryPopUP()" class="grey-cross" src="src/img/closeGrey.svg" alt="">
+
+            <div class="pop-head-box">
+                <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
+                    alt="join-logo">
+                <span class="pop-headline">Add category</span>
+                <span class="pop-slogen">Create your own category!</span>
+                <div class="pop-vector"></div>
+            </div>
+
+            <div class="pop-icon-box">
+                <div class="pop-person-background"><img class="pop-person-png" src="src/img/addTaskCategory.svg"
+                        alt="person-icon"></div>
+            </div>
+
+
+            <div class="pop-input-box">
+
+                <div class="input-pop-container" id="newCategoryNameContainer">
+                    <input style="width: 100%;" id="newCategoryName" type="text" placeholder="New category"
+                        id="contactUserName">
+                </div>
+                <span id="warnCategoryInput" style="text-align: center;" class="warningByInput d-none">Please enter a
+                    category
+                    name and choose a
+                    color.</span>
+
+                <div id="colorSettingBox"></div>
+
+
+                <div class="pop-button-box">
+                    <div onclick="stopCreateCategory()" class="pop-button-cancel">Cancel</div>
+                    <div onclick="confirmCreateCategory()" class="pop-button-create">Create category</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 </body>
 

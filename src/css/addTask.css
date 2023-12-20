@@ -157,7 +157,6 @@ textarea {
 .clear-button:hover {
     cursor: pointer;
     color: #29ABE2;
-    border-radius: 10px;
     border: 2px solid var(--Ligth-blue, #29ABE2);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -172,11 +171,66 @@ textarea {
     background: #2A3647;
 }
 
+.contacts-container,
+.category-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    width: calc(100% - 32px);
+    height: auto;
+    max-height: 300px;
+    padding: 20px 16px;
+    margin-top: -10px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+#categoryContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.categoryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+    width: calc(100% - 16px);
+    border-radius: 15px;
+}
+
+.categoryRow:hover {
+    background-color: #D1D1D1;
+}
+
+.colorCircleSmall {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+}
+
+.addContacts-button,
+.addCategory-button {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+}
+
 ul {
     padding: 4px 16px;
     padding-inline-start: 20px;
     border-radius: 10px;
     min-height: 24px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 ul:hover {
@@ -194,6 +248,7 @@ ul:hover {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 8px;
 
 }
 
@@ -217,6 +272,76 @@ ul:hover {
     background: #D1D1D1;
     width: 1px;
     height: auto;
+}
+
+.selected-contacts-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: calc(100% - 32px);
+    height: auto;
+    max-height: 300px;
+    padding: 10px 16px;
+}
+
+.userCircle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 45px;
+    margin-left: -8px;
+    border: 1px solid #fff;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+#colorSettingBox {
+    padding: 0px 12px;
+    width: calc(100% - 24px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.colorCircle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0);
+    border-radius: 50%;
+}
+
+.selectedColor {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #2A3647;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.30);
+}
+
+.colorCircle:hover {
+    cursor: pointer;
+    box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.30);
+}
+
+.warningByInput {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: #FF3D00;
+    margin-top: -30px;
 }
 
 @media (max-width: 1300px) {
@@ -367,5 +492,15 @@ ul:hover {
         gap: 8px;
         flex: unset;
         width: 100%;
+    }
+
+    .warningByInput {
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        color: #FF3D00;
+        margin-top: -30px;
     }
 }
