@@ -7,9 +7,10 @@ let activUser = {
     'name': '',
 }
 
+let contactsArray = [];
+
 /** Represents the currently selected index in the task list. */
 let selectedIndex = null;
-let selectedColorIndex = null;
 
 /** Collection of background colors used for task categories. */
 let colorCollection = [
@@ -236,10 +237,8 @@ async function currentUserCategorysLoad() {
 async function currentUserContactsSave() {
     if (isGuestLogIn()) {
         localStorage.setItem('contactsAsText', JSON.stringify(contactsArray));
-        localStorage.setItem('nextColorAsText', JSON.stringify(nextColorIndex));
     } else {
         await setItem('contactsArray', JSON.stringify(contactsArray));
-        await setItem('nextColorIndex', JSON.stringify(nextColorIndex));
     }
 }
 
@@ -247,15 +246,12 @@ async function currentUserContactsSave() {
 async function currentUserContactsLoad() {
     if (isGuestLogIn()) {
         let contactsLoad = localStorage.getItem('contactsAsText');
-        let nextColorLoad = localStorage.getItem('nextColorAsText');
-        if (contactsLoad && nextColorLoad) {
+        if (contactsLoad) {
             contactsArray = JSON.parse(contactsLoad);
-            nextColorIndex = JSON.parse(nextColorLoad);
         }
     } else {
         try {
             contactsArray = JSON.parse(await getItem('contactsArray'));
-            nextColorIndex = JSON.parse(await getItem('nextColorIndex'));
         } catch (e) {
             console.info('Could not load contacts');
         }

@@ -10,6 +10,7 @@
     margin: 0;
     background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    z-index: 3;
 }
 
 .pop-position {
@@ -127,6 +128,7 @@
 
 .pop-button-cancel {
     border-radius: 10px;
+    background: #fff;
     border: 1px solid #2A3647;
     display: flex;
     padding: 16px;

@@ -12,18 +12,32 @@ function showContactsPopUp() {
 
 /** * This function is to save the input in the contact array */
 async function createContact() {
-    let newContact = {
-        "name": document.getElementById('contactUserName').value,
+    let newContact = contactTemplate();
+    contactsArray.push(newContact);
+    await currentUserContactsSave();
+    clearContactInput();
+    renderContacts();
+    changesSaved('Contact successfully created');
+}
+
+function cancelContactPopUp() {
+    closeContactsPopUp();
+    clearContactInput();
+}
+
+function renderContacts() {
+    let alphabetBox = document.getElementById('alphaBox');
+
+}
+
+function contactTemplate() {
+    return {
+        "name": nameToUpperCase(document.getElementById('contactUserName').value),
         "nameAbbreviation": makeNameAbbreviation(document.getElementById('contactUserName').value),
         "email": document.getElementById('contactEmail').value,
         "phone": document.getElementById('contactPhone').value,
         "color": getColor()
     }
-    contactsArray.push(newContact);
-    await currentUserContactsSave();
-    clearInputFields();
-    renderContacts();
-    changesSaved('Contact successfully created');
 }
 
 /**
@@ -33,22 +47,70 @@ async function createContact() {
  * Otherwise, it allows form submission.
  */
 function validateForm() {
-    var input = document.getElementById('inputPhoneId');
-
-    var regex = /^[+0-9]+$/;
-
-    if (!regex.test(input.value)) {
-        input.style.borderColor = 'red';
-        document.getElementById('errorMessage').innerText = "Invalid input! Only + and numbers from 0-9 are allowed.";
-        setTimeout(function () {
-            input.style.borderColor = '#A8A8A8';
-            document.getElementById('errorMessage').innerText = "";
-        }, 6000);
-        return false; // Verhindert das Absenden des Formulars
+    if (checkInputPhone() && checkInputEmail() && checkInputName()) {
+        createContact();
+        closeContactsPopUp();
+        clearContactInput();
     } else {
-        document.getElementById('errorMessage').innerText = "";
-        return true; // Ermöglicht das Absenden des Formulars
+        return false;
     }
+}
+
+function checkInputPhone() {
+    let warn = document.getElementById('warnContactPhone');
+    let box = document.getElementById('contactPhoneBox');
+    let phoneInput = document.getElementById('contactPhone').value;
+    let phoneRegex = /^[+0-9]+$/;
+    return isCheckInput(warn, box, phoneInput, phoneRegex);
+}
+
+function checkInputEmail() {
+    let warn = document.getElementById('warnContactEmail');
+    let box = document.getElementById('contactEmailBox');
+    let emailInput = document.getElementById('contactEmail').value;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return isCheckInput(warn, box, emailInput, emailRegex);
+}
+
+function isCheckInput(warn, box, input, regex) {
+    if (!regex.test(input)) {
+        box.style.borderColor = 'red';
+        warn.classList.remove('d-none');
+        setTimeout(function () {
+            box.style.borderColor = '#A8A8A8';
+            warn.classList.add('d-none');
+        }, 4000);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function checkInputName() {
+    let warn = document.getElementById('warnContactName');
+    let box = document.getElementById('contactNameBox');
+    let nameInput = document.getElementById('contactUserName').value;
+    let nameRegex = /^[^0-9]/;
+    return isCheckInput(warn, box, nameInput, nameRegex);
+}
+
+function isCheckInputName(warn, box, nameRegex, firstName) {
+    if (!nameRegex.test(firstName)) {
+        box.style.borderColor = 'red';
+        warn.classList.remove('d-none');
+        setTimeout(function () {
+            box.style.borderColor = '#A8A8A8';
+            warn.classList.add('d-none');
+        }, 4000);
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function nameToUpperCase(nameInput) {
+    const capitalizedNames = nameInput.split(' ').map(name => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
+    return capitalizedNames;
 }
 
 /**
@@ -63,20 +125,16 @@ function makeNameAbbreviation(name) {
 }
 
 /** * This function is to clear the input fields in a popup */
-function clearInputFields() {
-    document.getElementById('inputNameId').value = '';
-    document.getElementById('inputEmailId').value = '';
-    document.getElementById('inputPhoneId').value = '';
+function clearContactInput() {
+    document.getElementById('contactUserName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactPhone').value = '';
 }
 
 /** * This function is used to create the profile image color */
 function getColor() {
-    if (nextColorIndex >= colorArray.length) {
-        nextColorIndex = 0;
-    }
-    let color = colorArray[nextColorIndex];
-    nextColorIndex++;
-    setItem('nextColorIndex', JSON.stringify(nextColorIndex));
-    return color;
+    const randomIndex = Math.floor(Math.random() * colorCollection.length);
+    const randomColor = colorCollection[randomIndex];
+    return randomColor;
 }
 

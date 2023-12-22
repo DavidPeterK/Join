@@ -14,53 +14,7 @@
 </head>
 
 <body>
-    <div id="contactsPopUp" class="pop-background">
-        <div class="pop-position">
-            <img onclick="closeContactsPopUP()" class="blue-cross" src="src/img/iconoir_cancel.svg" alt="">
-            <img onclick="closeContactsPopUP()" class="grey-cross" src="src/img/closeGrey.svg" alt="">
 
-
-            <div class="pop-head-box">
-                <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
-                    alt="join-logo">
-                <span class="pop-headline">Add contact</span>
-                <span class="pop-slogen">Tasks are better with a team!</span>
-                <div class="pop-vector"></div>
-            </div>
-
-
-            <div class="pop-icon-box">
-                <div class="pop-person-background"><img class="pop-person-png" src="src/img/person.svg"
-                        alt="person-icon">
-                </div>
-            </div>
-
-
-            <form onsubmit="createContactByPopup(); return false;" style="display: flex; align-self: stretch; flex: 2;">
-                <div class="pop-input-box">
-                    <div class="input-pop-container" id="contactUserNameBox">
-                        <input required type="text" minlength="4" placeholder="Name" id="contactUserName">
-                        <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
-                    </div>
-
-                    <div class="input-pop-container" id="contactEmailBox">
-                        <input required type="email" minlength="4" placeholder="Email" id="contactEmail">
-                        <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
-                    </div>
-
-                    <div class="input-pop-container" id="contactPhoneBox">
-                        <input required type="tel" minlength="4" placeholder="Phone" id="contactPhone">
-                        <img class="input-icon" src="src/img/call.svg" alt="phone-icon">
-                    </div>
-
-                    <div class="pop-button-box">
-                        <div class="pop-button-cancel">Cancel</div>
-                        <div class="pop-button-create">Create contact</div>
-                    </div>
-            </form>
-        </div>
-    </div>
-    </div>
 </body>
 
 </html>

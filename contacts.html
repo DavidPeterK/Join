@@ -64,8 +64,8 @@
     <div class="content-contacts">
         <div class="contacts-list-container">
 
-            <div class="list-container-button button-hover">Add new contact <img src="src/img/person_add.svg"
-                    alt="person-icon">
+            <div onclick="showContactsPopUp()" class="list-container-button button-hover">Add new contact <img
+                    src="src/img/person_add.svg" alt="person-icon">
             </div>
 
             <div id="alphaBox" class="alphabet-box">
@@ -120,6 +120,61 @@
     <div class="add-contact-smallButton"><img style="width: 32px; height: 32px;" src="src/img/person_add.svg" alt="">
     </div>
 
+    <div id="contactsPopUp" class="pop-background d-none">
+        <div class="pop-position">
+            <img onclick="closeContactsPopUp()" class="blue-cross greyHoverIcon" src="src/img/iconoir_cancel.svg"
+                alt="">
+            <img onclick="closeContactsPopUp()" class="grey-cross greyHoverIcon" src="src/img/closeGrey.svg" alt="">
+
+            <div class="pop-head-box">
+                <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
+                    alt="join-logo">
+                <span class="pop-headline">Add contact</span>
+                <span class="pop-slogen">Tasks are better with a team!</span>
+                <div class="pop-vector"></div>
+            </div>
+
+            <div class="pop-icon-box">
+                <div class="pop-person-background"><img class="pop-person-png" src="src/img/person.svg"
+                        alt="person-icon">
+                </div>
+            </div>
+
+            <form onsubmit="validateForm(); return false;" style="display: flex; align-self: stretch; flex: 2;">
+                <div class="pop-input-box">
+                    <div class="input-pop-container" id="contactNameBox">
+                        <input required type="text" minlength="4" placeholder="Name" id="contactUserName">
+                        <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
+                    </div>
+                    <span id="warnContactName" style="text-align: center;" class="warningByInput d-none">
+                        Please enter only letters.
+                    </span>
+
+                    <div class="input-pop-container" id="contactEmailBox">
+                        <input required type="email" minlength="4" placeholder="Email" id="contactEmail">
+                        <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
+                    </div>
+                    <span id="warnContactEmail" style="text-align: center;" class="warningByInput d-none">
+                        Please enter a valid email address.
+                    </span>
+
+                    <div class="input-pop-container" id="contactPhoneBox">
+                        <input required type="tel" minlength="4" placeholder="Phone" id="contactPhone">
+                        <img class="input-icon" src="src/img/call.svg" alt="phone-icon">
+                    </div>
+                    <span id="warnContactPhone" style="text-align: center;" class="warningByInput d-none">
+                        Invalid input! Only + and numbers from 0-9 are allowed.
+                    </span>
+
+                    <div class="pop-button-box">
+                        <button onclick="cancelContactPopUp()" type="reset" class="pop-button-cancel">Cancel</button>
+                        <button type="submit" class="pop-button-create">Create contact</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="successfullyCreated" class="d-none"></div>
 </body>
 
 </html>

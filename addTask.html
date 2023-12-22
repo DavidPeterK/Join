@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/animation.css">
+    <link rel="stylesheet" href="src/css/popUp.css">
     <link rel="stylesheet" href="src/css/fonts.css">
     <link rel="stylesheet" href="src/css/navbar-header.css">
     <link rel="stylesheet" href="src/css/addTask.css">
@@ -72,7 +73,6 @@
 
         <div class="addTaskContent">
             <div class="boxLeft">
-
                 <span class="addTaskSpan">Titel<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input id="addTitel" required type="text" placeholder="Enter a title" maxlength="80" minlength="4">
@@ -101,13 +101,11 @@
                     </div>
                     <button class="addContacts-button">Add new contact</button>
                 </div>
-
             </div>
 
             <div class="gapContainer1200"></div>
 
             <div class="boxRight">
-
                 <span class="addTaskSpan">Due date<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input required placeholder="dd/mm/yyyy" type="text" id="datepicker">
@@ -160,11 +158,8 @@
                             onclick="editSubtask()" src="src/img/SubtasksCheck.svg">
                     </div>
                 </div>
-
             </div>
-
         </div>
-
         <div class="addTask-buttonArea">
             <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
             <div class="addTask-button-container">
@@ -176,13 +171,13 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div id="categoryPopUp" class="pop-background d-none">
         <div class="pop-position">
-            <img onclick="closeCategoryPopUP()" class="blue-cross" src="src/img/iconoir_cancel.svg" alt="">
-            <img onclick="closeCategoryPopUP()" class="grey-cross" src="src/img/closeGrey.svg" alt="">
+            <img onclick="closeCategoryPopUP()" class="blue-cross greyHoverIcon" src="src/img/iconoir_cancel.svg"
+                alt="">
+            <img onclick="closeCategoryPopUP()" class="grey-cross greyHoverIcon" src="src/img/closeGrey.svg" alt="">
 
             <div class="pop-head-box">
                 <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
@@ -197,20 +192,17 @@
                         alt="person-icon"></div>
             </div>
 
-
             <div class="pop-input-box">
 
                 <div class="input-pop-container" id="newCategoryNameContainer">
                     <input style="width: 100%;" id="newCategoryName" type="text" placeholder="New category"
                         id="contactUserName">
                 </div>
-                <span id="warnCategoryInput" style="text-align: center;" class="warningByInput d-none">Please enter a
-                    category
-                    name and choose a
-                    color.</span>
+                <span id="warnCategoryInput" style="text-align: center;" class="warningByInput d-none">
+                    Please enter a category name and choose a color.
+                </span>
 
                 <div id="colorSettingBox"></div>
-
 
                 <div class="pop-button-box">
                     <div onclick="stopCreateCategory()" class="pop-button-cancel">Cancel</div>
@@ -220,7 +212,50 @@
         </div>
     </div>
 
+    <div id="contactsPopUp" class="pop-background d-none">
+        <div class="pop-position">
+            <img onclick="closeContactsPopUP()" class="blue-cross greyHoverIcon" src="src/img/iconoir_cancel.svg"
+                alt="">
+            <img onclick="closeContactsPopUP()" class="grey-cross greyHoverIcon" src="src/img/closeGrey.svg" alt="">
 
+            <div class="pop-head-box">
+                <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
+                    alt="join-logo">
+                <span class="pop-headline">Add contact</span>
+                <span class="pop-slogen">Tasks are better with a team!</span>
+                <div class="pop-vector"></div>
+            </div>
+
+            <div class="pop-icon-box">
+                <div class="pop-person-background"><img class="pop-person-png" src="src/img/person.svg"
+                        alt="person-icon">
+                </div>
+            </div>
+
+            <form onsubmit="createContactByPopup(); return false;" style="display: flex; align-self: stretch; flex: 2;">
+                <div class="pop-input-box">
+                    <div class="input-pop-container" id="contactUserNameBox">
+                        <input required type="text" minlength="4" placeholder="Name" id="contactUserName">
+                        <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
+                    </div>
+
+                    <div class="input-pop-container" id="contactEmailBox">
+                        <input required type="email" minlength="4" placeholder="Email" id="contactEmail">
+                        <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
+                    </div>
+
+                    <div class="input-pop-container" id="contactPhoneBox">
+                        <input required type="tel" minlength="4" placeholder="Phone" id="contactPhone">
+                        <img class="input-icon" src="src/img/call.svg" alt="phone-icon">
+                    </div>
+
+                    <div class="pop-button-box">
+                        <div class="pop-button-cancel">Cancel</div>
+                        <div class="pop-button-create">Create contact</div>
+                    </div>
+            </form>
+        </div>
+    </div>
 
 
 
