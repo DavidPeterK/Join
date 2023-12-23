@@ -6,6 +6,7 @@ let user = [];
 let activUser = {
     'name': '',
 }
+let selectedColorIndex = null;
 
 let contactsArray = [];
 

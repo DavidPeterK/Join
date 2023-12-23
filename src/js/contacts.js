@@ -27,7 +27,47 @@ function cancelContactPopUp() {
 
 function renderContacts() {
     let alphabetBox = document.getElementById('alphaBox');
+    alphabetBox.innerHTML = '';
+    for (let i = 0; i < alphabet.length; i++) {
+        const letter = alphabet[i];
+        renderContactsAlphabet(alphabetBox, letter);
 
+    }
+}
+
+function renderContactsAlphabet(alphabetBox, letter) {
+    if (isContactLetter(letter)) {
+        alphabetBox.innerHTML += `<div class="alphabet-letter">${letter}</div>`;
+        filterContacts(alphabetBox, letter);
+    }
+}
+
+function filterContacts(alphabetBox, letter) {
+    let alphabetArray = filterBy(letter);
+    for (let i = 0; i < alphabetArray.length; i++) {
+        const array = alphabetArray[i];
+        alphabetBox.innerHTML += returnContactRow(array, i);
+    }
+}
+
+function returnContactRow(array, i) {
+    return /*html*/`
+    <div id='contactId${i}' class="contact-row">
+        <div style="background: darkblue;" class="contact-circle">${array.nameAbbreviation}</div>
+        <div class="name-email-box">
+            <span class="contact-name-list">${array.name}</span>
+            <span class="contact-email-list">${array.email}</span>
+        </div>
+    </div>
+`;
+}
+
+function filterBy(letter) {
+    return contactsArray.filter(contact => contact.name.toUpperCase().startsWith(letter));
+}
+
+function isContactLetter(letter) {
+    return contactsArray.some(contact => contact.name.toUpperCase().startsWith(letter));
 }
 
 function contactTemplate() {

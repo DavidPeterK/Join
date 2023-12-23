@@ -167,8 +167,8 @@ function alertInvalidInput() {
  */
 async function createNewCategory() {
     let newCategoryName = document.getElementById('newCategoryName');
-    ownCategorys[0].name.push(newCategoryName.value);
-    ownCategorys[0].color.push(selectedColorIndex);
+    ownCategorys.name.push(newCategoryName.value);
+    ownCategorys.color.push(selectedColorIndex);
     await currentUserCategorysSave();
     saveTaskDetails();
     renderCategorys();
