@@ -574,4 +574,8 @@ li {
         font-size: 16px;
     }
 
+    .contacts-info-name-span {
+        font-size: 30px;
+        text-align: center;
+    }
 }

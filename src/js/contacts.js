@@ -5,15 +5,92 @@ function closeContactsPopUp() {
     popup.classList.add('d-none');
 }
 
-function showContactsPopUp() {
+function showContactsPopUp(mode, index) {
     let popup = document.getElementById('contactsPopUp');
     popup.classList.remove('d-none');
+    popup.innerHTML = returnPopUpContactNew(mode, index);
+}
+
+
+function returnPopUpContactNew(mode, index) {
+    let sub;
+    let button;
+    if (mode === 'edit') {
+        sub = `onsubmit = "validateForm('edit', ${index});`;
+        button = 'Save';
+    } else {
+        sub = `onsubmit="validateForm();`;
+        button = 'Create contact';
+    }
+    return /*html*/`
+    <div class="pop-position">
+        <img onclick="closeContactsPopUp()" class="blue-cross greyHoverIcon" src="src/img/iconoir_cancel.svg"
+            alt="">
+        <img onclick="closeContactsPopUp()" class="grey-cross greyHoverIcon" src="src/img/closeGrey.svg" alt="">
+
+        <div class="pop-head-box">
+            <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
+                alt="join-logo">
+            <span class="pop-headline">Add contact</span>
+            <span class="pop-slogen">Tasks are better with a team!</span>
+            <div class="pop-vector"></div>
+        </div>
+
+        <div class="pop-icon-box">
+            <div class="pop-person-background"><img class="pop-person-png" src="src/img/person.svg"
+                    alt="person-icon">
+            </div>
+        </div>
+
+        <form ${sub} return false;" style="display: flex; align-self: stretch; flex: 2;">
+            <div class="pop-input-box">
+                <div class="input-pop-container" id="contactNameBox">
+                    <input required type="text" minlength="4" placeholder="Name" id="contactUserName">
+                    <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
+                </div>
+                <span id="warnContactName" style="text-align: center;" class="warningByInput d-none">
+                    Please enter only letters.
+                </span>
+
+                <div class="input-pop-container" id="contactEmailBox">
+                    <input required type="email" minlength="4" placeholder="Email" id="contactEmail">
+                    <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
+                </div>
+                <span id="warnContactEmail" style="text-align: center;" class="warningByInput d-none">
+                    Please enter a valid email address.
+                </span>
+
+                <div class="input-pop-container" id="contactPhoneBox">
+                    <input required type="tel" minlength="4" placeholder="Phone" id="contactPhone">
+                    <img class="input-icon" src="src/img/call.svg" alt="phone-icon">
+                </div>
+                <span id="warnContactPhone" style="text-align: center;" class="warningByInput d-none">
+                    Invalid input! Only + and numbers from 0-9 are allowed.
+                </span>
+
+                <div id="contactPopUpButtons" class="pop-button-box">
+                    <button onclick="cancelContactPopUp()" type="reset"
+                        class="pop-button-cancel">Cancel</button>
+                    <button type="submit" class="pop-button-create">${button}</button>
+                </div>
+        </form>
+    </div>
+    `;
+}
+
+function returnPopUpContactEdit() {
+    return /*html*/`
+    <button onclick="cancelContactPopUp()" type="reset"
+        class="pop-button-cancel">Cancel</button>
+    <button type="submit" class="pop-button-create">Save</button>
+    `;
 }
 
 /** * This function is to save the input in the contact array */
 async function createContact() {
     let newContact = contactTemplate();
     contactsArray.push(newContact);
+    contactId++;
     await currentUserContactsSave();
     clearContactInput();
     renderContacts();
@@ -25,58 +102,14 @@ function cancelContactPopUp() {
     clearContactInput();
 }
 
-function renderContacts() {
-    let alphabetBox = document.getElementById('alphaBox');
-    alphabetBox.innerHTML = '';
-    for (let i = 0; i < alphabet.length; i++) {
-        const letter = alphabet[i];
-        renderContactsAlphabet(alphabetBox, letter);
-
-    }
-}
-
-function renderContactsAlphabet(alphabetBox, letter) {
-    if (isContactLetter(letter)) {
-        alphabetBox.innerHTML += `<div class="alphabet-letter">${letter}</div>`;
-        filterContacts(alphabetBox, letter);
-    }
-}
-
-function filterContacts(alphabetBox, letter) {
-    let alphabetArray = filterBy(letter);
-    for (let i = 0; i < alphabetArray.length; i++) {
-        const array = alphabetArray[i];
-        alphabetBox.innerHTML += returnContactRow(array, i);
-    }
-}
-
-function returnContactRow(array, i) {
-    return /*html*/`
-    <div id='contactId${i}' class="contact-row">
-        <div style="background: darkblue;" class="contact-circle">${array.nameAbbreviation}</div>
-        <div class="name-email-box">
-            <span class="contact-name-list">${array.name}</span>
-            <span class="contact-email-list">${array.email}</span>
-        </div>
-    </div>
-`;
-}
-
-function filterBy(letter) {
-    return contactsArray.filter(contact => contact.name.toUpperCase().startsWith(letter));
-}
-
-function isContactLetter(letter) {
-    return contactsArray.some(contact => contact.name.toUpperCase().startsWith(letter));
-}
-
 function contactTemplate() {
     return {
         "name": nameToUpperCase(document.getElementById('contactUserName').value),
         "nameAbbreviation": makeNameAbbreviation(document.getElementById('contactUserName').value),
         "email": document.getElementById('contactEmail').value,
         "phone": document.getElementById('contactPhone').value,
-        "color": getColor()
+        "color": getColor(),
+        "id": contactId
     }
 }
 
@@ -86,8 +119,13 @@ function contactTemplate() {
  * If the validation fails, it displays an error message and prevents form submission. 
  * Otherwise, it allows form submission.
  */
-function validateForm() {
+function validateForm(mode, index) {
     if (checkInputPhone() && checkInputEmail() && checkInputName()) {
+        if (mode === 'edit') {
+            editContact(index);
+            closeContactsPopUp();
+            clearContactInput();
+        }
         createContact();
         closeContactsPopUp();
         clearContactInput();

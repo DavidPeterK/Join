@@ -1,4 +1,4 @@
-const STORAGE_TOKEN = 'ZAVHTP92CL5GF889UFX5E28M830OR5YMQSFGHRNB';
+const STORAGE_TOKEN = 'I3RGMTSFOE9FN1CX5G8156I3BEVLU9N5OYH68GQ7';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let tasks = [];
@@ -9,7 +9,7 @@ let activUser = {
 let selectedColorIndex = null;
 
 let contactsArray = [];
-
+let contactId = 0;
 /** Represents the currently selected index in the task list. */
 let selectedIndex = null;
 
@@ -238,8 +238,10 @@ async function currentUserCategorysLoad() {
 async function currentUserContactsSave() {
     if (isGuestLogIn()) {
         localStorage.setItem('contactsAsText', JSON.stringify(contactsArray));
+        localStorage.setItem('contactIdAsText', JSON.stringify(contactId));
     } else {
         await setItem('contactsArray', JSON.stringify(contactsArray));
+        await setItem('contactId', JSON.stringify(contactId));
     }
 }
 
@@ -247,12 +249,15 @@ async function currentUserContactsSave() {
 async function currentUserContactsLoad() {
     if (isGuestLogIn()) {
         let contactsLoad = localStorage.getItem('contactsAsText');
-        if (contactsLoad) {
+        let contactIdLoad = localStorage.getItem('contactIdAsText');
+        if (contactsLoad && contactIdLoad) {
             contactsArray = JSON.parse(contactsLoad);
+            contactId = JSON.parse(contactIdLoad);
         }
     } else {
         try {
             contactsArray = JSON.parse(await getItem('contactsArray'));
+            contactId = JSON.parse(await getItem('contactId'));
         } catch (e) {
             console.info('Could not load contacts');
         }

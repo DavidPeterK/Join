@@ -13,6 +13,16 @@
     z-index: 3;
 }
 
+.deleteQuest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 34px 54px;
+    gap: 54px;
+    border-radius: 30px;
+}
+
 .pop-position {
     position: relative;
     display: flex;

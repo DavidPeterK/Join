@@ -5,7 +5,6 @@
 function renderCategorys() {
     let container = document.getElementById('categoryContent');
     container.innerHTML = '';
-    showCategoryContainer();
     renderMainCategorys(container);
     renderOwnCategorys(container);
 }
@@ -13,6 +12,7 @@ function renderCategorys() {
 function showCategoryContainer() {
     let container = document.getElementById('categoryContainer');
     container.classList.remove('d-none');
+    renderCategorys();
 }
 
 function hideCategoryContainer() {
@@ -48,7 +48,7 @@ function renderOwnCategorys(container) {
 
 function returnRenderOwnCategorys(aName, aColor, a) {
     return /*html*/`
-    <div onclick='selectCategory(${a}, "own")' id='mainCategory${a}' class="categoryRow">
+    <div onclick='selectCategory(${a}, "own")' id='ownCategory${a}' class="categoryRow">
         <span class="category-span">${aName}</span>
         <div style="display: flex; align-items: center; gap: 8px;">
             <img class="greyHoverIcon" src="src/img/subTaskDelete.svg" alt="">
@@ -116,8 +116,8 @@ function selectColor(color) {
         selectedColorIndex = '';
     } else {
         selectedColorIndex = color;
-        createCategoryColors();
     }
+    createCategoryColors();
 }
 
 /**
@@ -171,7 +171,7 @@ async function createNewCategory() {
     ownCategorys.color.push(selectedColorIndex);
     await currentUserCategorysSave();
     saveTaskDetails();
-    renderCategorys();
+    showCategoryContainer();
     closeCategoryPopUp();
     clearCreateWindow();
     changesSaved('Category successfully created');
