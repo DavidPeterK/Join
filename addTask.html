@@ -88,16 +88,16 @@
 
                 <span class="addTaskSpan">Assigned to</span>
                 <div class="addTask-input-container">
-                    <input readonly type="text" value="Select contacts to assign">
+                    <input id="addTaskContactsInput" readonly type="text" value="Select contacts to assign">
                     <img class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
                         alt="arrow-down-icon">
                 </div>
                 <div class="selected-contacts-container">
                     <div style="background: red;" class="userCircle">ab</div>
                 </div>
-                <div onclick="doNotClose(event)" id="contactsContainer" style="z-index: 0;"
-                    class="contacts-container d-none">
+                <div onclick="doNotClose(event)" id="contactsContainer" style="z-index: 0;" class="contacts-container">
                     <div id="contactsContent">
+                        <div class="addTask-contact-row"></div>
                     </div>
                     <button class="addContacts-button">Add new contact</button>
                 </div>
