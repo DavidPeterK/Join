@@ -331,6 +331,19 @@ ul:hover {
 
 .addTask-contact-row {
     display: flex;
+    padding: 7px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.contacts-container-row-span {
+    color: var(--black, #000);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
 }
 
 @media (max-width: 1300px) {
