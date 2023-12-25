@@ -105,7 +105,7 @@ async function editContact(index) {
     contactId++;
     await currentUserContactsSave();
     clearContactInput();
-    renderContacts();
+    closeContactInfoSmall();
     changesSaved('Contact successfully created');
 }
 
@@ -121,7 +121,7 @@ function deleteContact(index) {
     let container = document.getElementById('contactsDeletePopUp');
     contactsArray.splice(index, 1);
     currentUserContactsSave();
-    renderContacts();
+    closeContactInfoSmall();
     renderContactInfoEmpty();
     container.classList.add('d-none');
 }
@@ -132,6 +132,16 @@ function renderContactInfoPopUp(id) {
     let container = document.getElementById('contactInfoContainerRight');
     listBox.classList.add('d-none');
     container.style = 'display: flex';
+}
+
+function closeContactInfoSmall() {
+    renderContacts();
+    let listBox = document.getElementById('contactsListContainer');
+    let container = document.getElementById('contactInfoContainerRight');
+    listBox.classList.remove('d-none');
+    if (!window.innerWidth > 1020) {
+        container.style = 'display: none';
+    }
 }
 
 function returnDeleteWindow(array, index) {
@@ -171,11 +181,11 @@ function returnContactInfoContainerRight(array) {
     <div class="split-container">
         <div class="split-span-box">
             <span class="email-headline">Email</span>
-            <span class="email-adress">${array.email}</span>
+            <a style='text-decoration: none' href='mailto:${array.email}' class="email-adress">${array.email}</a>
         </div>
         <div class="split-span-box">
             <span class="phone-headline">Phone</span>
-            <span class="phone-number">${array.phone}</span>
+            <a style='text-decoration: none' href='tel:${array.phone}' class="phone-number">${array.phone}</a>
         </div>
     </div>    
     `;

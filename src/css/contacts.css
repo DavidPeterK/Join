@@ -31,6 +31,7 @@
     padding: 0px 64px;
     flex: 2;
     background: #F6F7F8;
+    z-index: 1.1;
 }
 
 .list-container-button {
@@ -151,10 +152,22 @@
 
 .delete-button,
 .edit-button {
+    color: var(--Version-2-main-color, #2A3647);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
+}
+
+.delete-button:hover,
+.edit-button:hover {
+    cursor: pointer;
+    background-color: #D1D1D1;
+    border-radius: 30px;
 }
 
 .headline-info-center {
@@ -185,6 +198,14 @@
 
 .add-contact-smallButton {
     display: none;
+}
+
+.arrow-left-contacts {
+    display: none;
+}
+
+.arrow-left-contacts {
+    cursor: pointer;
 }
 
 @media (max-width: 1500px) {
@@ -293,6 +314,13 @@
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     }
 
+    .arrow-left-contacts {
+        position: absolute;
+        display: unset;
+        top: 155px;
+        left: 80%;
+        z-index: 1;
+    }
 }
 
 @media (max-width:700px) {
@@ -311,11 +339,12 @@
         left: calc(100% - 70px);
         top: calc(100% - 170px);
     }
+
+    .arrow-left-contacts {
+        top: 140px;
+        left: 85%;
+    }
 }
-
-
-
-
 
 @media (max-width: 1500px) {}
 
