@@ -18,13 +18,14 @@
     <script src="src/js/addTask-prio.js"></script>
     <script src="src/js/addTask-categorys.js"></script>
     <script src="src/js/addTask-subtask.js"></script>
+    <script src="src/js/addTask-contacts.js"></script>
     <script src="src/js/contacts.js"></script>
     <script src="src/js/addTask.js"></script>
     <script src="src/js/board-addTask.js"></script>
     <title>Join</title>
 </head>
 
-<body onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer()">
+<body onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer(), closeContactsContainer()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -73,7 +74,7 @@
 
         <div class="addTaskContent">
             <div class="boxLeft">
-                <span class="addTaskSpan">Titel<span class="star-red">*</span></span>
+                <span class="addTaskSpan">Title<span class="star-red">*</span></span>
                 <div class="addTask-input-container">
                     <input id="addTitel" required type="text" placeholder="Enter a title" maxlength="80" minlength="4">
                 </div>
@@ -87,15 +88,16 @@
                 <div class="gapContainer"></div>
 
                 <span class="addTaskSpan">Assigned to</span>
-                <div class="addTask-input-container">
+                <div onclick="openContactsContainer(), doNotClose(event)" id="addTaskContactsInputBox"
+                    class="addTask-input-container" style="z-index: 0;">
                     <input id="addTaskContactsInput" readonly type="text" value="Select contacts to assign">
                     <img class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
                         alt="arrow-down-icon">
                 </div>
-                <div class="selected-contacts-container">
+                <div id="selectedContactsContainer" class="selected-contacts-container">
                     <div style="background: red;" class="userCircle">ab</div>
                 </div>
-                <div onclick="doNotClose(event)" id="contactsContainer" style="z-index: 0;" class="contacts-container">
+                <div onclick="doNotClose(event)" id="contactsCollectionContainer" class="contacts-container d-none">
                     <div style="width: 100%;" id="contactsContent">
                         <div class="addTask-contact-row">
                             <div style="display: flex; justify-content: flex-start; align-items: center; gap: 20px;">

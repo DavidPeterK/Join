@@ -336,10 +336,32 @@ ul:hover {
     align-items: center;
     border-radius: 10px;
     border-bottom: 1px solid #f1f1f1;
+    color: var(--black, #000);
+    background: #fff;
+}
+
+.addTask-contact-row-activ {
+    display: flex;
+    padding: 7px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #fff;
+    background: var(--Version-2-main-color, #2A3647);
+}
+
+.addTask-contact-row-activ:hover {
+    cursor: pointer;
+    background: #091931;
+}
+
+.addTask-contact-row:hover {
+    cursor: pointer;
+    background: #EEE;
 }
 
 .contacts-container-row-span {
-    color: var(--black, #000);
     font-family: Inter;
     font-size: 20px;
     font-style: normal;

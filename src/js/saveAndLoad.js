@@ -3,16 +3,12 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let tasks = [];
 let user = [];
-let activUser = {
-    'name': '',
-}
+let activUser = { 'name': '', }
 let selectedColorIndex = null;
-
 let contactsArray = [];
 let contactId = 0;
 /** Represents the currently selected index in the task list. */
 let selectedIndex = null;
-
 /** Collection of background colors used for task categories. */
 let colorCollection = [
     'background: #006400', 'background: #00008B', 'background: #8B0000', 'background: #800080', 'background: #808080', 'background: #0000CD',
@@ -59,7 +55,6 @@ let editTask = '';
 let statusGroup = '';
 
 //save and load task elements
-
 /**
  * Saves various task-related elements to local storage.
  */
@@ -315,4 +310,3 @@ async function getItem(key) {
         throw `Could not find data with key "${key}".`;
     });
 }
-
