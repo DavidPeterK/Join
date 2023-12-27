@@ -1,12 +1,11 @@
-let addTaskContactInput = document.getElementById('addTaskContactsInput');
-let addTaskContactInputBox = document.getElementById('addTaskContactsInputBox');
-
 function openContactsContainer() {
     let addTaskSelectedContactBox = document.getElementById('selectedContactsContainer');
     let addTaskContactCollectionBox = document.getElementById('contactsCollectionContainer');
     addTaskSelectedContactBox.classList.add('d-none');
     addTaskContactCollectionBox.classList.remove('d-none');
-    //input pfeil drehen//
+    changeOpenInputBox();
+    changeOpenInputInner();
+    changeOpenInputArrow();
     renderAllContacts();
 }
 
@@ -15,18 +14,86 @@ function closeContactsContainer() {
     let addTaskContactCollectionBox = document.getElementById('contactsCollectionContainer');
     addTaskSelectedContactBox.classList.remove('d-none');
     addTaskContactCollectionBox.classList.add('d-none');
-    //input pfeil drehen//
+    changeCloseInputBox();
+    changeCloseInputInner();
+    changeCloseInputArrow();
     renderAllSelectedContacts();
 }
 
-function renderAllContacts() {
+function changeOpenInputArrow() {
+    let arrow = document.getElementById('contactsInputArrow');
+    arrow.src = 'src/img/arrow_drop_up.svg';
+    arrow.onclick = function (event) {
+        closeContactsContainer();
+        doNotClose(event);
+    }
+}
+
+function changeCloseInputArrow() {
+    let arrow = document.getElementById('contactsInputArrow');
+    arrow.src = 'src/img/arrow_drop_downaa.svg';
+    arrow.onclick = function (event) {
+        openContactsContainer();
+        doNotClose(event);
+    };
+}
+
+function changeOpenInputInner() {
+    let addTaskContactInput = document.getElementById('addTaskContactsInput');
+    addTaskContactInput.removeAttribute('readonly');
+    addTaskContactInput.placeholder = 'An:';
+    addTaskContactInput.value = '';
+    addTaskContactInput.onkeyup = function (event) {
+        renderAllContacts(addTaskContactInput.value);
+    };
+}
+
+function changeCloseInputInner() {
+    let addTaskContactInput = document.getElementById('addTaskContactsInput');
+    addTaskContactInput.setAttribute('readonly', 'readonly');
+    addTaskContactInput.placeholder = '';
+    addTaskContactInput.value = 'Select contacts to assign';
+    addTaskContactInput.onkeyup = null;
+}
+
+function changeOpenInputBox() {
+    let addTaskContactInputBox = document.getElementById('addTaskContactsInputBox');
+    addTaskContactInputBox.onclick = function (event) {
+        doNotClose(event);
+    };
+}
+
+function changeCloseInputBox() {
+    let addTaskContactInputBox = document.getElementById('addTaskContactsInputBox');
+    addTaskContactInputBox.onclick = function (event) {
+        openContactsContainer();
+        doNotClose(event);
+    };
+}
+
+function renderAllContacts(filter) {
     let contacts = contactsArray.sort((a, b) => a.name.localeCompare(b.name));
     let container = document.getElementById('contactsContent');
-    container.innerHTML = '';
-    for (let i = 0; i < contacts.length; i++) {
-        const array = contacts[i];
-        container.innerHTML += returnAddTaskContactRow(array);
+    let array;
+    if (filter) {
+        array = filterContactsForSearch(filter, contacts);
+    } else {
+        array = contacts;
     }
+    container.innerHTML = '';
+    for (let i = 0; i < array.length; i++) {
+        const arrayContacts = array[i];
+        container.innerHTML += returnAddTaskContactRow(arrayContacts);
+    }
+}
+
+function filterContactsForSearch(filter, contacts) {
+    var filterContacts = contacts.filter(function (contact) {
+        // Prüfen Sie, ob der Name den angegebenen Buchstaben enthält (case-insensitive)
+        return contact.name.toLowerCase().includes(filter.toLowerCase());
+    });
+
+    return filterContacts;
 }
 
 function renderAllSelectedContacts() {
@@ -80,6 +147,5 @@ function selectContactRow(id) {
     } else {
         contactCollection.push(array);
     }
-    saveTaskDetails()
     renderAllContacts();
 }

@@ -91,7 +91,8 @@
                 <div onclick="openContactsContainer(), doNotClose(event)" id="addTaskContactsInputBox"
                     class="addTask-input-container" style="z-index: 0;">
                     <input id="addTaskContactsInput" readonly type="text" value="Select contacts to assign">
-                    <img class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
+                    <img onclick="openContactsContainer(), doNotClose(event)" id="contactsInputArrow"
+                        class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
                         alt="arrow-down-icon">
                 </div>
                 <div id="selectedContactsContainer" class="selected-contacts-container">
