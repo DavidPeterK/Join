@@ -5,6 +5,7 @@ let tasks = [];
 let user = [];
 let activUser = { 'name': '', }
 let selectedColorIndex = null;
+
 let contactsArray = [];
 let contactId = 0;
 /** Represents the currently selected index in the task list. */

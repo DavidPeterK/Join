@@ -3,6 +3,11 @@ let selectedContacts = '';
 let selectedPrio = '';
 let currentSubtask = '';
 
+async function addTaskInit() {
+    await currentUserContactsLoad();
+    saveTaskDetails();
+}
+
 /**
  * Sets the innerHTML of a specified DOM element using the content provided by a function.
  */
