@@ -51,7 +51,7 @@ function returnRenderOwnCategorys(aName, aColor, a) {
     <div onclick='selectCategory(${a}, "own")' id='ownCategory${a}' class="categoryRow">
         <span class="category-span">${aName}</span>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <img class="greyHoverIcon" src="src/img/subTaskDelete.svg" alt="">
+            <img onclick='deleteOwnCategory(${a}), doNotClose(event)' class="greyHoverIcon" src="src/img/subTaskDelete.svg" alt="">
             <div style="${aColor}" class="colorCircleSmall"></div>
         </div>
     </div>`;
@@ -133,6 +133,13 @@ function confirmCreateCategory() {
     }
 }
 
+async function deleteOwnCategory(index) {
+    ownCategorys.name.splice(index, 1);
+    ownCategorys.color.splice(index, 1);
+    await currentUserCategorysSave();
+    renderCategorys();
+}
+
 /**
  * Validates the input for category creation.
  */
@@ -182,6 +189,7 @@ async function createNewCategory() {
  */
 function stopCreateCategory() {
     renderCategorys();
+    closeCategoryPopUp();
     clearCreateWindow();
 }
 
@@ -195,4 +203,48 @@ function showCategoryPopUp() {
     popup.classList.remove('d-none');
     createCategoryColors();
 }
-//-------------------------------------------------------------//
+
+function renderCategoryPopUp() {
+    let container = document.getElementById('categoryPopUp');
+    container.innerHTML = returnCategoryPopUp();
+}
+
+function returnCategoryPopUp() {
+    return /*html*/`
+    <div class="pop-position">
+        <img onclick="closeCategoryPopUp()" class="blue-cross greyHoverIcon" src="src/img/iconoir_cancel.svg"
+            alt="">
+        <img onclick="closeCategoryPopUp()" class="grey-cross greyHoverIcon" src="src/img/closeGrey.svg" alt="">
+
+        <div class="pop-head-box">
+            <img class="pop-logo" style="width: 55px; height: 55px;" src="src/img/join.logo-white.svg"
+                alt="join-logo">
+            <span class="pop-headline">Add category</span>
+            <span class="pop-slogen">Create your own category!</span>
+            <div class="pop-vector"></div>
+        </div>
+
+        <div class="pop-icon-box">
+            <div class="pop-person-background"><img class="pop-person-png" src="src/img/addTaskCategory.svg"
+                    alt="person-icon"></div>
+        </div>
+
+        <div class="pop-input-box">
+
+            <div class="input-pop-container" id="newCategoryNameContainer">
+                <input style="width: 100%;" id="newCategoryName" type="text" placeholder="New category"
+                    id="contactUserName">
+            </div>
+            <span id="warnCategoryInput" style="text-align: center;" class="warningByInput d-none">
+                Please enter a category name and choose a color.
+            </span>
+
+            <div id="colorSettingBox"></div>
+
+            <div class="pop-button-box">
+                <div onclick="stopCreateCategory()" class="pop-button-cancel">Cancel</div>
+                <div onclick="confirmCreateCategory()" class="pop-button-create">Create category</div>
+            </div>
+        </div>
+    </div>    `;
+}

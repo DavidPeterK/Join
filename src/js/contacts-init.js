@@ -34,7 +34,8 @@ function filterContacts(alphabetBox, letter) {
 }
 
 function filterBy(letter) {
-    return contactsArray.filter(contact => contact.name.toUpperCase().startsWith(letter));
+    let array = contactsArray.sort((a, b) => a.name.localeCompare(b.name));
+    return array.filter(contact => contact.name.toUpperCase().startsWith(letter));
 }
 
 function isContactLetter(letter) {

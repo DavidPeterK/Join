@@ -11,7 +11,6 @@ function showContactsPopUp(mode, index) {
     popup.innerHTML = returnPopUpContactNew(mode, index);
 }
 
-
 function returnPopUpContactNew(mode, index) {
     let sub;
     let button;
@@ -92,8 +91,6 @@ async function createContact() {
     contactsArray.push(newContact);
     contactId++;
     await currentUserContactsSave();
-    clearContactInput();
-    renderContacts();
     changesSaved('Contact successfully created');
 }
 

@@ -5,7 +5,10 @@ let currentSubtask = '';
 
 async function addTaskInit() {
     await currentUserContactsLoad();
+    await currentUserCategorysLoad()
     saveTaskDetails();
+    renderPrioSection();
+    renderCategoryPopUp();
 }
 
 /**
