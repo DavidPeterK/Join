@@ -55,54 +55,6 @@ let editTask = '';
 /** Represents the status group for tasks. */
 let statusGroup = '';
 
-//save and load task elements
-/**
- * Saves various task-related elements to local storage.
- */
-function saveTaskDetails() {
-    localStorage.setItem('categoryCollectionAsText', JSON.stringify(currentCategorySelected));
-    localStorage.setItem('currentPrioAsText', JSON.stringify(currentPrioSelected));
-    localStorage.setItem('subTaskCollectionAsText', JSON.stringify(subtasks));
-    localStorage.setItem('contactCollectionAsText', JSON.stringify(contactCollection));
-    localStorage.setItem('selectedIndexAsText', JSON.stringify(selectedIndex));
-    localStorage.setItem('selectedColorIndexAsText', JSON.stringify(selectedColorIndex));
-    localStorage.setItem('subTaskFinishAsText', JSON.stringify(subtasksFinish));
-    localStorage.setItem('taskIdAsText', JSON.stringify(taskIdForEdit));
-    localStorage.setItem('statusAsText', JSON.stringify(statusEdit));
-}
-
-/**
- * Loads various task-related elements from local storage and applies them.
- */
-function loadTaskElements() {
-    let currentCategoryLoad = localStorage.getItem('categoryCollectionAsText');
-    let currentPrioLoad = localStorage.getItem('currentPrioAsText');
-    let subTaskCollectionLoad = localStorage.getItem('subTaskCollectionAsText');
-    let contactCollectionLoad = localStorage.getItem('contactCollectionAsText');
-    let selectedIndexLoad = localStorage.getItem('selectedIndexAsText');
-    let selectedColorLoad = localStorage.getItem('selectedColorIndexAsText');
-    let subTaskFinishLoad = localStorage.getItem('subTaskFinishAsText');
-    let taskIdLoad = localStorage.getItem('taskIdAsText');
-    let statusLoad = localStorage.getItem('statusAsText');
-    returnLoad(currentCategoryLoad, currentPrioLoad, subTaskCollectionLoad, contactCollectionLoad, selectedIndexLoad, selectedColorLoad, subTaskFinishLoad, taskIdLoad, statusLoad);
-}
-
-/**
- * Applies loaded task elements values to respective global variables.
- */
-function returnLoad(currentCategoryLoad, currentPrioLoad, subTaskCollectionLoad, contactCollectionLoad, selectedIndexLoad, selectedColorLoad, subTaskFinishLoad, taskIdLoad, statusLoad) {
-    if (currentCategoryLoad && currentPrioLoad && subTaskCollectionLoad && contactCollectionLoad && selectedIndexLoad && selectedColorLoad && subTaskFinishLoad && taskIdLoad && statusLoad) {
-        currentCategorySelected = JSON.parse(currentCategoryLoad);
-        currentPrioSelected = JSON.parse(currentPrioLoad);
-        subtasks = JSON.parse(subTaskCollectionLoad);
-        contactCollection = JSON.parse(contactCollectionLoad);
-        selectedIndex = JSON.parse(selectedIndexLoad);
-        selectedColorIndex = JSON.parse(selectedColorLoad);
-        subtasksFinish = JSON.parse(subTaskFinishLoad);
-        taskIdForEdit = JSON.parse(taskIdLoad);
-        statusEdit = JSON.parse(statusLoad);
-    }
-}
 
 //------------tasks----------------------//
 function isGuestLogIn() {

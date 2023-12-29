@@ -78,14 +78,22 @@
         <div class="addTaskContent">
             <div class="boxLeft">
                 <span class="addTaskSpan">Title<span class="star-red">*</span></span>
-                <div class="addTask-input-container">
-                    <input id="addTitel" required type="text" placeholder="Enter a title" maxlength="80" minlength="4">
+                <div id="addTaskTitleBox" class="addTask-input-container">
+                    <input id="addTaskTitleInput" required type="text" placeholder="Enter a title" maxlength="80"
+                        minlength="4">
                 </div>
+                <span id="warnTitle" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
+                    This field is required.
+                </span>
+
 
                 <div class="gapContainer"></div>
 
                 <span class="addTaskSpan">Description</span>
-                <textarea id="addDescription" placeholder="Enter a Description" cols="30" rows="10"></textarea>
+                <textarea id="addTaskDescriptionInput" placeholder="Enter a Description" cols="30" rows="10"></textarea>
+                <span id="warnDescription" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
+                    This field is required.
+                </span>
 
                 <div class="gapContainer"></div>
 
@@ -110,10 +118,13 @@
 
             <div class="boxRight">
                 <span class="addTaskSpan">Due date<span class="star-red">*</span></span>
-                <div class="addTask-input-container">
-                    <input required placeholder="dd/mm/yyyy" type="text" id="datepicker">
+                <div id="addTaskDueDateBox" class="addTask-input-container">
+                    <input placeholder="dd/mm/yyyy" type="text" id="datepicker">
                     <img src="src/img/kalenderJoin.svg" alt="date-icon">
                 </div>
+                <span id="warnDueDate" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
+                    This field is required.
+                </span>
 
                 <div class="gapContainer"></div>
 
@@ -164,7 +175,8 @@
                     onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear <img
                         id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
                         alt="cross-icon"></div>
-                <div class="createTask-button button-hover">Create Task <img src="src/img/check.svg" alt="check-icon">
+                <div onclick="loadTaskControl()" class="createTask-button button-hover">Create Task <img
+                        src="src/img/check.svg" alt="check-icon">
                 </div>
             </div>
         </div>
