@@ -21,7 +21,7 @@
 
 </head>
 
-<body onclick="closeHeadMenu()">
+<body onload="initBoard()" onclick="closeHeadMenu()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -83,67 +83,50 @@
         </div>
 
         <div class="task-content">
+
             <div class="task-group">
                 <div class="group-head-container">
                     <span class="task-group-span">To do</span>
                     <img class="group-plus-icon" src="src/img/Property 1=Default.svg" alt="group-plus-icon">
                 </div>
-                <div class="taskSection">
-                    <div class="empty-label d-none">No tasks To do</div>
 
-                    <div class="taskContainer">
-
-                        <span style="background-color: #0038FF;" class="taskCategorySpan">User Story</span>
-
-                        <div class="titelDescriptionBox">
-                            <span class="titelSpan">Kochwelt Page & Recipe Recommender</span>
-                            <span class="descriptionSpan">Build start page with recipe recommendation...</span>
-                        </div>
-
-                        <div class="progressSection">
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 50%;"></div>
-                            </div>
-                            <span class="progressSpan">1/2 Subtasks</span>
-                        </div>
-
-                        <div class="taskFooter">
-                            <div class="taskUserCircles">
-                                <div style="background: #4589FF;" class="userCircle">DA</div>
-                            </div>
-                            <img class="prioIcon" src="src/img/prioMedium.svg" alt="prio-icon">
-                        </div>
-
-                    </div>
-
+                <div id="boardToDo" class="taskSection">
+                    <div id="emptyToDo" class="empty-label d-none">No tasks To do</div>
                 </div>
             </div>
+
             <div class="task-group">
                 <div class="group-head-container">
                     <span class="task-group-span">In progress</span>
                     <img class="group-plus-icon" src="src/img/Property 1=Default.svg" alt="group-plus-icon">
                 </div>
-                <div class="taskSection">
+
+                <div id="boardInProgress" class="taskSection">
                     <div class="empty-label">No tasks In Progress</div>
                 </div>
             </div>
+
             <div class="task-group">
                 <div class="group-head-container">
                     <span class="task-group-span">Await feedback</span>
                     <img class="group-plus-icon" src="src/img/Property 1=Default.svg" alt="group-plus-icon">
                 </div>
-                <div class="taskSection">
+
+                <div id="boardAwaitFeedback" class="taskSection">
                     <div class="empty-label">No tasks Await feedback</div>
                 </div>
             </div>
+
             <div class="task-group">
                 <div class="group-head-container">
                     <span class="task-group-span">Done</span>
                     <img class="group-plus-icon" src="src/img/Property 1=Default.svg" alt="group-plus-icon">
                 </div>
-                <div class="taskSection">
+
+                <div id="boardDone" class="taskSection">
                     <div class="empty-label">No tasks Done</div>
                 </div>
+
             </div>
         </div>
     </div>

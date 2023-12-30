@@ -7,7 +7,6 @@ function addSubTask() {
         return;
     } else {
         subtasks.push(input.value);
-        saveTaskDetails();
         renderSubTasks();
         input.value = '';
     }
@@ -66,13 +65,11 @@ function editSubtask() {
     } else {
         subtasks[currentSubtask] = input.value;
     }
-    saveTaskDetails();
     renderSubTasks();
 }
 
 function deleteSubtask(i) {
     subTasks.splice(i, 1)
-    saveTaskDetails();
     renderSubTasks();
 }
 

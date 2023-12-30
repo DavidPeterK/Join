@@ -7,18 +7,19 @@ async function addTaskInit() {
     await currentUserContactsLoad();
     await currentUserCategorysLoad();
     await currentUserIdLoad();
+    await loadAllTasks();
     renderPrioSection();
     renderCategoryPopUp();
 }
 
-function loadTaskControl() {
+function loadTaskControl(status) {
     let title = document.getElementById('addTaskTitleInput');
     let description = document.getElementById('addTaskDescriptionInput');
     let dueDate = document.getElementById('datepicker');
-    createTaskControl(title, description, dueDate);
+    createTaskControl(title, description, dueDate, status);
 }
 
-function createTaskControl(title, description, dueDate) {
+function createTaskControl(title, description, dueDate, status) {
     if (title.value === '') {
         warnTitle();
     } else if (description.value === '') {
@@ -26,7 +27,7 @@ function createTaskControl(title, description, dueDate) {
     } else if (dueDate.value === '') {
         warnDueDate();
     } else {
-        createTask();
+        createTask(status);
     }
 }
 
@@ -63,12 +64,14 @@ function warnDueDate() {
     }, 4000);
 }
 
-async function createTask() {
+async function createTask(status) {
+    statusGroup = status;
     let task = createTaskObject();
     tasks.push(task);
     currentId++;
     await currentUserIdSave();
-    setTimeout(() => { window.location.href = './board.html'; }, 3000);
+    await currentUserTaskSave();
+    //setTimeout(() => { window.location.href = './board.html'; }, 3000);
 }
 
 /** Collects and returns data for a new task. */
@@ -87,4 +90,3 @@ function createTaskObject() {
         'subtasksFinish': subtasksFinish,
     }
 }
-
