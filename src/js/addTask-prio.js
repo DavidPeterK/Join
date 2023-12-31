@@ -4,38 +4,38 @@ function renderPrioSection() {
 }
 
 function urgentButtonClick() {
-    if (selectedPrio === 'urgent') {
+    if (selectedPrio === 'Urgent') {
         resetUrgentButton();
         selectedPrio = '';
-    } else if (selectedPrio === 'low' || selectedPrio === 'medium' || selectedPrio === '') {
+    } else if (selectedPrio === 'Low' || selectedPrio === 'Medium' || selectedPrio === '') {
         urgentButtonActiv();
         resetMediumButton();
         resetLowButton();
-        selectedPrio = 'urgent';
+        selectedPrio = 'Urgent';
     }
 }
 
 function mediumButtonClick() {
-    if (selectedPrio === 'medium') {
+    if (selectedPrio === 'Medium') {
         resetMediumButton();
         selectedPrio = '';
-    } else if (selectedPrio === 'low' || selectedPrio === 'urgent' || selectedPrio === '') {
+    } else if (selectedPrio === 'Low' || selectedPrio === 'Urgent' || selectedPrio === '') {
         mediumButtonActiv();
         resetUrgentButton();
         resetLowButton();
-        selectedPrio = 'medium';
+        selectedPrio = 'Medium';
     }
 }
 
 function lowButtonClick() {
-    if (selectedPrio === 'low') {
+    if (selectedPrio === 'Low') {
         resetLowButton();
         selectedPrio = '';
-    } else if (selectedPrio === 'medium' || selectedPrio === 'urgent' || selectedPrio === '') {
+    } else if (selectedPrio === 'Medium' || selectedPrio === 'Urgent' || selectedPrio === '') {
         lowButtonActiv();
         resetMediumButton();
         resetUrgentButton();
-        selectedPrio = 'low';
+        selectedPrio = 'Low';
     }
 }
 
@@ -70,13 +70,13 @@ function resetLowButton() {
 }
 //--------------for edit------------------------//
 function controlPrioButton() {
-    if (selectedPrio === 'urgent') {
+    if (selectedPrio === 'Urgent') {
         urgentButtonActiv();
     }
-    if (selectedPrio === 'medium') {
+    if (selectedPrio === 'Medium') {
         mediumButtonActiv();
     }
-    if (selectedPrio === 'low') {
+    if (selectedPrio === 'Low') {
         lowButtonActiv();
     }
 }

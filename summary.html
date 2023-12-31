@@ -13,12 +13,11 @@
     <script src="src/js/saveAndLoad.js"></script>
     <script src="src/js/templates.js"></script>
     <script src="src/js/animation.js"></script>
-    <script src="src/js/login.js"></script>
-    <script src="src/js/register.js"></script>
+    <script defer src="src/js/summary.js"></script>
     <title>Join</title>
 </head>
 
-<body onclick="closeHeadMenu()">
+<body onload="initSummary()" onclick="closeHeadMenu()">
 
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
@@ -134,8 +133,8 @@
             </div>
 
             <div class="greeting-container">
-                <span id="daytimeGreeting" class="greeting-span">Good morning,</span>
-                <span id="greetingUser">Sofia Müller</span>
+                <span id="dayTimeGreeting" class="greeting-span"></span>
+                <span id="greetingUser"></span>
             </div>
 
         </div>

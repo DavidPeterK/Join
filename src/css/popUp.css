@@ -13,6 +13,27 @@
     z-index: 3;
 }
 
+.addTaskPopUpPosition {
+    position: relative;
+    width: calc(90% - 128px);
+    height: calc(90% - 64px);
+    border-radius: 30px;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    padding: 32px 64px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.addTask-buttonArea-popup {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 32px;
+}
+
 .deleteQuest {
     display: flex;
     flex-direction: column;
@@ -191,6 +212,20 @@
     display: none;
 }
 
+.addTaskCrossPop {
+    position: absolute;
+    top: 64px;
+    right: 64px;
+    width: 32px;
+    height: 32px;
+}
+
+.addTaskCrossPop:hover {
+    border-radius: 50%;
+    background: #D1D1D1;
+    cursor: pointer;
+}
+
 @media (max-width: 1200px) {
     .pop-position {
         flex-direction: column;
@@ -199,6 +234,18 @@
         min-width: 310px;
         max-height: 100%;
         max-width: 600px;
+    }
+
+    .addTaskPopUpPosition {
+        width: calc(90% - 64px);
+        height: calc(90% - 64px);
+        padding: 32px 32px;
+    }
+
+    .addTaskCrossPop {
+        position: absolute;
+        top: 64px;
+        right: 32px;
     }
 
     .pop-head-box {
@@ -299,6 +346,19 @@
         padding: 75px 12px;
         width: calc(100% - 24px);
 
+    }
+
+    .addTaskPopUpPosition {
+        width: calc(100% - 24px);
+        height: calc(100% - 32px);
+        border-radius: 0px;
+        padding: 16px 12px;
+    }
+
+    .addTaskCrossPop {
+        position: absolute;
+        top: 52px;
+        right: 12px;
     }
 
     .pop-vector {

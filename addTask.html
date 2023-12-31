@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/animation.css">
-    <link rel="stylesheet" href="src/css/popUp.css">
     <link rel="stylesheet" href="src/css/fonts.css">
     <link rel="stylesheet" href="src/css/navbar-header.css">
+    <link rel="stylesheet" href="src/css/popUp.css">
     <link rel="stylesheet" href="src/css/addTask.css">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
@@ -71,7 +71,7 @@
 
     <div id="contentId" class="content-addTask">
 
-        <div class="head-section">
+        <div class="head-section-addTask">
             <h2>Add Task</h2>
         </div>
 
@@ -79,8 +79,7 @@
             <div class="boxLeft">
                 <span class="addTaskSpan">Title<span class="star-red">*</span></span>
                 <div id="addTaskTitleBox" class="addTask-input-container">
-                    <input id="addTaskTitleInput" required type="text" placeholder="Enter a title" maxlength="80"
-                        minlength="4">
+                    <input id="addTaskTitleInput" type="text" placeholder="Enter a title" maxlength="20" minlength="4">
                 </div>
                 <span id="warnTitle" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
                     This field is required.

@@ -6,13 +6,9 @@ function markNavButton() {
  * Asynchronously initializes the summary section.
  */
 async function initSummary() {
-    loadActivUser();
-    userCircle();
     await loadAllTasks();
+    loadActivUser();
     loadDetails();
-    markCategory();
-    addAnimationOnResize();
-    animationAdded = false;
 }
 
 /**
@@ -20,21 +16,9 @@ async function initSummary() {
  * and loads the date for urgent priorities.
 */
 function loadDetails() {
-    daylyGreeting();
-    loadUserName();
     loadNumbers();
     loadUrgentPrioDate();
-}
-
-//----------------------search function------------------------------
-//---------------------Search User name----------------------------//
-/**
- * Loads the active user's name and sets it to the corresponding HTML element.
- * It fetches the DOM element with the ID 'name' and updates its inner text with the name of the active user.
- */
-function loadUserName() {
-    let userName = document.getElementById('greetingUser');
-    userName.innerText = activUser.name;
+    daylyGreeting();
 }
 
 /**
@@ -91,7 +75,9 @@ function loadUrgentPrioDate() {
  */
 function daylyGreeting() {
     let dayTimeContainer = document.getElementById('dayTimeGreeting');
-    dayTimeContainer.innerHTML = getTimeOfDay();
+    let userName = document.getElementById('greetingUser');
+    userName.innerText = activUser.name;
+    dayTimeContainer.innerText = getTimeOfDay();
 }
 
 /**
@@ -101,20 +87,18 @@ function daylyGreeting() {
 function getTimeOfDay() {
     const time = new Date().getHours();
     if (time >= 0 && time < 8) {
-        dayTimeGreeting('morning');
+        return dayTimeGreeting('morning,');
     } else if (time >= 8 && time < 12) {
-        dayTimeGreeting('day');
+        return dayTimeGreeting('day,');
     } else if (time >= 12 && time < 18) {
-        dayTimeGreeting('afternoon');
+        return dayTimeGreeting('afternoon,');
     } else {
-        dayTimeGreeting('evening');
+        return dayTimeGreeting('evening,');
     }
 }
 
 function dayTimeGreeting(dayTime) {
-    return /*html*/ `
-    <span class="time-of-day">Good&nbsp</span>
-    <span class="time-of-day">${dayTime}</span>`;
+    return 'Good ' + dayTime;
 }
 
 /**
@@ -122,8 +106,7 @@ function dayTimeGreeting(dayTime) {
  * 
  */
 function getNextUrgentDueDate(tasks) {
-    const urgentTasks = tasks.filter(task => task.priority === "./img/prioUrgent.svg");
-
+    const urgentTasks = tasks.filter(task => task.priority === "Urgent");
     if (urgentTasks.length === 0) return null;
     urgentTasks.sort((a, b) => {
         const dateA = new Date(a.dueDate.split("/").reverse().join("-"));
@@ -155,11 +138,11 @@ function convertDateFormat(inputDate) {
  */
 function loadNumbers() {
     let todo = tasks.filter(t => t['status'] == 'toDo').length;
-    let inProgress = tasks.filter(t => t['status'] == 'in-progress').length;
-    let awaitingFeedback = tasks.filter(t => t['status'] == 'awaiting-feedback').length;
+    let inProgress = tasks.filter(t => t['status'] == 'inProgress').length;
+    let awaitingFeedback = tasks.filter(t => t['status'] == 'awaitingFeedback').length;
     let done = tasks.filter(t => t['status'] == 'done').length;
     let allTasks = tasks.length
-    let urgent = tasks.filter(t => t['priority'] == './img/prioUrgent.svg').length;
+    let urgent = tasks.filter(t => t['priority'] == 'Urgent').length;
     displayNumbers(todo, inProgress, awaitingFeedback, done, allTasks, urgent)
 }
 

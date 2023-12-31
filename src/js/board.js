@@ -1,68 +1,87 @@
+let dragElement;
+
 async function initBoard() {
     await currentUserContactsLoad();
     await currentUserCategorysLoad();
+    await currentUserIdLoad();
     await loadAllTasks();
-    renderToDoTasks();
+    renderPrioSection();
+    renderCategoryPopUp();
+    renderAllTasks();
+}
+
+function renderAllTasks(filterText) {
+    renderToDoTasks(filterText);
+    renderInProgressTasks(filterText);
+    renderAwaitFeedbackTasks(filterText);
+    renderDoneTasks(filterText);
+    removeDragClass();
 }
 
 function renderToDoTasks(filterText) {
     let box = document.getElementById('boardToDo');
     let array = tasks.filter(task => task.status === 'toDo');
-    let emptyBox = document.getElementById('emptyToDo');
+    let emptyText = 'No tasks To do';
     box.innerHTML = '';
-    if (array) {
-        emptyBox.classList.add('d-none');
-        boardSearch(filterText, array, box);
-    } else {
-        emptyBox.classList.remove('d-none');
-    }
+    isTaskInArray(filterText, array, box, emptyText)
 }
 
 function renderInProgressTasks(filterText) {
     let box = document.getElementById('boardInProgress');
-    let array = tasks.filter(task => task.status['inProgress']);
+    let array = tasks.filter(task => task.status === 'inProgress');
+    let emptyText = 'No tasks In Progress';
     box.innerHTML = '';
-    if (array) {
-        boardSearch(filterText, array, box);
-    } else {
-        document.getElementById('emptyToDo').classList.remove('d-none');
-    }
+    isTaskInArray(filterText, array, box, emptyText)
 }
 
 function renderAwaitFeedbackTasks(filterText) {
     let box = document.getElementById('boardAwaitFeedback');
-    let array = tasks.filter(task => task.status['awaitFeedback']);
+    let array = tasks.filter(task => task.status === 'awaitFeedback');
+    let emptyText = 'No tasks Await feedback';
     box.innerHTML = '';
-    if (array) {
-
-    } else {
-
-    }
+    isTaskInArray(filterText, array, box, emptyText)
 }
 
 function renderDoneTasks(filterText) {
     let box = document.getElementById('boardDone');
-    let array = tasks.filter(task => task.status['done']);
+    let array = tasks.filter(task => task.status === 'done');
+    emptyText = 'No tasks Done';
     box.innerHTML = '';
-    if (array) {
+    isTaskInArray(filterText, array, box, emptyText)
+}
 
+function isTaskInArray(filterText, array, box, emptyText) {
+    if (array.length > 0) {
+        boardSearch(filterText, array, box, emptyText);
     } else {
-
+        box.innerHTML = returnEmptyBox(emptyText);
     }
 }
 
-
-function boardSearch(filterText, array, box) {
-    let taskArray;
-    if (filterText) {
-        taskArray = array.filter(a => a.title[filterText]);
+function boardSearch(filterText, array, box, emptyText) {
+    let taskArray = fillTaskArray(filterText, array);
+    if (taskArray.length > 0) {
+        for (let t = 0; t < taskArray.length; t++) {
+            const task = taskArray[t];
+            box.innerHTML += returnArrayHtml(task);
+        }
     } else {
-        taskArray = array;
+        box.innerHTML = returnEmptyBox(emptyText);
     }
-    for (let t = 0; t < taskArray.length; t++) {
-        const task = taskArray[t];
-        box.innerHTML += returnArrayHtml(task);
+}
+
+function fillTaskArray(filterText, array) {
+    let filteredTasks;
+
+    if (filterText) {
+        filteredTasks = array.filter(function (search) {
+            return search.category.toLowerCase().includes(filterText.toLowerCase()) || search.description.toLowerCase().includes(filterText.toLowerCase()) || search.title.toLowerCase().includes(filterText.toLowerCase());
+        });
+    } else {
+        filteredTasks = array;
     }
+
+    return filteredTasks;
 }
 
 function returnArrayHtml(task) {
@@ -75,7 +94,7 @@ function returnArrayHtml(task) {
     `;
     }
     return /*html*/`
-    <div class="taskContainer">
+    <div id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
         <span style="${task.categoryColor}" class="taskCategorySpan">${task.category}</span>
         <div class="titelDescriptionBox">
             <span class="titelSpan">${task.title}</span>
@@ -91,8 +110,57 @@ function returnArrayHtml(task) {
             <div class="taskUserCircles">
                 ${contactHtml}
             </div>
-            <img class="prioIcon" src="src/img/prioMedium.svg" alt="prio-icon">
+            <img class="prioIcon" src="src/img/prio${task.priority}.svg" alt="prio-icon">
         </div>
     </div>    
     `;
+}
+
+function returnEmptyBox(text) {
+    return /*html*/`
+    <div class="empty-label">${text}</div>
+    `;
+}
+
+function startDragAnimation(id) {
+    let task = document.getElementById(`taskNote${id}`)
+    dragElement = id;
+    task.classList.add('rotating');
+}
+
+function removeDragClass() {
+    let ids = ['boardToDo', 'boardInProgress', 'boardAwaitFeedback', 'boardDone'];
+    ids.forEach(function (id) {
+        let box = document.getElementById(id);
+        box.classList.remove('taskSectionDrag');
+    });
+}
+/**
+ * It prevents the default behavior of the browser (which blocks dragging by default)
+ * 
+ * @param {DragEvent} ev - The drag event object
+ */
+function allowDrop(ev, id) {
+    let box = document.getElementById(id);
+    box.classList.add('taskSectionDrag');
+    ev.preventDefault();
+}
+
+async function moveTo(group) {
+    let index = tasks.findIndex(object => object.id === dragElement);
+    tasks[index].status = group;
+    await currentUserTaskSave();
+    renderAllTasks();
+}
+
+function showAddTaskPopup(status) {
+    let box = document.getElementById('addTaskPopUp');
+    box.classList.remove('d-none');
+    statusGroup = status;
+}
+
+function closeAddTaskPopup() {
+    let box = document.getElementById('addTaskPopUp');
+    box.classList.add('d-none');
+    statusGroup = '';
 }

@@ -274,6 +274,7 @@
         width: calc(100% - 180px - 0px);
         height: calc(100% - 96px);
         background: #FFF;
+        overflow-y: auto;
     }
 
     .contacts-list-container {
@@ -327,12 +328,15 @@
     .content-contacts {
         left: 0px;
         top: 80px;
+        bottom: 80px;
         width: calc(100% - 0px);
-        height: calc(100% - 80px);
+        height: calc(100% - 160px);
     }
 
     .contacts-list-container {
-        padding: 32px 8px;
+        padding: 16px 8px;
+        height: calc(100% - 32px);
+        width: calc(100% - 16px);
     }
 
     .add-contact-smallButton {
