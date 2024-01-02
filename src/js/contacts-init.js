@@ -4,6 +4,8 @@ async function clearContactsArray() {
 }
 
 async function contactsInit() {
+    loadActivUser();
+    userCircleLoad();
     await currentUserContactsLoad();
     renderContacts();
     renderContactInfoEmpty();
@@ -132,7 +134,7 @@ function renderContactInfoPopUp(id) {
     let listBox = document.getElementById('contactsListContainer');
     let container = document.getElementById('contactInfoContainerRight');
     listBox.classList.add('d-none');
-    container.style = 'display: flex';
+    container.classList.add('d-flex');
 }
 
 function closeContactInfoSmall() {
@@ -140,9 +142,7 @@ function closeContactInfoSmall() {
     let listBox = document.getElementById('contactsListContainer');
     let container = document.getElementById('contactInfoContainerRight');
     listBox.classList.remove('d-none');
-    if (!window.innerWidth > 1020) {
-        container.style = 'display: none';
-    }
+    container.classList.remove('d-flex');
 }
 
 function returnDeleteWindow(array, index) {

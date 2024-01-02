@@ -1,6 +1,8 @@
 let dragElement;
 
 async function initBoard() {
+    loadActivUser();
+    userCircleLoad();
     await currentUserContactsLoad();
     await currentUserCategorysLoad();
     await currentUserIdLoad();
@@ -94,7 +96,7 @@ function returnArrayHtml(task) {
     `;
     }
     return /*html*/`
-    <div id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
+    <div onclick='renderCurrentTaskPopUp(${task.id})' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
         <span style="${task.categoryColor}" class="taskCategorySpan">${task.category}</span>
         <div class="titelDescriptionBox">
             <span class="titelSpan">${task.title}</span>
@@ -102,7 +104,7 @@ function returnArrayHtml(task) {
         </div>
         <div class="progressSection">
             <div class="progress-container">
-                <div class="progress-bar" style="width: ${100 / (task.subtasksInProgress.length / task.subtasksFinish.length)};"></div>
+                <div class="progress-bar" style="width: ${100 / (task.subtasksInProgress.length / task.subtasksFinish.length)}%;"></div>
             </div>
             <span class="progressSpan">${task.subtasksFinish.length}/${task.subtasksInProgress.length} Subtasks</span>
         </div>
@@ -164,3 +166,103 @@ function closeAddTaskPopup() {
     box.classList.add('d-none');
     statusGroup = '';
 }
+
+function renderCurrentTaskPopUp(id) {
+    let container = document.getElementById('currentTaskPopUp');
+    let index = tasks.findIndex(object => object.id === id);
+    let array = tasks[index];
+    container.classList.remove('d-none');
+    container.innerHTML = returnCurrentTaskPopUp(array);
+    renderContactRowPopUp(array);
+    renderSubtaskRowPopUp(array, index);
+}
+
+function returnCurrentTaskPopUp(array) {
+    return /*html*/`
+            <div class="currentTaskPopUpPosition">
+
+                <div style="display: flex; width: 100%; align-items: center; justify-content: space-between">
+                    <span style="${array.categoryColor}" class="currentTaskCategorySpan">${array.category}</span>
+                    <img class="currentTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
+                </div>
+                <span class="currentTaskTitelSpan">${array.title}</span>
+                <span class="currentTaskDescriptionSpan">${array.description}</span>
+                <div
+                    style="display: flex; align-items: center; justify-content: flex-start; gap: 24px; align-self: stretch;">
+                    <span class="currentTaskSpan">Due date:</span>
+                    <span class="currentTaskDescriptionSpan">${array.dueDate}</span>
+                </div>
+                <div
+                    style="display: flex; align-items: center; justify-content: flex-start; gap: 24px; align-self: stretch;">
+                    <span style="align-self: stretch;" class="currentTaskSpan">Priority:</span>
+                    <span style="padding: 0px 18px; gap: 10px;" class="currentTaskDescriptionSpan">${array.priority}<img
+                            src="src/img/prio${array.priority}.svg" alt=""></span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; gap: 8px;">
+                    <span style="align-self: stretch;" class="currentTaskSpan">Assigned To:</span>
+                    <div id='contactRowPopUp' style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; max-height: 250px; overflow-y: auto;">
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; gap: 8px;">
+                    <span style="align-self: stretch;" class="currentTaskSpan">Subtasks</span>
+                    <div id='subtaskRowPopUp' style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; max-height: 250px; overflow-y: auto;">
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; width: 100%; gap: 8px;">
+                    <div class="currentTaskButton"><img style="width: 24px; height: 24px;"
+                            src="src/img/subTaskDelete.svg" alt="">Delete</div>
+                    <div style="width: 1px; background: #d1d1d1; height: 24px;"></div>
+                    <div class="currentTaskButton"><img style="width: 24px; height: 24px;"
+                            src="src/img/PenAddTask 1=edit.svg" alt="">Edit</div>
+                </div>
+            </div>    
+            `;
+}
+
+function renderContactRowPopUp(array) {
+    let contactRow = document.getElementById('contactRowPopUp');
+    contactRow.innerHTML = '';
+    for (let i = 0; i < array.assignContacts.length; i++) {
+        const allContacts = array.assignContacts[i];
+        contactRow.innerHTML += /*html*/`
+        <div class="currentTaskContactRow">
+             <div style="${allContacts.color}" class="currentTaskContactCircle">${allContacts.nameAbbreviation}</div>
+            <span class="currentTaskContactName">${allContacts.name}</span>
+        </div>`;
+    }
+}
+
+async function moveASubtask(index, subtask) {
+    let array = tasks[index];
+    let subtaskFinishId = array.subtasksFinish;
+    if (subtaskFinishId.some(subTasks => subTasks === subtask)) {
+        let indexSub = subtaskFinishId.findIndex(subTasks => subTasks === subtask);
+        subtaskFinishId.splice(indexSub, 1);
+        await currentUserTaskSave();
+    } else {
+        subtaskFinishId.push(subtask);
+        await currentUserTaskSave();
+    }
+    renderSubtaskRowPopUp(array, index);
+}
+
+function renderSubtaskRowPopUp(array, index) {
+    let subtaskRow = document.getElementById('subtaskRowPopUp');
+    subtaskRow.innerHTML = '';
+    let progress = '';
+    for (let i = 0; i < array.subtasksInProgress.length; i++) {
+        let subtask = array.subtasksInProgress[i];
+        if (array.subtasksFinish.some(subTasks => subTasks === subtask)) {
+            progress = 'src/img/done.svg';
+        } else {
+            progress = 'src/img/addTaskBox.svg';
+        }
+        subtaskRow.innerHTML += /*html*/`
+        <div onclick="moveASubtask(${index}, '${subtask}')" id='subtaskRow${i}' class="currentTaskHover" style="display: flex; align-items: center; justify-content: center; gap: 16px; padding: 6px 16px;">
+            <img src="${progress}" alt="">
+            <span class="currentTaskSubtaskSpan">${subtask}</span>
+        </div> `;
+    }
+}
+
+

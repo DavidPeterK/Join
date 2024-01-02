@@ -138,34 +138,37 @@ function fillTestArray() {
             "color": "#8B0000"
         }];
 
+
+
     tasks = [{
-        "id": 3,
-        "status": "toDo",
+        "id": 6,
+        "status": "done",
         "category": "Technical Task",
         "categoryColor": "background: #1FD7C1",
-        "title": "first guest task",
-        "description": "text for task",
-        "dueDate": "22/10/2023",
-        "priority": "./img/prioUrgent.svg",
-        "contactName": [
-            "Bernhard Sigl",
-            "David Peterka",
-            "Lina Wionsek"
-        ],
-        "contactColor": [
-            "#006400",
-            "#00008B",
-            "#8B0000"
-        ],
-        "contactAbbreviation": [
-            "BS",
-            "DP",
-            "LW"
+        "title": "jgjgjhgjhgjgjgjhgjgh",
+        "description": "jhgjgjgjgjgj",
+        "dueDate": "30/12/2023",
+        "priority": "Urgent",
+        "assignContacts": [
+            {
+                "name": "Mara Collins",
+                "nameAbbreviation": "MC",
+                "email": "hdsfvdsjfjf@web.de",
+                "phone": "452532",
+                "color": "background: #008000",
+                "id": 3
+            },
+            {
+                "name": "Marcus Morr",
+                "nameAbbreviation": "MM",
+                "email": "hjfjfstars@web.de",
+                "phone": "6546465464",
+                "color": "background: #FF1493",
+                "id": 2
+            }
         ],
         "subtasksInProgress": [
-            "first subtask",
-            "second subtask",
-            "third subtask"
+            "eins"
         ],
         "subtasksFinish": []
     },

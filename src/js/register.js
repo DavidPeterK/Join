@@ -1,15 +1,19 @@
 let registerBtn;
 let confirmPassword;
+let userName;
 
 function initRegisterContainer() {
+    email = document.getElementById('email');
+    password = document.getElementById('password');
     registerBtn = document.getElementById('signUpButton');
     confirmPassword = document.getElementById('confirmPassword');
     checkbox = document.getElementById("checkPrivacyPolicy");
+    userName = document.getElementById("userName");
 }
 
 function renderSignUp() {
-    initRegisterContainer();
     contentBox.innerHTML = signUpHtml();
+    initRegisterContainer();
     signUpButtonTop.innerHTML = '';
     signUpButtonBottom.innerHTML = '';
 }
@@ -18,9 +22,15 @@ function renderSignUp() {
  * Validates user inputs, checks for email duplicates, and proceeds with the registration process.
  */
 async function registUser() {
-    if (!arePasswordsMatching()) return handlePasswordMismatch();
-    if (user.some(u => u.email === email.value)) return handleEmailExists();
-    if (checkbox.checked) await handleRegistration();
+    if (!arePasswordsMatching()) {
+        handlePasswordMismatch();
+    }
+    else if (user.some(u => u.email === email.value)) {
+        handleEmailExists();
+    }
+    else if (checkbox.checked) {
+        await handleRegistration();
+    }
 }
 
 /**
@@ -82,7 +92,6 @@ function loadWarningTextTamplate() {
  * Registers a new user, saves the user's data, and redirects to the homepage after successful registration.
  */
 async function handleRegistration() {
-    registerBtn.disabled = true;
     user.push({
         name: userName.value,
         email: email.value,
@@ -102,5 +111,4 @@ function resetForm() {
     email.value = '';
     password.value = '';
     confirmPassword.value = '';
-    registerBtn.disabled = false;
 }

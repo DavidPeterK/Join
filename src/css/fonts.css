@@ -144,6 +144,69 @@ li {
     line-height: 120%;
 }
 
+
+
+
+.currentTaskCategorySpan {
+    color: #FFF;
+    font-family: Open Sans;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.currentTaskTitelSpan {
+    color: var(--black, #000);
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 120%;
+    align-self: stretch;
+}
+
+.currentTaskDescriptionSpan {
+    display: flex;
+    color: var(--black, #000);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    align-self: stretch;
+    align-items: center;
+}
+
+.currentTaskSpan {
+    color: var(--Version-2-main-color, #2A3647);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.currentTaskContactCircle {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.currentTaskContactName {
+    color: #000;
+    font-family: Open Sans;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.currentTaskSubtaskSpan {
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 120%;
+}
+
 .titelSpan {
     color: var(--version-2-main-color, #2A3647);
     font-size: 16px;

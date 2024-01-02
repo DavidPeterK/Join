@@ -8,128 +8,14 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/fonts.css">
     <link rel="stylesheet" href="src/css/addTask.css">
+    <link rel="stylesheet" href="src/css/board.css">
     <script src="src/js/addTask-categorys.js"></script>
     <script src="src/js/saveAndLoad.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <div id="addTaskPopUp" class="pop-background d-none">
-        <div class="addTaskPopUpPosition">
-            <img class="addTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
-            <div class="head-section">
-                <h2>Add Task</h2>
-            </div>
-
-            <div class="addTaskContent">
-                <div class="boxLeft">
-                    <span class="addTaskSpan">Title<span class="star-red">*</span></span>
-                    <div id="addTaskTitleBox" class="addTask-input-container">
-                        <input id="addTaskTitleInput" type="text" placeholder="Enter a title" maxlength="20"
-                            minlength="4">
-                    </div>
-                    <span id="warnTitle" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
-                        This field is required.
-                    </span>
-
-
-                    <div class="gapContainer"></div>
-
-                    <span class="addTaskSpan">Description</span>
-                    <textarea id="addTaskDescriptionInput" placeholder="Enter a Description" cols="30"
-                        rows="10"></textarea>
-                    <span id="warnDescription" style="text-align: center; margin-top: 10px;"
-                        class="warningByInput d-none">
-                        This field is required.
-                    </span>
-
-                    <div class="gapContainer"></div>
-
-                    <span class="addTaskSpan">Assigned to</span>
-                    <div onclick="openContactsContainer(), doNotClose(event)" id="addTaskContactsInputBox"
-                        class="addTask-input-container" style="z-index: 0;">
-                        <input id="addTaskContactsInput" readonly type="text" value="Select contacts to assign">
-                        <img onclick="openContactsContainer(), doNotClose(event)" id="contactsInputArrow"
-                            class="greyHoverIcon addTask-input-icon" src="src/img/arrow_drop_downaa.svg"
-                            alt="arrow-down-icon">
-                    </div>
-                    <div id="selectedContactsContainer" class="selected-contacts-container">
-                    </div>
-                    <div onclick="doNotClose(event)" id="contactsCollectionContainer" class="contacts-container d-none">
-                        <div style="width: 100%;" id="contactsContent">
-                        </div>
-                        <button onclick="showContactsPopUp()" class="addContacts-button">Add new contact</button>
-                    </div>
-                </div>
-
-                <div class="gapContainer1200"></div>
-
-                <div class="boxRight">
-                    <span class="addTaskSpan">Due date<span class="star-red">*</span></span>
-                    <div id="addTaskDueDateBox" class="addTask-input-container">
-                        <input placeholder="dd/mm/yyyy" type="text" id="datepicker">
-                        <img src="src/img/kalenderJoin.svg" alt="date-icon">
-                    </div>
-                    <span id="warnDueDate" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
-                        This field is required.
-                    </span>
-
-                    <div class="gapContainer"></div>
-
-                    <span class="addTaskSpan">Prio</span>
-                    <div id="prioSection" class="prioContainer">
-                    </div>
-
-                    <div class="gapContainer"></div>
-
-                    <span class="addTaskSpan">Category<span class="star-red">*</span></span>
-                    <div onclick="showCategoryContainer(), doNotClose(event)" style="z-index: 1;"
-                        class="addTask-input-container">
-                        <input id="categoryInput" readonly type="text" value="Select task category">
-                        <img onclick="hideCategoryContainer()" class="addTask-input-icon greyHoverIcon"
-                            src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
-                    </div>
-                    <div onclick="doNotClose(event)" id="categoryContainer" style="z-index: 0;"
-                        class="category-container d-none">
-                        <div id="categoryContent">
-                        </div>
-                        <button onclick="showCategoryPopUp()" class="addCategory-button">Add new category</button>
-                    </div>
-
-                    <div class="gapContainer"></div>
-
-                    <span class="addTaskSpan">Subtasks</span>
-                    <div class="addTask-input-container">
-                        <input id="subtaskInput" type="text" placeholder="Add new subtask">
-                        <img class="greyHoverIcon" onclick="addSubTask()" src="src/img/plusAddTask.svg" alt="plus-icon">
-                    </div>
-                    <div onclick="doNotClose(event)" id="subtasksContainer">
-                    </div>
-                    <div id="subtaskEditContainer" onclick="doNotClose(event)" class="d-none">
-                        <input id="editSubtaskInput" max="20" type="text" placeholder="">
-                        <div style="display: flex; gap: 5px;">
-                            <img class="greyHoverIcon" onclick="hideEditContainer()" src="src/img/close.svg">
-                            <div class="seperator"></div>
-                            <img class="greyHoverIcon" style="padding-left: 3px; padding-right: 3px;"
-                                onclick="editSubtask()" src="src/img/SubtasksCheck.svg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="addTask-buttonArea-popup">
-                <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
-                <div class="addTask-button-container">
-                    <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
-                        onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear
-                        <img id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
-                            alt="cross-icon">
-                    </div>
-                    <div onclick="loadTaskControl('toDo')" class="createTask-button button-hover">Create Task <img
-                            src="src/img/check.svg" alt="check-icon">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id="currentTaskPopUp" class="pop-background d-none">
     </div>
 </body>
 

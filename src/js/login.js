@@ -6,16 +6,16 @@ let signUpButtonBottom;
 let logo;
 
 async function initIndex() {
+    await loadUserGroup();
     initContainer();
     activUser = { 'name': '', };
     saveActivUser();
     logoStatus();
-    await loadUserGroup();
 }
 
 function initContainer() {
-    contentBox = document.getElementById('indexContainer');
     email = document.getElementById('email');
+    contentBox = document.getElementById('indexContainer');
     password = document.getElementById('password');
     checkbox = document.getElementById('rememberMe');
     logo = document.getElementById('logo');
@@ -33,17 +33,20 @@ function logoStatus() {
 }
 
 function renderSignIn() {
-    let rememberedEmail = localStorage.getItem('rememberMe');
+    initContainer();
     checkbox = document.getElementById('rememberMe');
-    isRememberedEmail(rememberedEmail);
     contentBox.classList.remove('d-none');
     contentBox.innerHTML = signInHtml();
+    isRememberedEmail();
     signUpButtonTop.innerHTML = signUpSection();
     signUpButtonBottom.innerHTML = signUpSection();
     document.getElementById('footer').classList.remove('d-none');
 }
 
-function isRememberedEmail(rememberedEmail) {
+function isRememberedEmail() {
+    let email = document.getElementById('email');
+    let rememberedEmail = localStorage.getItem('rememberMe');
+    let checkbox = document.getElementById('rememberMe');
     if (rememberedEmail) {
         email.value = rememberedEmail;
         checkbox.checked = true;
@@ -70,6 +73,8 @@ function updateContent(newContent) {
  * Validates user credentials and logs them in if valid.
  */
 function login() {
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
     let users = user.find(u => u.email === email.value && u.password === password.value);
     let thisUser = user.findIndex(u => u.email === email.value);
     if (users) {
@@ -84,6 +89,8 @@ function login() {
 }
 
 function isCheckBoxChecked() {
+    let checkbox = document.getElementById('rememberMe');
+    let email = document.getElementById('email');
     if (checkbox.checked) {
         localStorage.setItem('rememberMe', email.value);
     } else {

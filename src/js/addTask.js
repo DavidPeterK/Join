@@ -4,6 +4,8 @@ let selectedPrio = '';
 let currentSubtask = '';
 
 async function addTaskInit() {
+    loadActivUser();
+    userCircleLoad();
     await currentUserContactsLoad();
     await currentUserCategorysLoad();
     await currentUserIdLoad();

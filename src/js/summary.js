@@ -6,8 +6,9 @@ function markNavButton() {
  * Asynchronously initializes the summary section.
  */
 async function initSummary() {
-    await loadAllTasks();
     loadActivUser();
+    userCircleLoad();
+    await loadAllTasks();
     loadDetails();
 }
 

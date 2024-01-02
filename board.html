@@ -37,7 +37,7 @@
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
         <div class="header-elements">
             <img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker">
-            <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle">AB</div>
+            <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle"></div>
         </div>
     </div>
 
@@ -185,7 +185,7 @@
                     <div id="selectedContactsContainer" class="selected-contacts-container">
                     </div>
                     <div onclick="doNotClose(event)" id="contactsCollectionContainer" class="contacts-container d-none">
-                        <div style="width: 100%;" id="contactsContent">
+                        <div id="contactsContent">
                         </div>
                         <button onclick="showContactsPopUp()" class="addContacts-button">Add new contact</button>
                     </div>
@@ -251,6 +251,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="currentTaskPopUp" class="pop-background d-none">
     </div>
 
     <div id="contactsPopUp" class="pop-background d-none">

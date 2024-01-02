@@ -55,6 +55,18 @@ let editTask = '';
 /** Represents the status group for tasks. */
 let statusGroup = '';
 
+/**
+ * Displays the user's initials within the specified HTML container.
+ * Extracts the initials from the active user's name and populates them inside the designated container.
+ */
+function userCircleLoad() {
+    let container = document.getElementById('headerUserCircle');
+    let nameParts = activUser.name.split(' ');
+    let firstName = nameParts[0];
+    let lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+    let nameAbbreviation = `<b>${firstName.charAt(0).toUpperCase()}${lastName.charAt(0).toUpperCase()}</b>`;
+    container.innerHTML = nameAbbreviation;
+}
 
 //------------tasks----------------------//
 function isGuestLogIn() {
@@ -237,7 +249,7 @@ async function loadUserGroup() {
     try {
         user = JSON.parse(await getItem('userGroup'));
     } catch (e) {
-        console.error('Loading error:', e);
+        console.info('empty user array:', e);
     }
 }
 
