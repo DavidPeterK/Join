@@ -26,6 +26,8 @@
     z-index: 1;
     background: var(--white, #FFF);
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .contacts-info-container {
@@ -70,13 +72,26 @@
 }
 
 .contact-row {
+    color: #000;
     gap: 35px;
     padding: 15px 24px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     align-self: stretch;
+}
 
+.contact-row-activ {
+    color: #fff !important;
+    border-radius: 10px;
+    background: var(--Version-2-main-color, #2A3647);
+}
+
+.contact-row:hover {
+    color: #000 !important;
+    cursor: pointer;
+    border-radius: 10px;
+    background: var(--Boton-gradient, linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%));
 }
 
 .contact-circle {

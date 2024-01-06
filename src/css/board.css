@@ -60,6 +60,7 @@
     background: #FFF;
 }
 
+.input-container2:focus-within,
 .input-container:focus-within {
     border: 1px solid #29ABE2;
 }
@@ -272,6 +273,24 @@
     align-self: stretch;
 }
 
+.group-plus-icon {
+    display: flex;
+    width: 14px;
+    height: 14px;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: 2px solid var(--Version-2-main-color, #2A3647);
+    border-radius: 8px;
+}
+
+.group-plus-icon:hover {
+    border: 2px solid var(--Ligth-blue, #29ABE2);
+    cursor: pointer;
+}
+
 .descriptionSpan:hover {
     overflow-y: auto !important;
 }
@@ -363,6 +382,10 @@
         height: 32px;
         margin-top: 32px;
         margin-bottom: 32px;
+    }
+
+    .smallAddButton:hover {
+        cursor: pointer;
     }
 
     .input-container2 {

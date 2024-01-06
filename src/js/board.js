@@ -177,13 +177,19 @@ function renderCurrentTaskPopUp(id) {
     renderSubtaskRowPopUp(array, index);
 }
 
+function closeCurrentTaskPopUp() {
+    let container = document.getElementById('currentTaskPopUp');
+    container.classList.add('d-none');
+    container.innerHTML = '';
+}
+
 function returnCurrentTaskPopUp(array) {
     return /*html*/`
             <div class="currentTaskPopUpPosition">
 
                 <div style="display: flex; width: 100%; align-items: center; justify-content: space-between">
                     <span style="${array.categoryColor}" class="currentTaskCategorySpan">${array.category}</span>
-                    <img class="currentTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
+                    <img onclick='closeCurrentTaskPopUp()' class="currentTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
                 </div>
                 <span class="currentTaskTitelSpan">${array.title}</span>
                 <span class="currentTaskDescriptionSpan">${array.description}</span>

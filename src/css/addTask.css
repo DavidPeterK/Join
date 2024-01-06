@@ -180,12 +180,13 @@ textarea {
     background: #fff;
     width: calc(100% - 18px);
     height: auto;
-    max-height: 300px;
+    max-height: 250px;
     padding: 20px 8px;
     margin-top: -10px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border: 1px solid #d1d1d196;
+    overflow-y: auto;
 }
 
 #contactsContent,

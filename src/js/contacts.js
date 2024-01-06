@@ -85,15 +85,6 @@ function returnPopUpContactEdit() {
     `;
 }
 
-/** * This function is to save the input in the contact array */
-async function createContact() {
-    let newContact = contactTemplate();
-    contactsArray.push(newContact);
-    contactId++;
-    await currentUserContactsSave();
-    changesSaved('Contact successfully created');
-}
-
 function cancelContactPopUp() {
     closeContactsPopUp();
     clearContactInput();
@@ -122,10 +113,11 @@ function validateForm(mode, index) {
             editContact(index);
             closeContactsPopUp();
             clearContactInput();
+        } else {
+            createContact();
+            closeContactsPopUp();
+            clearContactInput();
         }
-        createContact();
-        closeContactsPopUp();
-        clearContactInput();
     } else {
         return false;
     }

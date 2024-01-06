@@ -145,8 +145,6 @@ li {
 }
 
 
-
-
 .currentTaskCategorySpan {
     color: #FFF;
     font-family: Open Sans;
@@ -162,16 +160,16 @@ li {
     font-weight: 700;
     line-height: 120%;
     align-self: stretch;
+    word-wrap: break-word;
 }
 
 .currentTaskDescriptionSpan {
-    display: flex;
     color: var(--black, #000);
     font-size: 20px;
     font-weight: 400;
     line-height: 120%;
     align-self: stretch;
-    align-items: center;
+    word-wrap: break-word;
 }
 
 .currentTaskSpan {
@@ -296,7 +294,6 @@ li {
 }
 
 .contact-name-list {
-    color: #000;
     font-size: 20px;
     font-weight: 400;
     line-height: 120%;

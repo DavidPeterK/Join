@@ -76,11 +76,18 @@ function returnEmptyInfoContainer() {
 function renderContactInfo(id) {
     let index = contactsArray.findIndex(object => object.id === id);
     let array = contactsArray[index];
+    renderContacts();
+    activateContact(id);
     if (window.innerWidth > 1020) {
         renderContactInfoBig(array);
     } else {
         renderContactInfoPopUp(array);
     }
+}
+
+function activateContact(id) {
+    let contactRow = document.getElementById(`contactId${id}`);
+    contactRow.classList.add('contact-row-activ');
 }
 
 function renderContactInfoBig(id) {
@@ -102,14 +109,23 @@ function initContactPopUp(array) {
     document.getElementById('contactPhone').value = array.phone;
 }
 
+/** * This function is to save the input in the contact array */
+async function createContact() {
+    let newContact = contactTemplate();
+    contactsArray.push(newContact);
+    contactId++;
+    await currentUserContactsSave();
+    changesSaved('Contact successfully created');
+    renderContactInfo(contactId - 1);
+}
+
 async function editContact(index) {
     let newContact = contactTemplate();
     contactsArray[index] = newContact;
     contactId++;
     await currentUserContactsSave();
-    clearContactInput();
-    closeContactInfoSmall();
-    changesSaved('Contact successfully created');
+    changesSaved('Contact successfully edited');
+    renderContactInfo(contactId - 1);
 }
 
 function deleteContactWindow(id) {
