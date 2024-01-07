@@ -205,6 +205,7 @@ function closeCurrentTaskPopUp() {
     let container = document.getElementById('currentTaskPopUp');
     container.classList.add('d-none');
     container.innerHTML = '';
+    renderAllTasks();
 }
 
 function returnCurrentTaskPopUp(array) {
