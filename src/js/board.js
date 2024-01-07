@@ -1,6 +1,7 @@
 let dragElement;
 
 async function initBoard() {
+    highLightNavBar('src/img/boardActiv.svg', 'boardNavIcon', 'boardNavButton');
     loadActivUser();
     userCircleLoad();
     await currentUserContactsLoad();
@@ -96,7 +97,7 @@ function returnArrayHtml(task) {
     `;
     }
     return /*html*/`
-    <div onclick='renderCurrentTaskPopUp(${task.id})' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
+    <div onclick='renderCurrentTaskPopUp(${task.id}), doNotClose(event)' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
         <span style="${task.categoryColor}" class="taskCategorySpan">${task.category}</span>
         <div class="titelDescriptionBox">
             <span class="titelSpan">${task.title}</span>
@@ -155,10 +156,33 @@ async function moveTo(group) {
     renderAllTasks();
 }
 
-function showAddTaskPopup(status) {
+async function showAddTaskPopup(status) {
+    clearAddTask();
     let box = document.getElementById('addTaskPopUp');
+    let headline = document.getElementById('addTaskHeadline');
+    let buttonArea = document.getElementById('addTaskButtonArea');
     box.classList.remove('d-none');
+    headline.innerText = 'Add Task';
+    buttonArea.innerHTML = returnButtonAreaAddTask();
+    await currentUserIdLoad();
+    renderAllSelectedContacts();
+    controlPrioButton();
+    renderSubTasks();
     statusGroup = status;
+}
+
+function showAddTaskPopupEdit(id) {
+    let box = document.getElementById('addTaskPopUp');
+    let headline = document.getElementById('addTaskHeadline');
+    let buttonArea = document.getElementById('addTaskButtonArea');
+    closeCurrentTaskPopUp();
+    box.classList.remove('d-none');
+    headline.innerText = 'Edit Task';
+    buttonArea.innerHTML = returnButtonAreaEditTask(id);
+    loadTaskForEdit(id);
+    renderAllSelectedContacts();
+    controlPrioButton();
+    renderSubTasks();
 }
 
 function closeAddTaskPopup() {
@@ -185,9 +209,9 @@ function closeCurrentTaskPopUp() {
 
 function returnCurrentTaskPopUp(array) {
     return /*html*/`
-            <div class="currentTaskPopUpPosition">
+            <div onclick='doNotClose(event)' class="currentTaskPopUpPosition">
 
-                <div style="display: flex; width: 100%; align-items: center; justify-content: space-between">
+                <div style="display: flex; width: 100%; align-items: center; gap: 24px; justify-content: space-between">
                     <span style="${array.categoryColor}" class="currentTaskCategorySpan">${array.category}</span>
                     <img onclick='closeCurrentTaskPopUp()' class="currentTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
                 </div>
@@ -214,12 +238,19 @@ function returnCurrentTaskPopUp(array) {
                     <div id='subtaskRowPopUp' style="display: flex; flex-direction: column; align-items: flex-start; width: 100%; max-height: 250px; overflow-y: auto;">
                     </div>
                 </div>
+
                 <div style="display: flex; align-items: center; justify-content: flex-end; width: 100%; gap: 8px;">
-                    <div class="currentTaskButton"><img style="width: 24px; height: 24px;"
+
+                    <div onclick='deleteTaskWindow(${array.id})' class="currentTaskButton"><img style="width: 24px; height: 24px;"
                             src="src/img/subTaskDelete.svg" alt="">Delete</div>
+
+
                     <div style="width: 1px; background: #d1d1d1; height: 24px;"></div>
-                    <div class="currentTaskButton"><img style="width: 24px; height: 24px;"
+
+
+                    <div onclick='showAddTaskPopupEdit(${array.id}), doNotClose(event)' class="currentTaskButton"><img style="width: 24px; height: 24px;"
                             src="src/img/PenAddTask 1=edit.svg" alt="">Edit</div>
+
                 </div>
             </div>    
             `;
@@ -271,4 +302,70 @@ function renderSubtaskRowPopUp(array, index) {
     }
 }
 
+function returnButtonAreaAddTask() {
+    return /*html*/ `
+    <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
+    <div class="addTask-button-container">
+        <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
+            onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">
+            Clear
+            <img id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
+                alt="cross-icon">
+        </div>
+        <div onclick="loadTaskControl()" class="createTask-button button-hover">Create Task <img
+                src="src/img/check.svg" alt="check-icon">
+        </div>
+    </div>    
+    `;
+}
 
+function returnButtonAreaEditTask(id) {
+    return /*html*/ `
+    <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
+    <div class="addTask-button-container">
+        <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
+            onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">
+            Cancel
+            <img id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
+                alt="cross-icon">
+        </div>
+        <div onclick="loadTaskControl(${id})" class="createTask-button button-hover">Save<img
+                src="src/img/check.svg" alt="check-icon">
+        </div>
+    </div>    
+    `;
+}
+
+function deleteTaskWindow(id) {
+    let index = tasks.findIndex(object => object.id === id);
+    let array = tasks[index];
+    let container = document.getElementById('contactsDeletePopUp');
+    container.innerHTML = returnDeleteWindow(index);
+    container.classList.remove('d-none');
+}
+
+function returnDeleteWindow(index) {
+    return /*html*/`
+   <div class="deleteQuest">
+        <span style='text-align: center' class="category-span">Do you really want to delete this <span style="color: #29abe2;">task</span>?
+        </span>
+        <div style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 28px;">
+            <button onclick='closeDeleteWindow()' class="pop-button-cancel">No</button>
+            <button onclick='deleteTask(${index})' class="pop-button-create">Yes</button>
+        </div>
+    </div>
+    `;
+}
+
+function closeDeleteWindow() {
+    let container = document.getElementById('contactsDeletePopUp');
+    container.classList.add('d-none');
+}
+
+async function deleteTask(index) {
+    tasks.splice(index, 1);
+    await currentUserTaskSave();
+    closeDeleteWindow();
+    renderAllTasks();
+    closeCurrentTaskPopUp();
+}

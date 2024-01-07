@@ -68,7 +68,7 @@ function resetLowButton() {
     document.getElementById('lowButton').classList.remove('lowActiv');
     document.getElementById('lowImg').src = 'src/img/prioLow.svg';
 }
-//--------------for edit------------------------//
+
 function controlPrioButton() {
     if (selectedPrio === 'Urgent') {
         urgentButtonActiv();
@@ -79,8 +79,12 @@ function controlPrioButton() {
     if (selectedPrio === 'Low') {
         lowButtonActiv();
     }
+    if (selectedPrio === '') {
+        resetLowButton();
+        resetMediumButton();
+        resetUrgentButton();
+    }
 }
-//-------------------------------------------------------------//
 
 function returnPrioSection() {
     return /*html*/`

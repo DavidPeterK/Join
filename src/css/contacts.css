@@ -18,9 +18,7 @@
     flex-direction: column;
     display: flex;
     align-items: center;
-    flex: 1;
     max-width: 390px;
-    min-width: 300px;
     gap: 8px;
     padding: 32px 24px;
     z-index: 1;
@@ -56,8 +54,6 @@
     flex-direction: column;
     display: flex;
     align-items: center;
-    width: 100%;
-
 }
 
 .alphabet-letter {
@@ -176,6 +172,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,6 +301,14 @@
         box-shadow: unset;
     }
 
+    .alphabet-box {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+    }
+
     .contacts-info-container {
         display: none;
     }
@@ -312,6 +317,11 @@
         width: 100%;
         height: auto;
         background: #F6F7F8;
+    }
+
+    .add-contact-smallButton:hover {
+        cursor: pointer;
+        background: var(--Ligth-blue, #29ABE2);
     }
 
     .list-container-button {

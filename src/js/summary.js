@@ -6,6 +6,7 @@ function markNavButton() {
  * Asynchronously initializes the summary section.
  */
 async function initSummary() {
+    highLightNavBar('src/img/summaryActiv.svg', 'summaryNavIcon', 'summaryNavButton');
     loadActivUser();
     userCircleLoad();
     await loadAllTasks();

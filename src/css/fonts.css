@@ -122,6 +122,11 @@ li {
     gap: 8px;
 }
 
+.userOptionsSpan:hover {
+    cursor: pointer;
+    background: #2A3D59;
+}
+
 .task-group-span {
     color: var(--menu-color, #42526E);
     font-size: 20px;
@@ -297,6 +302,8 @@ li {
     font-size: 20px;
     font-weight: 400;
     line-height: 120%;
+    word-break: break-all;
+
 }
 
 .contact-email-list {
@@ -349,6 +356,11 @@ li {
     font-size: 16px;
     font-weight: 400;
     line-height: 120%;
+}
+
+.phone-number:hover,
+.email-adress:hover {
+    text-decoration: underline !important;
 }
 
 .phone-headline {

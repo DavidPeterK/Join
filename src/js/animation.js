@@ -96,3 +96,11 @@ function restoreImage(id, path) {
     document.getElementById(id).src = path;
 }
 //----------------------------------------------------------------------//
+
+function highLightNavBar(imgSrc, imgId, textId) {
+    let image = document.getElementById(imgId);
+    let text = document.getElementById(textId);
+    text.style = 'color: var(--white, #FFF); background: #091931;';
+    image.src = imgSrc;
+
+}

@@ -4,6 +4,7 @@ async function clearContactsArray() {
 }
 
 async function contactsInit() {
+    highLightNavBar('src/img/contactsActiv.svg', 'contactsNavIcon', 'contactsNavButton');
     loadActivUser();
     userCircleLoad();
     await currentUserContactsLoad();

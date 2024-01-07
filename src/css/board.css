@@ -82,6 +82,11 @@
     line-height: 120%;
 }
 
+.addTask-button:hover {
+    cursor: pointer;
+    background: #29ABE2;
+}
+
 .input-container2 {
     display: none;
 }

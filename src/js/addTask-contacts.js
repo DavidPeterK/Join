@@ -149,6 +149,7 @@ function selectContactRow(id) {
     }
     renderAllContacts();
 }
+
 /** * This function is to save the input in the contact array */
 async function createContact() {
     let newContact = contactTemplate();

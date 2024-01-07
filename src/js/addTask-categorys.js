@@ -155,7 +155,6 @@ function clearCreateWindow() {
     let input = document.getElementById('newCategoryName');
     input.value = '';
     selectedColorIndex = null;
-    saveTaskDetails();
 }
 
 function alertInvalidInput() {

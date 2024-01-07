@@ -15,15 +15,15 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 
     <script src="src/js/saveAndLoad.js"></script>
+    <script src="src/js/board.js"></script>
     <script src="src/js/templates.js"></script>
     <script src="src/js/animation.js"></script>
-    <script src="src/js/board.js"></script>
     <script src="src/js/addTask-prio.js"></script>
     <script src="src/js/addTask-categorys.js"></script>
     <script src="src/js/addTask-subtask.js"></script>
     <script src="src/js/addTask-contacts.js"></script>
-    <script src="src/js/contacts.js"></script>
     <script src="src/js/addTask.js"></script>
+    <script src="src/js/contacts.js"></script>
 
 
     <title>Join</title>
@@ -31,7 +31,7 @@
 </head>
 
 <body onload="initBoard()"
-    onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer(), closeContactsContainer()">
+    onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer(), closeContactsContainer(), closeAddTaskPopup(), closeCurrentTaskPopUp()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -77,8 +77,8 @@
         <div class="head-section">
             <div class="split-container">
                 <h2>Board</h2>
-                <img onclick="showAddTaskPopup('toDo')" class="smallAddButton" src="src/img/plusAddTaskWhite.svg"
-                    alt="plus-icon">
+                <img onclick="showAddTaskPopup('toDo'), doNotClose(event)" class="smallAddButton"
+                    src="src/img/plusAddTaskWhite.svg" alt="plus-icon">
             </div>
             <div class="center-container">
                 <div class="input-container">
@@ -86,7 +86,7 @@
                         id="boardSearchInput" type="text" placeholder="Find Task">
                     <img class="search-icon" src="src/img/search.svg" alt="search-icon">
                 </div>
-                <button onclick="showAddTaskPopup('toDo')" class="addTask-button">Add task <img
+                <button onclick="showAddTaskPopup('toDo'), doNotClose(event)" class="addTask-button">Add task <img
                         src="src/img/plusAddTaskWhite.svg" alt=""></button>
             </div>
             <div class="input-container2">
@@ -103,7 +103,8 @@
                     <span class="task-group-span">To do</span>
                     <img onmouseover="changeImage('plusToDo', 'src/img/plusBlue.svg')"
                         onmouseleave="restoreImage('plusToDo', 'src/img/PlusNormal.svg')" src="src/img/plusNormal.svg"
-                        id="plusToDo" onclick="showAddTaskPopup('toDo')" class="group-plus-icon" alt="group-plus-icon">
+                        id="plusToDo" onclick="showAddTaskPopup('toDo'), doNotClose(event)" class="group-plus-icon"
+                        alt="group-plus-icon">
                 </div>
 
                 <div id="boardToDo" ondragleave="removeDragClass()" ondrop="moveTo('toDo')"
@@ -116,8 +117,9 @@
                     <span class="task-group-span">In progress</span>
                     <img onmouseover="changeImage('plusInProgress', 'src/img/plusBlue.svg')"
                         onmouseleave="restoreImage('plusInProgress', 'src/img/PlusNormal.svg')"
-                        src="src/img/plusNormal.svg" id="plusInProgress" onclick="showAddTaskPopup('inProgress')"
-                        class="group-plus-icon" src="src/img/plusNormal.svg" alt="group-plus-icon">
+                        src="src/img/plusNormal.svg" id="plusInProgress"
+                        onclick="showAddTaskPopup('inProgress'), doNotClose(event)" class="group-plus-icon"
+                        src="src/img/plusNormal.svg" alt="group-plus-icon">
                 </div>
 
                 <div id="boardInProgress" ondragleave="removeDragClass()" ondrop="moveTo('inProgress')"
@@ -130,8 +132,9 @@
                     <span class="task-group-span">Await feedback</span>
                     <img onmouseover="changeImage('plusAwaitFeedback', 'src/img/plusBlue.svg')"
                         onmouseleave="restoreImage('plusAwaitFeedback', 'src/img/PlusNormal.svg')"
-                        src="src/img/plusNormal.svg" id="plusAwaitFeedback" onclick="showAddTaskPopup('awaitFeedback')"
-                        class="group-plus-icon" src="src/img/plusNormal.svg" alt="group-plus-icon">
+                        src="src/img/plusNormal.svg" id="plusAwaitFeedback"
+                        onclick="showAddTaskPopup('awaitFeedback'), doNotClose(event)" class="group-plus-icon"
+                        src="src/img/plusNormal.svg" alt="group-plus-icon">
                 </div>
 
                 <div id="boardAwaitFeedback" ondragleave="removeDragClass()" ondrop="moveTo('awaitFeedback')"
@@ -144,7 +147,7 @@
                     <span class="task-group-span">Done</span>
                     <img onmouseover="changeImage('plusDone', 'src/img/plusBlue.svg')"
                         onmouseleave="restoreImage('plusDone', 'src/img/PlusNormal.svg')" src="src/img/plusNormal.svg"
-                        id="plusDone" onclick="showAddTaskPopup('done')" class="group-plus-icon"
+                        id="plusDone" onclick="showAddTaskPopup('done'), doNotClose(event)" class="group-plus-icon"
                         src="src/img/plusNormal.svg" alt="group-plus-icon">
                 </div>
 
@@ -157,10 +160,10 @@
     </div>
 
     <div id="addTaskPopUp" class="pop-background d-none">
-        <div class="addTaskPopUpPosition">
+        <div onclick="doNotClose(event)" class="addTaskPopUpPosition">
             <img onclick="closeAddTaskPopup()" class="addTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
             <div class="head-section">
-                <h2>Add Task</h2>
+                <h2 id="addTaskHeadline"></h2>
             </div>
             <div class="addTaskContent">
                 <div class="boxLeft">
@@ -209,8 +212,7 @@
                     </span>
                     <div class="gapContainer"></div>
                     <span class="addTaskSpan">Prio</span>
-                    <div id="prioSection" class="prioContainer">
-                    </div>
+                    <div id="prioSection" class="prioContainer"></div>
                     <div class="gapContainer"></div>
                     <span class="addTaskSpan">Category<span class="star-red">*</span></span>
                     <div onclick="showCategoryContainer(), doNotClose(event)" style="z-index: 1;"
@@ -244,18 +246,7 @@
                     </div>
                 </div>
             </div>
-            <div class="addTask-buttonArea-popup">
-                <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
-                <div class="addTask-button-container">
-                    <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
-                        onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear
-                        <img id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
-                            alt="cross-icon">
-                    </div>
-                    <div onclick="loadTaskControl('toDo')" class="createTask-button button-hover">Create Task <img
-                            src="src/img/check.svg" alt="check-icon">
-                    </div>
-                </div>
+            <div id="addTaskButtonArea" class="addTask-buttonArea-popup">
             </div>
         </div>
     </div>
@@ -269,6 +260,9 @@
     </div>
 
     <div id="successfullyCreated" class="d-none"></div>
+
+    <div id="contactsDeletePopUp" class="pop-background d-none">
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 </body>

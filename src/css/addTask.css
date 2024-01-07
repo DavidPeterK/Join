@@ -209,6 +209,7 @@ textarea {
 }
 
 .categoryRow:hover {
+    cursor: pointer;
     background-color: #D1D1D1;
 }
 
@@ -228,6 +229,12 @@ textarea {
     gap: 4px;
     border-radius: 10px;
     background: #2A3647;
+}
+
+.addContacts-button:hover,
+.addCategory-button:hover {
+    cursor: pointer;
+    background: var(--Ligth-blue, #29ABE2);
 }
 
 ul {
