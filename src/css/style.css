@@ -11,6 +11,20 @@ body {
     overflow-x: hidden;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: top;
+    padding: 8px;
+}
+
+td h3 {
+    margin: 0;
+}
+
 .column100center {
     display: flex;
     flex-direction: column;
@@ -266,11 +280,11 @@ textarea:focus {
 
     .contentBox {
         top: 80px;
-        left: 180px;
+        left: 0px;
         bottom: 80px;
         padding: 32px 12px 32px 12px;
         height: calc(100% - 64px - 160px);
-        width: calc(100% - 24px - 180px);
+        width: calc(100% - 24px - 0px);
     }
 
     .user-options {

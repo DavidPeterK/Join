@@ -15,7 +15,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onclick="closeHeadMenu()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -46,6 +46,14 @@
             <a href="./privacy-police.html" class="navbar-footer-span">Privacy Policy</a>
             <a href="./legalNotice.html" class="navbar-footer-span">Legal notice</a>
         </div>
+    </div>
+
+    <div id="userOptions" onclick="doNotClose(event)" class="user-options d-none">
+        <a href="./legalNotice.html" class="userOptionsSpan">Legal Notice</a>
+        <a href="./privacy-police.html" class="userOptionsSpan">Privacy Policy</a>
+        <a href="./help.html" class="userOptionsSpan">Help</a>
+        <a href="./index.html" class="userOptionsSpan">Log out</a>
+    </div>
 
 </body>
 
