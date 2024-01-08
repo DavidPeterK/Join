@@ -147,12 +147,12 @@ textarea:focus {
     position: fixed;
     top: 96px;
     left: 232px;
-    padding: 32px 48px 32px 48px;
+    padding: 32px 96px 32px 96px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     height: calc(100% - 64px - 96px);
-    width: calc(100% - 96px - 232px);
+    width: calc(100% - 192px - 232px);
     overflow-y: auto;
     z-index: 1;
 }
@@ -205,6 +205,12 @@ textarea:focus {
         height: calc(100% - 96px - 64px);
         width: calc(100% - 232px - 60px);
     }
+
+    .contentBox {
+        padding: 32px 48px 32px 48px;
+        height: calc(100% - 64px - 96px);
+        width: calc(100% - 96px - 232px);
+    }
 }
 
 @media (max-width: 1020px) {
@@ -219,6 +225,11 @@ textarea:focus {
         padding: 32px 40px 32px 40px;
         height: calc(100% - 96px - 64px);
         width: calc(100% - 180px - 80px);
+    }
+
+    .contentBox {
+        left: 180px;
+        width: calc(100% - 96px - 180px);
     }
 
     input {
@@ -251,6 +262,15 @@ textarea:focus {
         width: calc(100% - 32px);
         z-index: 1;
         overflow-y: auto;
+    }
+
+    .contentBox {
+        top: 80px;
+        left: 180px;
+        bottom: 80px;
+        padding: 32px 12px 32px 12px;
+        height: calc(100% - 64px - 160px);
+        width: calc(100% - 24px - 180px);
     }
 
     .user-options {
