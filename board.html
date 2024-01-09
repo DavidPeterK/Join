@@ -31,7 +31,7 @@
 </head>
 
 <body onload="initBoard()"
-    onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer(), closeContactsContainer(), closeAddTaskPopup(), closeCurrentTaskPopUp()">
+    onclick="closeHeadMenu(), hideEditContainer(), hideCategoryContainer(), closeContactsContainer(), closeCurrentTaskPopUp()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
@@ -67,7 +67,7 @@
 
     <div id="userOptions" onclick="doNotClose(event)" class="user-options d-none">
         <a href="./legalNotice.html" class="userOptionsSpan">Legal Notice</a>
-        <a href="./privacy-police.html" class="userOptionsSpan">Privacy Policy</a>
+        <a href="./privacyPolicy.html" class="userOptionsSpan">Privacy Policy</a>
         <a href="./help.html" class="userOptionsSpan">Help</a>
         <a href="./index.html" class="userOptionsSpan">Log out</a>
     </div>
@@ -160,7 +160,7 @@
     </div>
 
     <div id="addTaskPopUp" class="pop-background d-none">
-        <div onclick="doNotClose(event)" class="addTaskPopUpPosition">
+        <div class="addTaskPopUpPosition">
             <img onclick="closeAddTaskPopup()" class="addTaskCrossPop" src="src/img/crossAddTask.svg" alt="cross">
             <div class="head-section">
                 <h2 id="addTaskHeadline"></h2>

@@ -89,7 +89,6 @@ function renderAllContacts(filter) {
 
 function filterContactsForSearch(filter, contacts) {
     var filterContacts = contacts.filter(function (contact) {
-        // Prüfen Sie, ob der Name den angegebenen Buchstaben enthält (case-insensitive)
         return contact.name.toLowerCase().includes(filter.toLowerCase());
     });
 
@@ -100,8 +99,13 @@ function renderAllSelectedContacts() {
     let container = document.getElementById('selectedContactsContainer');
     container.innerHTML = '';
     for (let i = 0; i < contactCollection.length; i++) {
-        const array = contactCollection[i];
-        container.innerHTML += returnAddTaskSelectedContact(array);
+        if (i === 5 && contactCollection.length > 6) {
+            container.innerHTML += `<b style='font-size: 18px; padding-left: 7px'>+${contactCollection.length - 5}</b>`;
+            break;
+        } else {
+            const array = contactCollection[i];
+            container.innerHTML += returnAddTaskSelectedContact(array);
+        }
     }
 }
 //-----------------------------------------------------//

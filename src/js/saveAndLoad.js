@@ -4,6 +4,7 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let tasks = [];
 let user = [];
 let activUser = { 'name': '', }
+let isUserLoggedIn;
 let selectedColorIndex = null;
 
 let contactsArray = [];
@@ -71,6 +72,15 @@ function userCircleLoad() {
 //------------tasks----------------------//
 function isGuestLogIn() {
     return activUser.name === 'Guest';
+}
+
+function isUserLoggedSave() {
+    localStorage.setItem('isUserLoggedText', JSON.stringify(isUserLoggedIn));
+}
+
+function isUserLoggedLoad() {
+    let logged = localStorage.getItem('isUserLoggedText')
+    isUserLoggedIn = JSON.parse(logged);
 }
 
 /**

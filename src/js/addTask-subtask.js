@@ -69,7 +69,7 @@ function editSubtask() {
 }
 
 function deleteSubtask(i) {
-    subTasks.splice(i, 1)
+    subtasks.splice(i, 1)
     renderSubTasks();
 }
 

@@ -176,7 +176,6 @@ async function createNewCategory() {
     ownCategorys.name.push(newCategoryName.value);
     ownCategorys.color.push(selectedColorIndex);
     await currentUserCategorysSave();
-    saveTaskDetails();
     showCategoryContainer();
     closeCategoryPopUp();
     clearCreateWindow();

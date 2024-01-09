@@ -11,6 +11,8 @@ async function initIndex() {
     activUser = { 'name': '', };
     saveActivUser();
     logoStatus();
+    isUserLoggedIn = false;
+    isUserLoggedSave();
 }
 
 function initContainer() {

@@ -91,10 +91,15 @@ function returnArrayHtml(task) {
     let contactHtml;
     contactHtml = '';
     for (let i = 0; i < task.assignContacts.length; i++) {
-        const allContacts = task.assignContacts[i];
-        contactHtml += /*html*/`
+        if (i === 5 && task.assignContacts.length > 6) {
+            contactHtml += `<b style='font-size: 18px; padding-left: 7px'>+${task.assignContacts.length - 5}</b>`;
+            break;
+        } else {
+            const allContacts = task.assignContacts[i];
+            contactHtml += /*html*/`
     <div style="${allContacts.color};" class="userCircle">${allContacts.nameAbbreviation}</div>
     `;
+        }
     }
     return /*html*/`
     <div onclick='renderCurrentTaskPopUp(${task.id}), doNotClose(event)' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">

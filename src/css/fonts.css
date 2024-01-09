@@ -200,6 +200,7 @@ li {
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+    word-break: break-all;
 }
 
 .currentTaskSubtaskSpan {
@@ -499,6 +500,10 @@ li {
 
     .big-contact-circle {
         font-size: 23px;
+    }
+
+    .empty-label {
+        font-size: 14px;
     }
 }
 

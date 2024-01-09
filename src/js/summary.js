@@ -6,6 +6,8 @@ function markNavButton() {
  * Asynchronously initializes the summary section.
  */
 async function initSummary() {
+    isUserLoggedLoad();
+    addAnimationOnResize();
     highLightNavBar('src/img/summaryActiv.svg', 'summaryNavIcon', 'summaryNavButton');
     loadActivUser();
     userCircleLoad();
@@ -28,31 +30,19 @@ function loadDetails() {
  * 
  */
 function addAnimationOnResize() {
-    if (window.innerWidth <= 1200) {
-        addAnimation();
-        animationAdded = true;
-    } else if (window.innerWidth > 1200) {
-        const greetingText = document.querySelector('.greeting-text');
-        greetingText.classList.remove('fade-out');
-        greetingText.classList.remove('hidden');
-        animationAdded = false;
+    let greetBox = document.getElementById('greetingBox');
+    if (window.innerWidth <= 1020 && !isUserLoggedIn) {
+        greetBox.classList.remove('d-none');
+        setTimeout(() => {
+            greetBox.classList.remove('fade-in')
+            greetBox.classList.add('fade-out')
+            isUserLoggedIn = true;
+            isUserLoggedSave();
+        }, 3000);
+    } else if (window.innerWidth > 1020) {
+        greetBox.classList.remove('d-none');
     }
 }
-
-/**
- * This function is used to create an animation to fade out the greeting message
- * 
- */
-function addAnimation() {
-    const greetingText = document.querySelector('.greeting-text');
-    greetingText.classList.add('fade-out');
-
-    setTimeout(function () {
-        greetingText.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }, 2000);
-}
-
 
 /**
  * This function loads the next urgent due date
@@ -141,7 +131,7 @@ function convertDateFormat(inputDate) {
 function loadNumbers() {
     let todo = tasks.filter(t => t['status'] == 'toDo').length;
     let inProgress = tasks.filter(t => t['status'] == 'inProgress').length;
-    let awaitingFeedback = tasks.filter(t => t['status'] == 'awaitingFeedback').length;
+    let awaitingFeedback = tasks.filter(t => t['status'] == 'awaitFeedback').length;
     let done = tasks.filter(t => t['status'] == 'done').length;
     let allTasks = tasks.length
     let urgent = tasks.filter(t => t['priority'] == 'Urgent').length;
