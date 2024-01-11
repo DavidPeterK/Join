@@ -1,7 +1,6 @@
 //-------------Log-in---------------//
 function signInHtml() {
     return /*html*/`
-
     <form onsubmit="login(); return false">
         <div class="column-center">
             <h3>Log in</h3>
@@ -72,7 +71,6 @@ function signUpHtml() {
                 <img class="input-icon" src="src/img/input-person.svg" alt="person-icon">
             </div>
 
-
             <div class="input-container" id="inputEmail">
                 <input required type="email" minlength="4" placeholder="Email" id="email">
                 <img class="input-icon" src="src/img/input-mail.svg" alt="email-icon">
@@ -116,7 +114,7 @@ function signUpHtml() {
     `;
 }
 
-//-------------Arrays---------------//
+//-------------Arrays for guest---------------//
 /**
  * Fills default test data for the guest login. This data includes sample contacts, tasks, and categories.
  */
