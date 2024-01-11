@@ -24,8 +24,10 @@ function showCategoryContainer() {
  */
 function hideCategoryContainer() {
     let container = document.getElementById('categoryContainer');
-    container.classList.add('d-none');
-    changeCloseInputArrowCategory();
+    if (container) {
+        container.classList.add('d-none');
+        changeCloseInputArrowCategory();
+    }
 }
 
 /**
@@ -45,11 +47,13 @@ function changeOpenInputArrowCategory() {
  */
 function changeCloseInputArrowCategory() {
     let arrow = document.getElementById('categoryInputArrow');
-    arrow.src = 'src/img/arrow_drop_downaa.svg';
-    arrow.onclick = function (event) {
-        showCategoryContainer();
-        doNotClose(event);
-    };
+    if (arrow) {
+        arrow.src = 'src/img/arrow_drop_downaa.svg';
+        arrow.onclick = function (event) {
+            showCategoryContainer();
+            doNotClose(event);
+        };
+    }
 }
 
 /**
