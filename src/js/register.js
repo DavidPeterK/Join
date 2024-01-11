@@ -2,6 +2,9 @@ let registerBtn;
 let confirmPassword;
 let userName;
 
+/**
+ * Initializes the register container elements.
+ */
 function initRegisterContainer() {
     email = document.getElementById('email');
     password = document.getElementById('password');
@@ -11,6 +14,9 @@ function initRegisterContainer() {
     userName = document.getElementById("userName");
 }
 
+/**
+ * Renders the sign-up content.
+ */
 function renderSignUp() {
     contentBox.innerHTML = signUpHtml();
     initRegisterContainer();

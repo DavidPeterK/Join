@@ -1,8 +1,6 @@
-async function clearContactsArray() {
-    contactsArray = '';
-    await currentUserContactsSave();
-}
-
+/**
+ * Initializes the contacts page, highlighting the navigation bar and rendering contacts.
+ */
 async function contactsInit() {
     highLightNavBar('src/img/contactsActiv.svg', 'contactsNavIcon', 'contactsNavButton');
     loadActivUser();
@@ -12,6 +10,9 @@ async function contactsInit() {
     renderContactInfoEmpty();
 }
 
+/**
+ * Renders the entire list of contacts organized alphabetically with navigation by letters.
+ */
 function renderContacts() {
     let alphabetBox = document.getElementById('alphaBox');
     alphabetBox.innerHTML = '';
@@ -21,6 +22,9 @@ function renderContacts() {
     }
 }
 
+/**
+ * Renders contacts for a specific alphabet letter in the navigation bar.
+ */
 function renderContactsAlphabet(alphabetBox, letter) {
     if (isContactLetter(letter)) {
         alphabetBox.innerHTML += `<div class="alphabet-letter">${letter}</div>`;
@@ -28,6 +32,9 @@ function renderContactsAlphabet(alphabetBox, letter) {
     }
 }
 
+/**
+ * Filters and renders contacts based on the specified alphabet letter.
+ */
 function filterContacts(alphabetBox, letter) {
     let alphabetArray = filterBy(letter);
     for (let i = 0; i < alphabetArray.length; i++) {
@@ -36,44 +43,32 @@ function filterContacts(alphabetBox, letter) {
     }
 }
 
+/**
+ * Filters contacts by the specified letter and returns the filtered array.
+ */
 function filterBy(letter) {
     let array = contactsArray.sort((a, b) => a.name.localeCompare(b.name));
     return array.filter(contact => contact.name.toUpperCase().startsWith(letter));
 }
 
+/**
+ * Checks if any contact's name starts with the given letter.
+ */
 function isContactLetter(letter) {
     return contactsArray.some(contact => contact.name.toUpperCase().startsWith(letter));
 }
 
-function returnContactRow(array) {
-    return /*html*/`
-    <div onclick='renderContactInfo(${array.id})' id='contactId${array.id}' class="contact-row">
-        <div style="${array.color}" class="contact-circle">${array.nameAbbreviation}</div>
-        <div class="name-email-box">
-            <span class="contact-name-list">${array.name}</span>
-            <span class="contact-email-list">${array.email}</span>
-        </div>
-    </div>
-`;
-}
-
+/**
+ * Renders an empty contact information container.
+ */
 function renderContactInfoEmpty() {
     let container = document.getElementById('contactInfoContainerRight');
     container.innerHTML = returnEmptyInfoContainer();
 }
 
-function returnEmptyInfoContainer() {
-    return /*html*/`
-    <div class="head-section">
-        <h2 style='margin-bottom: 32px'>Contacts</h2>
-        <div class="vector-span-direction">
-            <div class="vectorContacts"></div>
-            <span class="head-span">Better with a team</span>
-        </div>
-    </div>    
-    `;
-}
-
+/**
+ * Renders contact information based on the provided contact ID.
+ */
 function renderContactInfo(id) {
     let index = contactsArray.findIndex(object => object.id === id);
     let array = contactsArray[index];
@@ -86,17 +81,26 @@ function renderContactInfo(id) {
     }
 }
 
+/**
+ * Activates the specified contact row by adding a CSS class.
+ */
 function activateContact(id) {
     let contactRow = document.getElementById(`contactId${id}`);
     contactRow.classList.add('contact-row-activ');
 }
 
+/**
+ * Renders the contact information in a larger container for wider screens.
+ */
 function renderContactInfoBig(id) {
     renderContactInfoEmpty();
     let container = document.getElementById('contactInfoContainerRight');
     container.innerHTML += returnContactInfoContainerRight(id);
 }
 
+/**
+ * Initializes the contact popup for editing with the details of the specified contact ID.
+ */
 function editContactInit(id) {
     let index = contactsArray.findIndex(object => object.id === id);
     let array = contactsArray[index];
@@ -104,6 +108,9 @@ function editContactInit(id) {
     initContactPopUp(array);
 }
 
+/**
+ * Initializes the contact popup with the details of the specified contact for editing.
+ */
 function initContactPopUp(array) {
     document.getElementById('contactUserName').value = array.name;
     document.getElementById('contactEmail').value = array.email;
@@ -120,6 +127,9 @@ async function createContact() {
     renderContactInfo(contactId - 1);
 }
 
+/**
+ * Edits an existing contact, updates it in the contacts array, and saves changes to the current user.
+ */
 async function editContact(index) {
     let newContact = contactTemplate();
     contactsArray[index] = newContact;
@@ -129,6 +139,9 @@ async function editContact(index) {
     renderContactInfo(contactId - 1);
 }
 
+/**
+ * Displays a confirmation window for deleting a contact.
+ */
 function deleteContactWindow(id) {
     let index = contactsArray.findIndex(object => object.id === id);
     let array = contactsArray[index];
@@ -137,6 +150,9 @@ function deleteContactWindow(id) {
     container.classList.remove('d-none');
 }
 
+/**
+ * Deletes a contact from the contacts array and saves changes to the current user.
+ */
 function deleteContact(index) {
     let container = document.getElementById('contactsDeletePopUp');
     contactsArray.splice(index, 1);
@@ -146,6 +162,9 @@ function deleteContact(index) {
     container.classList.add('d-none');
 }
 
+/**
+ * Renders the contact information in a popup for smaller screens.
+ */
 function renderContactInfoPopUp(id) {
     renderContactInfoBig(id);
     let listBox = document.getElementById('contactsListContainer');
@@ -154,12 +173,53 @@ function renderContactInfoPopUp(id) {
     container.classList.add('d-flex');
 }
 
+/**
+ * Closes the small contact information popup and renders the contact list.
+ */
 function closeContactInfoSmall() {
     renderContacts();
     let listBox = document.getElementById('contactsListContainer');
     let container = document.getElementById('contactInfoContainerRight');
     listBox.classList.remove('d-none');
     container.classList.remove('d-flex');
+}
+
+/**
+ * Closes the delete confirmation window.
+ */
+function closeDeleteWindow() {
+    let container = document.getElementById('contactsDeletePopUp');
+    container.classList.add('d-none');
+}
+
+/**
+ * Returns HTML for an empty contact information container.
+ */
+function returnEmptyInfoContainer() {
+    return /*html*/`
+    <div class="head-section">
+        <h2 style='margin-bottom: 32px'>Contacts</h2>
+        <div class="vector-span-direction">
+            <div class="vectorContacts"></div>
+            <span class="head-span">Better with a team</span>
+        </div>
+    </div>    
+    `;
+}
+
+/**
+ * Returns HTML for rendering a contact row in the contact list.
+ */
+function returnContactRow(array) {
+    return /*html*/`
+    <div onclick='renderContactInfo(${array.id})' id='contactId${array.id}' class="contact-row">
+        <div style="${array.color}" class="contact-circle">${array.nameAbbreviation}</div>
+        <div class="name-email-box">
+            <span class="contact-name-list">${array.name}</span>
+            <span class="contact-email-list">${array.email}</span>
+        </div>
+    </div>
+`;
 }
 
 function returnDeleteWindow(array, index) {
@@ -173,12 +233,6 @@ function returnDeleteWindow(array, index) {
         </div>
     </div>
     `;
-}
-
-function closeDeleteWindow() {
-    let container = document.getElementById('contactsDeletePopUp');
-    container.classList.add('d-none');
-
 }
 
 function returnContactInfoContainerRight(array) {

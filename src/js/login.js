@@ -1,10 +1,11 @@
 let contentBox; let email;
 let password; let checkbox;
-let signUpButtonTop;
-let signUpButtonBottom;
-
+let signUpButtonTop; let signUpButtonBottom;
 let logo;
 
+/**
+ * Initializes the index page.
+ */
 async function initIndex() {
     await loadUserGroup();
     initContainer();
@@ -15,6 +16,9 @@ async function initIndex() {
     isUserLoggedSave();
 }
 
+/**
+ * Initializes the container elements.
+ */
 function initContainer() {
     email = document.getElementById('email');
     contentBox = document.getElementById('indexContainer');
@@ -25,6 +29,9 @@ function initContainer() {
     signUpButtonBottom = document.getElementById('signSectionBottom');
 }
 
+/**
+ * Handles the logo status based on the referrer.
+ */
 function logoStatus() {
     if (!document.referrer) {
         startAnimation();
@@ -34,6 +41,9 @@ function logoStatus() {
     }
 }
 
+/**
+ * Renders the sign-in content.
+ */
 function renderSignIn() {
     initContainer();
     checkbox = document.getElementById('rememberMe');
@@ -45,6 +55,9 @@ function renderSignIn() {
     document.getElementById('footer').classList.remove('d-none');
 }
 
+/**
+ * Checks if the email should be remembered and updates the input accordingly.
+ */
 function isRememberedEmail() {
     let email = document.getElementById('email');
     let rememberedEmail = localStorage.getItem('rememberMe');
@@ -55,6 +68,9 @@ function isRememberedEmail() {
     }
 }
 
+/**
+ * Switches the content between sign-in and sign-up.
+ */
 function switchContent(newContent) {
     addClasses();
     setTimeout(() => {
@@ -63,6 +79,9 @@ function switchContent(newContent) {
     }, 330);
 }
 
+/**
+ * Updates the content based on the specified new content.
+ */
 function updateContent(newContent) {
     if (newContent === 'signIn') {
         renderSignIn();
@@ -90,6 +109,9 @@ function login() {
     }
 }
 
+/**
+ * Checks if the "Remember Me" checkbox is checked and updates local storage accordingly.
+ */
 function isCheckBoxChecked() {
     let checkbox = document.getElementById('rememberMe');
     let email = document.getElementById('email');
@@ -110,6 +132,9 @@ function guestLogin() {
     window.location.href = "./summary.html";
 }
 
+/**
+ * Hides the logo animation by removing the 'd-none' class and adding the end position class.
+ */
 function hideLogoAnimation() {
     logo.classList.remove('d-none');
     logo.classList.add('join-logo-head-endposition');

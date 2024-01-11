@@ -15,19 +15,19 @@
     <title>Document</title>
 </head>
 
-<body onclick="closeHeadMenu()">
+<body onload="controlLogIn()" onclick="closeHeadMenu()">
     <div id="header" class="header">
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
-        <div class="header-elements">
-            <img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker">
+        <div id="headBox" class="header-elements">
+            <a href="./help.html"><img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker"></a>
             <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle">AB</div>
         </div>
     </div>
 
     <div id="navBar" class="navBar">
         <img id="navBarLogo" src="src/img/join.logo-white.svg" alt="join-logo">
-        <div class="nav-elements">
+        <div id="navBox" class="nav-elements">
             <a id="summaryNavButton" href="./summary.html" class="nav-button"><img id="summaryNavIcon" class="nav-icons"
                     src="src/img/SummaryIcon.svg" alt="nav-icon">Summary
             </a>
@@ -56,7 +56,9 @@
     </div>
 
     <div class="contentBox">
-        <h2 style="margin-bottom: 32px;">Help</h2>
+        <h2 style="margin-bottom: 32px; width: 100%; display: flex; justify-content: space-between;">Help
+            <img onclick="goBack()" class="cursor" src="src/img/arror-left.svg" alt="arrow left">
+        </h2>
         <span style="margin-bottom: 24px;">
             Welcome to the help page for <span style=" color: var(--Ligth-blue, #29ABE2);">Join</span>
             , your guide to using our kanban project management tool. Here, we'll

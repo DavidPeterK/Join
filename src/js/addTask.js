@@ -3,6 +3,9 @@ let selectedContacts = '';
 let selectedPrio = '';
 let currentSubtask = '';
 
+/**
+ * Initializes the add task page, loading necessary data and setting default values.
+ */
 async function addTaskInit() {
     highLightNavBar('src/img/addTaskActiv.svg', 'addTaskNavIcon', 'addTaskNavButton');
     loadActivUser();
@@ -16,6 +19,9 @@ async function addTaskInit() {
     statusGroup = 'toDo';
 }
 
+/**
+ * Loads task control elements based on the provided task ID.
+ */
 function loadTaskControl(id) {
     let title = document.getElementById('addTaskTitleInput');
     let description = document.getElementById('addTaskDescriptionInput');
@@ -23,6 +29,9 @@ function loadTaskControl(id) {
     createTaskControl(title, description, dueDate, id);
 }
 
+/**
+ * Controls the creation or editing of a task based on the input values.
+ */
 function createTaskControl(title, description, dueDate, id) {
     if (title.value === '') {
         warnTitle();
@@ -37,6 +46,9 @@ function createTaskControl(title, description, dueDate, id) {
     }
 }
 
+/**
+ * Displays a warning for a missing task title.
+ */
 function warnTitle() {
     let titleBox = document.getElementById('addTaskTitleBox');
     let titleWarn = document.getElementById('warnTitle');
@@ -48,6 +60,9 @@ function warnTitle() {
     }, 4000);
 }
 
+/**
+ * Displays a warning for a missing task description.
+ */
 function warnDescription() {
     let description = document.getElementById('addTaskDescriptionInput');
     let descriptionWarn = document.getElementById('warnDescription');
@@ -59,6 +74,9 @@ function warnDescription() {
     }, 4000);
 }
 
+/**
+ * Displays a warning for a missing due date.
+ */
 function warnDueDate() {
     let dueDateBox = document.getElementById('addTaskDueDateBox');
     let dueDateWarn = document.getElementById('warnDueDate');
@@ -70,6 +88,9 @@ function warnDueDate() {
     }, 4000);
 }
 
+/**
+ * Creates a new task and adds it to the tasks collection.
+ */
 async function createTask() {
     let task = createTaskObject();
     tasks.push(task);
@@ -84,6 +105,9 @@ async function createTask() {
     setTimeout(() => { window.location.href = './board.html'; }, 3000);
 }
 
+/**
+ * Edits an existing task based on the provided ID.
+ */
 async function editTasks(id) {
     let index = tasks.findIndex(object => object.id === id);
     let task = createTaskObject();
@@ -111,11 +135,9 @@ function createTaskObject() {
     }
 }
 
-async function deleteTaskArray() {
-    tasks = '';
-    await currentUserTaskSave();
-}
-
+/**
+ * Loads task data for editing based on the provided ID.
+ */
 function loadTaskForEdit(id) {
     let index = tasks.findIndex(object => object.id === id);
     let task = tasks[index];
@@ -133,6 +155,9 @@ function loadTaskForEdit(id) {
     subtasksFinish = task.subtasksFinish;
 }
 
+/**
+ * Clears input values in the add task form.
+ */
 function clearAddTask() {
     document.getElementById("addTaskTitleInput").value = '';
     document.getElementById("addTaskDescriptionInput").value = '';

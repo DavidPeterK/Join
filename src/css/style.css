@@ -172,6 +172,10 @@ textarea:focus {
     z-index: 1;
 }
 
+.cursor:hover {
+    cursor: pointer;
+}
+
 /*--------------------SCROLLBAR-----------------------------*/
 ::-webkit-scrollbar {
     display: block !important;
@@ -293,6 +297,7 @@ textarea:focus {
         top: 82px;
         left: calc(100% - 145px);
         width: 120px;
+        overflow: hidden;
     }
 
     input {

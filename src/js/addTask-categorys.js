@@ -9,17 +9,54 @@ function renderCategorys() {
     renderOwnCategorys(container);
 }
 
+/**
+ * Displays the category container and renders the categories.
+ */
 function showCategoryContainer() {
     let container = document.getElementById('categoryContainer');
     container.classList.remove('d-none');
+    changeOpenInputArrowCategory();
     renderCategorys();
 }
 
+/**
+ * Hides the category container.
+ */
 function hideCategoryContainer() {
     let container = document.getElementById('categoryContainer');
     container.classList.add('d-none');
+    changeCloseInputArrowCategory();
 }
 
+/**
+ * Changes the arrow in the category input to the open position.
+ */
+function changeOpenInputArrowCategory() {
+    let arrow = document.getElementById('categoryInputArrow');
+    arrow.src = 'src/img/arrow_drop_up.svg';
+    arrow.onclick = function (event) {
+        hideCategoryContainer();
+        doNotClose(event);
+    }
+}
+
+/**
+ * Changes the arrow in the category input to the close position.
+ */
+function changeCloseInputArrowCategory() {
+    let arrow = document.getElementById('categoryInputArrow');
+    arrow.src = 'src/img/arrow_drop_downaa.svg';
+    arrow.onclick = function (event) {
+        showCategoryContainer();
+        doNotClose(event);
+    };
+}
+
+/**
+ * Renders main categories into the specified container.
+ *
+ * @param {HTMLElement} container - The container to render main categories into.
+ */
 function renderMainCategorys(container) {
     for (let m = 0; m < mainCategorys.name.length; m++) {
         const mName = mainCategorys.name[m];
@@ -28,16 +65,11 @@ function renderMainCategorys(container) {
     }
 }
 
-function returnRenderMainCategorys(mName, mColor, m) {
-    return /*html*/`
-    <div onclick='selectCategory(${m}, "main")' id='mainCategory${m}' class="categoryRow">
-        <span class="category-span">${mName}</span>
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="${mColor}" class="colorCircleSmall"></div>
-        </div>
-    </div>`;
-}
-
+/**
+ * Renders user's own categories into the specified container.
+ *
+ * @param {HTMLElement} container - The container to render user's own categories into.
+ */
 function renderOwnCategorys(container) {
     for (let a = 0; a < ownCategorys.name.length; a++) {
         const aName = ownCategorys.name[a];
@@ -46,18 +78,10 @@ function renderOwnCategorys(container) {
     }
 }
 
-function returnRenderOwnCategorys(aName, aColor, a) {
-    return /*html*/`
-    <div onclick='selectCategory(${a}, "own")' id='ownCategory${a}' class="categoryRow">
-        <span class="category-span">${aName}</span>
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <img onclick='deleteOwnCategory(${a}), doNotClose(event)' class="greyHoverIcon" src="src/img/subTaskDelete.svg" alt="">
-            <div style="${aColor}" class="colorCircleSmall"></div>
-        </div>
-    </div>`;
-
-}
-
+/**
+ * Selects a category based on its index and type (main or own).
+ *
+ */
 function selectCategory(i, type) {
     let input = document.getElementById('categoryInput');
     if (type === 'main') {
@@ -71,6 +95,10 @@ function selectCategory(i, type) {
     hideCategoryContainer();
 }
 
+/**
+ * Fills the currentCategorySelected object with information from the selected category.
+ *
+ */
 function fillSelectedCategoryArray(i, type) {
     if (type === 'main') {
         currentCategorySelected.name = mainCategorys.name[i];
@@ -97,20 +125,9 @@ function createCategoryColors() {
 }
 
 /**
- * Returns an HTML string representing a color circle, with optional selection.
+ * Selects a color and updates the UI.
+ *
  */
-function returnCreateCategoryColors(color, index) {
-    if (color === selectedColorIndex) {
-        return /*html*/ `
-        <div onclick='selectColor("${color}")' style="${color}" id='colorCircle${index}' class="colorCircle selectedColor"></div>
-        `;
-    } else {
-        return /*html*/ `
-        <div onclick='selectColor("${color}")' style="${color}" id='colorCircle${index}' class="colorCircle"></div>
-        `;
-    }
-}
-
 function selectColor(color) {
     if (selectedColorIndex === color) {
         selectedColorIndex = '';
@@ -157,6 +174,9 @@ function clearCreateWindow() {
     selectedColorIndex = null;
 }
 
+/**
+ * Displays a warning for invalid category input.
+ */
 function alertInvalidInput() {
     let inputContainer = document.getElementById('newCategoryNameContainer')
     let warnText = document.getElementById('warnCategoryInput');
@@ -191,22 +211,80 @@ function stopCreateCategory() {
     clearCreateWindow();
 }
 
+/**
+ * Closes the category creation popup.
+ */
 function closeCategoryPopUp() {
     let popup = document.getElementById('categoryPopUp');
     popup.classList.add('d-none');
 }
 
+/**
+ * Displays the category creation popup and initializes color options.
+ */
 function showCategoryPopUp() {
     let popup = document.getElementById('categoryPopUp');
     popup.classList.remove('d-none');
     createCategoryColors();
 }
 
+/**
+ * Renders the category creation popup.
+ */
 function renderCategoryPopUp() {
     let container = document.getElementById('categoryPopUp');
     container.innerHTML = returnCategoryPopUp();
 }
 
+/**
+ * Returns an HTML string representing a main category.
+ *
+ */
+function returnRenderMainCategorys(mName, mColor, m) {
+    return /*html*/`
+    <div onclick='selectCategory(${m}, "main")' id='mainCategory${m}' class="categoryRow">
+        <span class="category-span">${mName}</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="${mColor}" class="colorCircleSmall"></div>
+        </div>
+    </div>`;
+}
+
+/**
+ * Renders user's own categories into the specified container.
+ *
+ * @param {HTMLElement} container - The container to render user's own categories into.
+ */
+function returnRenderOwnCategorys(aName, aColor, a) {
+    return /*html*/`
+    <div onclick='selectCategory(${a}, "own")' id='ownCategory${a}' class="categoryRow">
+        <span class="category-span">${aName}</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <img onclick='deleteOwnCategory(${a}), doNotClose(event)' class="greyHoverIcon" src="src/img/subTaskDelete.svg" alt="">
+            <div style="${aColor}" class="colorCircleSmall"></div>
+        </div>
+    </div>`;
+}
+
+/**
+ * Returns an HTML string representing a color circle, with optional selection.
+ */
+function returnCreateCategoryColors(color, index) {
+    if (color === selectedColorIndex) {
+        return /*html*/ `
+        <div onclick='selectColor("${color}")' style="${color}" id='colorCircle${index}' class="colorCircle selectedColor"></div>
+        `;
+    } else {
+        return /*html*/ `
+        <div onclick='selectColor("${color}")' style="${color}" id='colorCircle${index}' class="colorCircle"></div>
+        `;
+    }
+}
+
+/**
+ * Returns an HTML string representing the category creation popup.
+ *
+ */
 function returnCategoryPopUp() {
     return /*html*/`
     <div class="pop-position">

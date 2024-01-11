@@ -30,7 +30,7 @@
         <span class="header-span">Kanban Project Management Tool</span>
         <img class="header-logo" src="src/img/join-logo.svg" alt="head-logo">
         <div class="header-elements">
-            <img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker">
+            <a href="./help.html"><img class="header-questMark" src="src/img/helpIcon.svg" alt="questionMarker"></a>
             <div onclick="openHeaderMenu(event)" id="headerUserCircle" class="header-userCircle"></div>
         </div>
     </div>
@@ -136,8 +136,9 @@
                 <div onclick="showCategoryContainer(), doNotClose(event)" style="z-index: 1;"
                     class="addTask-input-container">
                     <input id="categoryInput" readonly type="text" value="Select task category">
-                    <img onclick="hideCategoryContainer()" class="addTask-input-icon greyHoverIcon"
-                        src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                    <img onclick="hideCategoryContainer()" id="categoryInputArrow"
+                        class="addTask-input-icon greyHoverIcon" src="src/img/arrow_drop_downaa.svg"
+                        alt="arrow-down-icon">
                 </div>
                 <div onclick="doNotClose(event)" id="categoryContainer" style="z-index: 0;"
                     class="category-container d-none">
@@ -169,7 +170,8 @@
         <div class="addTask-buttonArea">
             <span class="addTask-requiredSpan"><span class="star-red">*</span>This field is required</span>
             <div class="addTask-button-container">
-                <div onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
+                <div onclick="clearAddTask(), renderAllSelectedContacts(), controlPrioButton(), renderSubTasks();"
+                    onmouseover="changeImage('clearButton', 'src/img/crossBlue.png')"
                     onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear <img
                         id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
                         alt="cross-icon"></div>

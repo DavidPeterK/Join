@@ -1,3 +1,6 @@
+/**
+ * Opens the contacts container, hides selected contacts, and renders all contacts.
+ */
 function openContactsContainer() {
     let addTaskSelectedContactBox = document.getElementById('selectedContactsContainer');
     let addTaskContactCollectionBox = document.getElementById('contactsCollectionContainer');
@@ -9,6 +12,9 @@ function openContactsContainer() {
     renderAllContacts();
 }
 
+/**
+ * Closes the contacts container, displays selected contacts, and renders them.
+ */
 function closeContactsContainer() {
     let addTaskSelectedContactBox = document.getElementById('selectedContactsContainer');
     let addTaskContactCollectionBox = document.getElementById('contactsCollectionContainer');
@@ -20,6 +26,9 @@ function closeContactsContainer() {
     renderAllSelectedContacts();
 }
 
+/**
+ * Changes the arrow in the contacts input to the open position.
+ */
 function changeOpenInputArrow() {
     let arrow = document.getElementById('contactsInputArrow');
     arrow.src = 'src/img/arrow_drop_up.svg';
@@ -29,6 +38,9 @@ function changeOpenInputArrow() {
     }
 }
 
+/**
+ * Changes the arrow in the contacts input to the close position.
+ */
 function changeCloseInputArrow() {
     let arrow = document.getElementById('contactsInputArrow');
     arrow.src = 'src/img/arrow_drop_downaa.svg';
@@ -38,6 +50,9 @@ function changeCloseInputArrow() {
     };
 }
 
+/**
+ * Allows user input in the contacts input box and triggers contact rendering based on input.
+ */
 function changeOpenInputInner() {
     let addTaskContactInput = document.getElementById('addTaskContactsInput');
     addTaskContactInput.removeAttribute('readonly');
@@ -48,6 +63,9 @@ function changeOpenInputInner() {
     };
 }
 
+/**
+ * Disallows user input in the contacts input box and resets its placeholder and value.
+ */
 function changeCloseInputInner() {
     let addTaskContactInput = document.getElementById('addTaskContactsInput');
     addTaskContactInput.setAttribute('readonly', 'readonly');
@@ -56,6 +74,9 @@ function changeCloseInputInner() {
     addTaskContactInput.onkeyup = null;
 }
 
+/**
+ * Prevents closing the contacts container when clicking inside the input box.
+ */
 function changeOpenInputBox() {
     let addTaskContactInputBox = document.getElementById('addTaskContactsInputBox');
     addTaskContactInputBox.onclick = function (event) {
@@ -63,6 +84,9 @@ function changeOpenInputBox() {
     };
 }
 
+/**
+ * Allows closing the contacts container when clicking inside the input box.
+ */
 function changeCloseInputBox() {
     let addTaskContactInputBox = document.getElementById('addTaskContactsInputBox');
     addTaskContactInputBox.onclick = function (event) {
@@ -71,6 +95,10 @@ function changeCloseInputBox() {
     };
 }
 
+/**
+ * Renders all contacts, optionally filtered based on the provided search filter.
+ *
+ */
 function renderAllContacts(filter) {
     let contacts = contactsArray.sort((a, b) => a.name.localeCompare(b.name));
     let container = document.getElementById('contactsContent');
@@ -87,6 +115,10 @@ function renderAllContacts(filter) {
     }
 }
 
+/**
+ * Filters contacts based on a search filter.
+ *
+ */
 function filterContactsForSearch(filter, contacts) {
     var filterContacts = contacts.filter(function (contact) {
         return contact.name.toLowerCase().includes(filter.toLowerCase());
@@ -95,6 +127,9 @@ function filterContactsForSearch(filter, contacts) {
     return filterContacts;
 }
 
+/**
+ * Renders all selected contacts in the selected contacts container.
+ */
 function renderAllSelectedContacts() {
     let container = document.getElementById('selectedContactsContainer');
     container.innerHTML = '';
@@ -108,14 +143,56 @@ function renderAllSelectedContacts() {
         }
     }
 }
-//-----------------------------------------------------//
+
+/**
+ * Returns an HTML string representing a selected contact.
+ *
+ */
 function returnAddTaskSelectedContact(array) {
     return /*html*/`
     <div  style="${array.color}" class="userCircle">${array.nameAbbreviation}</div>
     `;
 }
-//-----------------------------------------------------//
 
+/**
+ * Checks if a contact with the given id exists in the selected contacts.
+ *
+ */
+function contactIdCheck(id) {
+    return contactCollection.some(item => item.id === id);
+}
+
+/**
+ * Handles the selection or deselection of a contact row.
+ */
+function selectContactRow(id) {
+    let index = contactsArray.findIndex(object => object.id === id);
+    let array = contactsArray[index];
+    if (contactIdCheck(id)) {
+        let i = contactCollection.findIndex(object => object.id === id);
+        contactCollection.splice(i, 1)
+    } else {
+        contactCollection.push(array);
+    }
+    renderAllContacts();
+}
+
+/**
+ * Creates a new contact and adds it to the contacts array.
+ */
+async function createContact() {
+    let newContact = contactTemplate();
+    contactsArray.push(newContact);
+    contactId++;
+    await currentUserContactsSave();
+    changesSaved('Contact successfully created');
+    openContactsContainer()
+}
+
+/**
+ * Returns an HTML string representing a contact row.
+ *
+ */
 function returnAddTaskContactRow(array) {
     let selected;
     let icon;
@@ -135,31 +212,4 @@ function returnAddTaskContactRow(array) {
         <img src=${icon} alt="checkBox">
     </div>
 `;
-}
-
-// Die zu überprüfende Funktion
-function contactIdCheck(id) {
-    return contactCollection.some(item => item.id === id);
-}
-
-function selectContactRow(id) {
-    let index = contactsArray.findIndex(object => object.id === id);
-    let array = contactsArray[index];
-    if (contactIdCheck(id)) {
-        let i = contactCollection.findIndex(object => object.id === id);
-        contactCollection.splice(i, 1)
-    } else {
-        contactCollection.push(array);
-    }
-    renderAllContacts();
-}
-
-/** * This function is to save the input in the contact array */
-async function createContact() {
-    let newContact = contactTemplate();
-    contactsArray.push(newContact);
-    contactId++;
-    await currentUserContactsSave();
-    changesSaved('Contact successfully created');
-    openContactsContainer()
 }

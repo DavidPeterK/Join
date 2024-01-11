@@ -70,14 +70,23 @@ function userCircleLoad() {
 }
 
 //------------tasks----------------------//
+/**
+ * Checks if the current user is logged in as a guest.
+ */
 function isGuestLogIn() {
     return activUser.name === 'Guest';
 }
 
+/**
+ * Saves the user login status to the local storage.
+ */
 function isUserLoggedSave() {
     localStorage.setItem('isUserLoggedText', JSON.stringify(isUserLoggedIn));
 }
 
+/**
+ * Loads the user login status from the local storage.
+ */
 function isUserLoggedLoad() {
     let logged = localStorage.getItem('isUserLoggedText')
     isUserLoggedIn = JSON.parse(logged);

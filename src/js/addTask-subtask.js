@@ -25,6 +25,65 @@ function renderSubTasks() {
     }
 }
 
+/**
+ * Edits a sub-task.
+ */
+function showEditContainer(i) {
+    let container = document.getElementById('subtaskEditContainer');
+    let input = document.getElementById('editSubtaskInput');
+    container.classList.remove('d-none');
+    input.value = subtasks[i];
+    currentSubtask = i;
+}
+
+/**
+ * Hides the edit container for sub-tasks.
+ */
+function hideEditContainer() {
+    let container = document.getElementById('subtaskEditContainer');
+    container.classList.add('d-none');
+}
+
+/**
+ * Edits a sub-task based on the input in the edit container.
+ */
+function editSubtask() {
+    let input = document.getElementById('editSubtaskInput');
+    if (input.value === '') {
+        subtasks.splice(currentSubtask, 1);
+    } else {
+        subtasks[currentSubtask] = input.value;
+    }
+    renderSubTasks();
+}
+
+/**
+ * Deletes a specific sub-task.
+ */
+function deleteSubtask(i) {
+    subtasks.splice(i, 1)
+    renderSubTasks();
+}
+
+/**
+ * Handles the hover effect for the sub-task list item.
+ */
+function subtaskListHover(i) {
+    let box = document.getElementById(`subtaskListFunctions${i}`);
+    box.classList.remove('d-none');
+}
+
+/**
+ * Resets the hover effect for the sub-task list item.
+ */
+function subtaskListHoverReset(i) {
+    let box = document.getElementById(`subtaskListFunctions${i}`);
+    box.classList.add('d-none');
+}
+
+/**
+ * Returns an HTML string representing a sub-task list item.
+ */
 function returnSubTasks(subCollection, i) {
     return /*html*/ `
     <ul id='subtaskUl${i}' onmouseover="subtaskListHover(${i})"
@@ -39,45 +98,4 @@ function returnSubTasks(subCollection, i) {
         </div>
     </ul>
     `
-}
-
-/**
- * Edits a sub-task.
- * @param {number} i - Index of the sub-task.
- */
-function showEditContainer(i) {
-    let container = document.getElementById('subtaskEditContainer');
-    let input = document.getElementById('editSubtaskInput');
-    container.classList.remove('d-none');
-    input.value = subtasks[i];
-    currentSubtask = i;
-}
-
-function hideEditContainer() {
-    let container = document.getElementById('subtaskEditContainer');
-    container.classList.add('d-none');
-}
-
-function editSubtask() {
-    let input = document.getElementById('editSubtaskInput');
-    if (input.value === '') {
-        subtasks.splice(currentSubtask, 1);
-    } else {
-        subtasks[currentSubtask] = input.value;
-    }
-    renderSubTasks();
-}
-
-function deleteSubtask(i) {
-    subtasks.splice(i, 1)
-    renderSubTasks();
-}
-
-function subtaskListHover(i) {
-    let box = document.getElementById(`subtaskListFunctions${i}`);
-    box.classList.remove('d-none');
-}
-function subtaskListHoverReset(i) {
-    let box = document.getElementById(`subtaskListFunctions${i}`);
-    box.classList.add('d-none');
 }

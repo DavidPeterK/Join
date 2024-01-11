@@ -1,8 +1,14 @@
+/**
+ * Renders the priority section in the designated container.
+ */
 function renderPrioSection() {
     let container = document.getElementById('prioSection');
     container.innerHTML = returnPrioSection();
 }
 
+/**
+ * Handles the click event for the "Urgent" priority button.
+ */
 function urgentButtonClick() {
     if (selectedPrio === 'Urgent') {
         resetUrgentButton();
@@ -15,6 +21,9 @@ function urgentButtonClick() {
     }
 }
 
+/**
+ * Handles the click event for the "Medium" priority button.
+ */
 function mediumButtonClick() {
     if (selectedPrio === 'Medium') {
         resetMediumButton();
@@ -27,6 +36,9 @@ function mediumButtonClick() {
     }
 }
 
+/**
+ * Handles the click event for the "Low" priority button.
+ */
 function lowButtonClick() {
     if (selectedPrio === 'Low') {
         resetLowButton();
@@ -39,36 +51,57 @@ function lowButtonClick() {
     }
 }
 
+/**
+ * Activates the styles for the "Urgent" priority button.
+ */
 function urgentButtonActiv() {
     document.getElementById('urgentImg').src = 'src/img/prioUrgentWhite.svg';
     document.getElementById('urgentButton').classList.add('urgentActiv');
 }
 
+/**
+ * Activates the styles for the "Medium" priority button.
+ */
 function mediumButtonActiv() {
     document.getElementById('mediumImg').src = 'src/img/prioMediumWhite.svg';
     document.getElementById('mediumButton').classList.add('mediumActiv');
 }
 
+/**
+ * Activates the styles for the "Low" priority button.
+ */
 function lowButtonActiv() {
     document.getElementById('lowImg').src = 'src/img/prioLowWhite.svg';
     document.getElementById('lowButton').classList.add('lowActiv');
 }
 
+/**
+ * Resets the styles for the "Urgent" priority button.
+ */
 function resetUrgentButton() {
     document.getElementById('urgentImg').src = 'src/img/prioUrgent.svg';
     document.getElementById('urgentButton').classList.remove('urgentActiv');
 }
 
+/**
+ * Resets the styles for the "Medium" priority button.
+ */
 function resetMediumButton() {
     document.getElementById('mediumImg').src = 'src/img/prioMedium.svg';
     document.getElementById('mediumButton').classList.remove('mediumActiv');
 }
 
+/**
+ * Resets the styles for the "Low" priority button.
+ */
 function resetLowButton() {
     document.getElementById('lowButton').classList.remove('lowActiv');
     document.getElementById('lowImg').src = 'src/img/prioLow.svg';
 }
 
+/**
+ * Controls the state of priority buttons based on the selected priority.
+ */
 function controlPrioButton() {
     if (selectedPrio === 'Urgent') {
         urgentButtonActiv();
@@ -86,6 +119,10 @@ function controlPrioButton() {
     }
 }
 
+/**
+ * Returns an HTML string representing the priority section.
+ *
+ */
 function returnPrioSection() {
     return /*html*/`
     <div onclick="urgentButtonClick()" id="urgentButton" class="prioButton">Urgent<img id="urgentImg"

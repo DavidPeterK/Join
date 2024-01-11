@@ -123,128 +123,172 @@ function signUpHtml() {
 function fillTestArray() {
     contactsArray = [
         {
-            "name": "Bernhard Sigl", "nameAbbreviation": "BS",
-            "email": "B-Test@web.de", "phone": "01631234567",
-            "color": "#006400"
+            "name": "Anja Sonnenberger",
+            "nameAbbreviation": "AS",
+            "email": "hdsfvdsjfjf@web.de",
+            "phone": "6546465464",
+            "color": "background: #D2691E",
+            "id": 2
         },
         {
-            "name": "David Peterka", "nameAbbreviation": "DP",
-            "email": "test@web.de", "phone": "123456",
-            "color": "#00008B"
+            "name": "David Peterka",
+            "nameAbbreviation": "DP",
+            "email": "testDavid@web.de",
+            "phone": "012345678",
+            "color": "background: #228B22",
+            "id": 0
         },
         {
-            "name": "Lina Wionsek", "nameAbbreviation": "LW",
-            "email": "test2@web.de", "phone": "123456",
-            "color": "#8B0000"
-        }];
-
-
-
-    tasks = [{
-        "id": 6,
-        "status": "done",
-        "category": "Technical Task",
-        "categoryColor": "background: #1FD7C1",
-        "title": "jgjgjhgjhgjgjgjhgjgh",
-        "description": "jhgjgjgjgjgj",
-        "dueDate": "30/12/2023",
-        "priority": "Urgent",
-        "assignContacts": [
-            {
-                "name": "Mara Collins",
-                "nameAbbreviation": "MC",
-                "email": "hdsfvdsjfjf@web.de",
-                "phone": "452532",
-                "color": "background: #008000",
-                "id": 3
-            },
-            {
-                "name": "Marcus Morr",
-                "nameAbbreviation": "MM",
-                "email": "hjfjfstars@web.de",
-                "phone": "6546465464",
-                "color": "background: #FF1493",
-                "id": 2
-            }
-        ],
-        "subtasksInProgress": [
-            "eins"
-        ],
-        "subtasksFinish": []
-    },
-    {
-        "id": 4,
-        "status": "toDo",
-        "category": "New Category",
-        "categoryColor": "background: #FF6347",
-        "title": "second guest task",
-        "description": "text for task",
-        "dueDate": "24/10/2023",
-        "priority": "./img/prioMedium.svg",
-        "contactName": [
-            "Bernhard Sigl",
-            "David Peterka",
-            "Lina Wionsek"
-        ],
-        "contactColor": [
-            "#006400",
-            "#00008B",
-            "#8B0000"
-        ],
-        "contactAbbreviation": [
-            "BS",
-            "DP",
-            "LW"
-        ],
-        "subtasksInProgress": [
-            "first subtask",
-            "second subtask",
-            "third subtask"
-        ],
-        "subtasksFinish": []
-    },
-    {
-        "id": 5,
-        "status": "awaiting-feedback",
-        "category": "User Story",
-        "categoryColor": "background: #0038FF",
-        "title": "third guest task",
-        "description": "text for task",
-        "dueDate": "21/10/2023",
-        "priority": "./img/prioUrgent.svg",
-        "contactName": [
-            "Bernhard Sigl",
-            "David Peterka",
-            "Lina Wionsek"
-        ],
-        "contactColor": [
-            "#006400",
-            "#00008B",
-            "#8B0000"
-        ],
-        "contactAbbreviation": [
-            "BS",
-            "DP",
-            "LW"
-        ],
-        "subtasksInProgress": [
-            "first subtask",
-            "second subtask",
-            "third subtask"
-        ],
-        "subtasksFinish": []
-    }
+            "name": "Devin Krause",
+            "nameAbbreviation": "DK",
+            "email": "hjfjf@web.de",
+            "phone": "4648463543",
+            "color": "background: #DC143C",
+            "id": 1
+        },
+        {
+            "name": "Kevin Meister",
+            "nameAbbreviation": "KM",
+            "email": "hjfjfstars@web.de",
+            "phone": "846464654654",
+            "color": "background: #00008B",
+            "id": 3
+        }
     ];
 
-    allCategorys = {
+
+
+    tasks = [
+        {
+            "id": 9,
+            "status": "toDo",
+            "category": "New Category",
+            "categoryColor": "background: #8B0000",
+            "title": "First Task",
+            "description": "description task one",
+            "dueDate": "17/01/2024",
+            "priority": "Urgent",
+            "assignContacts": [
+                {
+                    "name": "David Peterka",
+                    "nameAbbreviation": "DP",
+                    "email": "testDavid@web.de",
+                    "phone": "012345678",
+                    "color": "background: #228B22",
+                    "id": 0
+                },
+                {
+                    "name": "Devin Krause",
+                    "nameAbbreviation": "DK",
+                    "email": "hjfjf@web.de",
+                    "phone": "4648463543",
+                    "color": "background: #DC143C",
+                    "id": 1
+                },
+                {
+                    "name": "Kevin Meister",
+                    "nameAbbreviation": "KM",
+                    "email": "hjfjfstars@web.de",
+                    "phone": "846464654654",
+                    "color": "background: #00008B",
+                    "id": 3
+                }
+            ],
+            "subtasksInProgress": [
+                "First Subtask",
+                "Second Subtask",
+                "Third Subtask"
+            ],
+            "subtasksFinish": []
+        },
+        {
+            "id": 10,
+            "status": "inProgress",
+            "category": "Technical Task",
+            "categoryColor": "background: #1FD7C1",
+            "title": "Second task",
+            "description": "description two",
+            "dueDate": "16/01/2024",
+            "priority": "Medium",
+            "assignContacts": [
+                {
+                    "name": "Anja Sonnenberger",
+                    "nameAbbreviation": "AS",
+                    "email": "hdsfvdsjfjf@web.de",
+                    "phone": "6546465464",
+                    "color": "background: #D2691E",
+                    "id": 2
+                },
+                {
+                    "name": "David Peterka",
+                    "nameAbbreviation": "DP",
+                    "email": "testDavid@web.de",
+                    "phone": "012345678",
+                    "color": "background: #228B22",
+                    "id": 0
+                },
+                {
+                    "name": "Devin Krause",
+                    "nameAbbreviation": "DK",
+                    "email": "hjfjf@web.de",
+                    "phone": "4648463543",
+                    "color": "background: #DC143C",
+                    "id": 1
+                }
+            ],
+            "subtasksInProgress": [
+                "first",
+                "second",
+                "third"
+            ],
+            "subtasksFinish": []
+        },
+        {
+            "id": 11,
+            "status": "done",
+            "category": "User Story",
+            "categoryColor": "background: #0038FF",
+            "title": "Third task",
+            "description": "description three",
+            "dueDate": "16/01/2024",
+            "priority": "Low",
+            "assignContacts": [
+                {
+                    "name": "David Peterka",
+                    "nameAbbreviation": "DP",
+                    "email": "testDavid@web.de",
+                    "phone": "012345678",
+                    "color": "background: #228B22",
+                    "id": 0
+                },
+                {
+                    "name": "Kevin Meister",
+                    "nameAbbreviation": "KM",
+                    "email": "hjfjfstars@web.de",
+                    "phone": "846464654654",
+                    "color": "background: #00008B",
+                    "id": 3
+                }
+            ],
+            "subtasksInProgress": "",
+            "subtasksFinish": ""
+        }
+    ];
+
+    ownCategorys = {
         "name": [
-            "New Category"
+            "New Category",
+            "My Category"
         ],
         "color": [
-            "background: #FF6347"
+            "background: #8B0000",
+            "background: #FFA500"
         ]
     }
+    currentId = 12;
+    contactId = 4;
     currentUserTaskSave();
+    currentUserIdSave();
     currentUserCategorysSave();
     currentUserContactsSave();
 }
