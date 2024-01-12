@@ -101,7 +101,7 @@
                 <div class="group-head-container">
                     <span class="task-group-span">To do</span>
                     <img onmouseover="changeImage('plusToDo', 'src/img/plusBlue.svg')"
-                        onmouseleave="restoreImage('plusToDo', 'src/img/PlusNormal.svg')" src="src/img/plusNormal.svg"
+                        onmouseleave="restoreImage('plusToDo', 'src/img/plusNormal.svg')" src="src/img/plusNormal.svg"
                         id="plusToDo" onclick="showAddTaskPopup('toDo'), doNotClose(event)" class="group-plus-icon"
                         alt="group-plus-icon">
                 </div>
@@ -115,7 +115,7 @@
                 <div class="group-head-container">
                     <span class="task-group-span">In progress</span>
                     <img onmouseover="changeImage('plusInProgress', 'src/img/plusBlue.svg')"
-                        onmouseleave="restoreImage('plusInProgress', 'src/img/PlusNormal.svg')"
+                        onmouseleave="restoreImage('plusInProgress', 'src/img/plusNormal.svg')"
                         src="src/img/plusNormal.svg" id="plusInProgress"
                         onclick="showAddTaskPopup('inProgress'), doNotClose(event)" class="group-plus-icon"
                         src="src/img/plusNormal.svg" alt="group-plus-icon">
@@ -130,7 +130,7 @@
                 <div class="group-head-container">
                     <span class="task-group-span">Await feedback</span>
                     <img onmouseover="changeImage('plusAwaitFeedback', 'src/img/plusBlue.svg')"
-                        onmouseleave="restoreImage('plusAwaitFeedback', 'src/img/PlusNormal.svg')"
+                        onmouseleave="restoreImage('plusAwaitFeedback', 'src/img/plusNormal.svg')"
                         src="src/img/plusNormal.svg" id="plusAwaitFeedback"
                         onclick="showAddTaskPopup('awaitFeedback'), doNotClose(event)" class="group-plus-icon"
                         src="src/img/plusNormal.svg" alt="group-plus-icon">
@@ -145,7 +145,7 @@
                 <div class="group-head-container">
                     <span class="task-group-span">Done</span>
                     <img onmouseover="changeImage('plusDone', 'src/img/plusBlue.svg')"
-                        onmouseleave="restoreImage('plusDone', 'src/img/PlusNormal.svg')" src="src/img/plusNormal.svg"
+                        onmouseleave="restoreImage('plusDone', 'src/img/plusNormal.svg')" src="src/img/plusNormal.svg"
                         id="plusDone" onclick="showAddTaskPopup('done'), doNotClose(event)" class="group-plus-icon"
                         src="src/img/plusNormal.svg" alt="group-plus-icon">
                 </div>
@@ -217,8 +217,9 @@
                     <div onclick="showCategoryContainer(), doNotClose(event)" style="z-index: 1;"
                         class="addTask-input-container">
                         <input id="categoryInput" readonly type="text" value="Select task category">
-                        <img onclick="hideCategoryContainer()" class="addTask-input-icon greyHoverIcon"
-                            src="src/img/arrow_drop_downaa.svg" alt="arrow-down-icon">
+                        <img onclick="hideCategoryContainer()" id="categoryInputArrow"
+                            class="addTask-input-icon greyHoverIcon" src="src/img/arrow_drop_downaa.svg"
+                            alt="arrow-down-icon">
                     </div>
                     <div onclick="doNotClose(event)" id="categoryContainer" style="z-index: 0;"
                         class="category-container d-none">
