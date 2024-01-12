@@ -34,13 +34,22 @@ function addAnimationOnResize() {
     if (window.innerWidth <= 1020 && !isUserLoggedIn) {
         greetBox.classList.remove('d-none');
         setTimeout(() => {
-            greetBox.classList.remove('fade-in')
-            greetBox.classList.add('fade-out')
+            greetBox.classList.remove('fade-in');
+            greetBox.classList.add('fade-out');
             isUserLoggedIn = true;
             isUserLoggedSave();
+            greetBox.classList.add('d-none');
         }, 3000);
     } else if (window.innerWidth > 1020) {
         greetBox.classList.remove('d-none');
+        setTimeout(() => {
+            greetBox.classList.remove('fade-in');
+            greetBox.classList.add('fade-out');
+            isUserLoggedIn = true;
+            isUserLoggedSave();
+            greetBox.classList.add('d-none');
+
+        }, 3000);
     }
 }
 

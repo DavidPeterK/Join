@@ -16,6 +16,8 @@ async function addTaskInit() {
     await loadAllTasks();
     renderPrioSection();
     renderCategoryPopUp();
+    selectedPrio = 'Medium';
+    controlPrioButton();
 }
 
 /**
@@ -167,7 +169,8 @@ function clearAddTask() {
     currentCategorySelected.name = '';
     currentCategorySelected.color = '';
     currentCategorySelected.type = '';
-    selectedPrio = '';
+    selectedPrio = 'Medium';
+    controlPrioButton();
     contactCollection = [];
     subtasks = [];
     subtasksFinish = [];

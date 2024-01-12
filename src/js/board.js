@@ -351,8 +351,10 @@ function returnDeleteWindow(index) {
 function returnArrayHtml(task) {
     let contactHtml;
     let prioHtml;
+    let progress;
     contactHtml = '';
     prioHtml = '';
+    progress = '';
     for (let i = 0; i < task.assignContacts.length; i++) {
         if (i === 5 && task.assignContacts.length > 6) {
             contactHtml += `<b style='font-size: 18px; padding-left: 7px'>+${task.assignContacts.length - 5}</b>`;
@@ -366,6 +368,14 @@ function returnArrayHtml(task) {
     if (task.priority) {
         prioHtml = /*html*/`<img class="prioIcon" src="src/img/prio${task.priority}.svg" alt="prio-icon">`;
     }
+    if (task.subtasksInProgress.length > 0) {
+        progress = /*html*/`
+            <div class="progress-container">
+                <div class="progress-bar" style="width: ${100 / (task.subtasksInProgress.length / task.subtasksFinish.length)}%;"></div>
+            </div>
+            <span class="progressSpan">${task.subtasksFinish.length}/${task.subtasksInProgress.length} Subtasks</span>
+        `;
+    }
     return /*html*/`
     <div onclick='renderCurrentTaskPopUp(${task.id}), doNotClose(event)' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
         <span style="${task.categoryColor}" class="taskCategorySpan">${task.category}</span>
@@ -374,10 +384,7 @@ function returnArrayHtml(task) {
             <span class="descriptionSpan">${task.description}</span>
         </div>
         <div class="progressSection">
-            <div class="progress-container">
-                <div class="progress-bar" style="width: ${100 / (task.subtasksInProgress.length / task.subtasksFinish.length)}%;"></div>
-            </div>
-            <span class="progressSpan">${task.subtasksFinish.length}/${task.subtasksInProgress.length} Subtasks</span>
+            ${progress}
         </div>
         <div class="taskFooter">
             <div class="taskUserCircles">
