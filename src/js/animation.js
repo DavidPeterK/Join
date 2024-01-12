@@ -110,6 +110,39 @@ function openHeaderMenu(event) {
     }
 }
 //----------------------------------------------------------------------//
+/**
+ * Opens the swap box for a specific task.
+ */
+function openSwapBox(id) {
+    let box = document.getElementById(`swapContainer${id}`);
+    let arrow = document.getElementById(`swapArrow${id}`);
+    box.classList.remove('d-none');
+    arrow.onclick = function (event) {
+        closeSwapBox(id);
+        doNotClose(event);
+    };
+}
+
+/**
+ * Closes the swap box for a specific task.
+ */
+function closeSwapBox(id) {
+    let box = document.getElementById(`swapContainer${id}`);
+    let arrow = document.getElementById(`swapArrow${id}`);
+    box.classList.add('d-none');
+    arrow.onclick = function (event) {
+        openSwapBox(id);
+        doNotClose(event);
+    };
+}
+
+/**
+ * Initiates the task swapping process by setting the task ID as the element to be dragged.
+ */
+function swapTask(group, id) {
+    dragElement = id;
+    moveTo(group);
+}
 
 /**
  * Changes the image source for the specified element.

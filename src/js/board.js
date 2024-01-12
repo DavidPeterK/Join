@@ -380,18 +380,14 @@ function returnArrayHtml(task) {
             </div>
             <img class="prioIcon" src="src/img/prio${task.priority}.svg" alt="prio-icon">
         </div>
-        <div id='swapContainer${task.id}' class='swapBox'>
+        <div id='swapContainer${task.id}' onclick='doNotClose(event)' class='swapBox d-none'>
             <b style='padding-bottom: 8px; font-size: 18px'>Move to:</b>
-            <div class='swapRow'>To do</div>
-            <div class='swapRow'>In progress</div>
-            <div class='swapRow'>Await feedback</div>
-            <div class='swapRow'>Done</div>
+            <div onclick="swapTask('toDo', ${task.id})" class='swapRow'>To do</div>
+            <div onclick="swapTask('inProgress', ${task.id})" class='swapRow'>In progress</div>
+            <div onclick="swapTask('awaitFeedback', ${task.id})" class='swapRow'>Await feedback</div>
+            <div onclick="swapTask('done', ${task.id})" class='swapRow'>Done</div>
         </div>
-        <img onclick='openSwapBox(${task.id})' class='arrowUpDown' src="src/img/arrow-down-up.svg" alt="arrow-down-up">
+        <img onclick='openSwapBox(${task.id}), doNotClose(event)' id='swapArrow${task.id}' class='arrowUpDown' src="src/img/arrow-down-up.svg" alt="arrow-down-up">
     </div> `;
 }
 
-function openSwapBox(id) {
-    let box = document.getElementById(`swapContainer${id}`);
-    box.classList.remove('d-none');
-}
