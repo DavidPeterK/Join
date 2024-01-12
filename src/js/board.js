@@ -148,6 +148,7 @@ async function showAddTaskPopup(status) {
 
 /** * Displays the add task popup for editing an existing task. */
 function showAddTaskPopupEdit(id) {
+    clearAddTask();
     let box = document.getElementById('addTaskPopUp');
     let headline = document.getElementById('addTaskHeadline');
     let buttonArea = document.getElementById('addTaskButtonArea');
@@ -156,8 +157,8 @@ function showAddTaskPopupEdit(id) {
     headline.innerText = 'Edit Task';
     buttonArea.innerHTML = returnButtonAreaEditTask(id);
     loadTaskForEdit(id);
-    renderAllSelectedContacts();
     controlPrioButton();
+    renderAllSelectedContacts();
     renderSubTasks();
 }
 
@@ -165,7 +166,7 @@ function showAddTaskPopupEdit(id) {
 function closeAddTaskPopup() {
     let box = document.getElementById('addTaskPopUp');
     box.classList.add('d-none');
-    statusGroup = '';
+    clearAddTask();
 }
 
 /** * Renders the popup for the current task. */
@@ -349,7 +350,9 @@ function returnDeleteWindow(index) {
 
 function returnArrayHtml(task) {
     let contactHtml;
+    let prioHtml;
     contactHtml = '';
+    prioHtml = '';
     for (let i = 0; i < task.assignContacts.length; i++) {
         if (i === 5 && task.assignContacts.length > 6) {
             contactHtml += `<b style='font-size: 18px; padding-left: 7px'>+${task.assignContacts.length - 5}</b>`;
@@ -357,9 +360,11 @@ function returnArrayHtml(task) {
         } else {
             const allContacts = task.assignContacts[i];
             contactHtml += /*html*/`
-    <div style="${allContacts.color};" class="userCircle">${allContacts.nameAbbreviation}</div>
-    `;
+    <div style="${allContacts.color};" class="userCircle">${allContacts.nameAbbreviation}</div>`;
         }
+    }
+    if (task.priority) {
+        prioHtml = /*html*/`<img class="prioIcon" src="src/img/prio${task.priority}.svg" alt="prio-icon">`;
     }
     return /*html*/`
     <div onclick='renderCurrentTaskPopUp(${task.id}), doNotClose(event)' id='taskNote${task.id}' draggable='true' ondragstart='startDragAnimation(${task.id})' class="taskContainer">
@@ -378,7 +383,7 @@ function returnArrayHtml(task) {
             <div class="taskUserCircles">
                 ${contactHtml}
             </div>
-            <img class="prioIcon" src="src/img/prio${task.priority}.svg" alt="prio-icon">
+            ${prioHtml}
         </div>
         <div id='swapContainer${task.id}' onclick='doNotClose(event)' class='swapBox d-none'>
             <b style='padding-bottom: 8px; font-size: 18px'>Move to:</b>
@@ -390,4 +395,3 @@ function returnArrayHtml(task) {
         <img onclick='openSwapBox(${task.id}), doNotClose(event)' id='swapArrow${task.id}' class='arrowUpDown' src="src/img/arrow-down-up.svg" alt="arrow-down-up">
     </div> `;
 }
-

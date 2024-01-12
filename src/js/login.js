@@ -11,7 +11,7 @@ async function initIndex() {
     initContainer();
     activUser = { 'name': '', };
     saveActivUser();
-    logoStatus();
+    startAnimation();
     isUserLoggedIn = false;
     isUserLoggedSave();
 }
@@ -29,17 +29,6 @@ function initContainer() {
     signUpButtonBottom = document.getElementById('signSectionBottom');
 }
 
-/**
- * Handles the logo status based on the referrer.
- */
-function logoStatus() {
-    if (!document.referrer) {
-        startAnimation();
-    } else {
-        hideLogoAnimation();
-        renderSignIn();
-    }
-}
 
 /**
  * Renders the sign-in content.

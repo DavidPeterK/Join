@@ -88,7 +88,7 @@
 
                 <div class="gapContainer"></div>
 
-                <span class="addTaskSpan">Description</span>
+                <span class="addTaskSpan">Description<span class="star-red">*</span></span>
                 <textarea id="addTaskDescriptionInput" placeholder="Enter a Description" cols="30" rows="10"></textarea>
                 <span id="warnDescription" style="text-align: center; margin-top: 10px;" class="warningByInput d-none">
                     This field is required.
@@ -176,8 +176,8 @@
                     onmouseout="restoreImage('clearButton', 'src/img/crossAddTask.svg')" class="clear-button">Clear <img
                         id="clearButton" style="width: 24px; height: 24px;" src="src/img/crossAddTask.svg"
                         alt="cross-icon"></div>
-                <div onclick="loadTaskControl('')" class="createTask-button button-hover">Create Task <img
-                        src="src/img/check.svg" alt="check-icon">
+                <div onclick="setStatusToDo(), loadTaskControl('')" class="createTask-button button-hover">Create Task
+                    <img src="src/img/check.svg" alt="check-icon">
                 </div>
             </div>
         </div>

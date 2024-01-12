@@ -16,7 +16,6 @@ async function addTaskInit() {
     await loadAllTasks();
     renderPrioSection();
     renderCategoryPopUp();
-    statusGroup = 'toDo';
 }
 
 /**
@@ -162,14 +161,20 @@ function clearAddTask() {
     document.getElementById("addTaskTitleInput").value = '';
     document.getElementById("addTaskDescriptionInput").value = '';
     document.getElementById("datepicker").value = '';
+    document.getElementById("subtaskInput").value = '';
     document.getElementById('categoryInput').value = 'Select task category';
     statusGroup = '';
     currentCategorySelected.name = '';
     currentCategorySelected.color = '';
+    currentCategorySelected.type = '';
     selectedPrio = '';
     contactCollection = [];
-    subtasks = '';
-    subtasksFinish = '';
+    subtasks = [];
+    subtasksFinish = [];
+}
+
+function setStatusToDo() {
+    statusGroup = 'toDo';
 }
 
 //only for date-input by addTask.html/ Due date//

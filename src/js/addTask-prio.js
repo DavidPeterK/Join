@@ -105,12 +105,18 @@ function resetLowButton() {
 function controlPrioButton() {
     if (selectedPrio === 'Urgent') {
         urgentButtonActiv();
+        resetLowButton();
+        resetMediumButton();
     }
     if (selectedPrio === 'Medium') {
         mediumButtonActiv();
+        resetLowButton();
+        resetUrgentButton();
     }
     if (selectedPrio === 'Low') {
         lowButtonActiv();
+        resetMediumButton();
+        resetUrgentButton();
     }
     if (selectedPrio === '') {
         resetLowButton();
