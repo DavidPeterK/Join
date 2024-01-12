@@ -161,7 +161,7 @@ li {
 
 .currentTaskTitelSpan {
     color: var(--black, #000);
-    font-size: 61px;
+    font-size: 52px;
     font-weight: 700;
     line-height: 120%;
     align-self: stretch;
